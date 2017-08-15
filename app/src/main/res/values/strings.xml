@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">HJGAppLife</string>
+    <string name="app_name">编程生活app</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

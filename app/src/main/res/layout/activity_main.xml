@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hjg.hjgapplife.MainActivity">
+    android:orientation="vertical"
+    tools:context="com.hjg.hjgapplife.activity.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:id="@+id/fl_change"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    </FrameLayout>
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tl"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignBottom="@+id/fl_change"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        tl:tl_iconGravity="TOP"
+        tl:tl_iconHeight="18dp"
+        tl:tl_iconMargin="5dp"
+        tl:tl_iconWidth="18dp"
+        tl:tl_indicator_bounce_enable="true"
+        tl:tl_indicator_color="@color/darkorange"
+        tl:tl_indicator_gravity="BOTTOM"
+        tl:tl_indicator_height="0dp"
+        tl:tl_textSelectColor="@color/darkorange"
+        tl:tl_textUnselectColor="@color/black"
+        tl:tl_textsize="12sp"
+        tl:tl_underline_color="#DDDDDD"
+        tl:tl_underline_gravity="TOP"
+        tl:tl_underline_height="1dp" />
+
+</RelativeLayout>
