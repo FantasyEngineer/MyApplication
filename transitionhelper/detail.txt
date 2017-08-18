@@ -1,0 +1,101 @@
+说明：
+这个库是点击1的图片跳转到2，携带者1点击的位置，然后在2界面在此位置移动到相应的展示位置。
+类似于qq空间中点击某个图片然后从该位置放大展示。
+
+使用：
+引入此库
+1界面点击事件调用 TransitionsHeleper.startActivity(activity, PhotoShowActivity.class, iv, resid);
+startActivity(--------)
+
+2界面
+TransitionsHeleper.getInstance()
+                .setShowMethod(new InflateShowMethod(this, R.layout.activity_rv_inflate) {
+                    @Override
+                    public void loadCopyView(InfoBean bean, final ImageView copyView) {
+                        GlideCatchUtil.loadResImg(activity, bean.getImgId(), copyView);
+                    }
+
+                    @Override
+                    public void loadTargetView(InfoBean bean, ImageView targetView) {
+                        GlideCatchUtil.loadResImg(activity, bean.getImgId(), targetView);
+                    }
+                })
+                .show(activity, 新界面需要展示的img控件名称);
+----------------------------------------------------------------------------------------------
+TransitionsHeleper.getInstance()
+                .setShowMethod(new ColorShowMethod(R.color.bg_teal_light,
+                        R.color.bg_purple) {
+                    @Override
+                    public void loadCopyView(InfoBean bean, ImageView copyView) {
+                        Glide.with(ImageDetailActivity.this)
+                                .load(bean.getImgUrl())
+                                .centerCrop()
+                                .into(copyView);
+                    }
+
+                    @Override
+                    public void loadTargetView(InfoBean bean, ImageView targetView) {
+                        Glide.with(ImageDetailActivity.this)
+                                .load(bean.getImgUrl())
+                                .centerCrop()
+                                .into(targetView);
+                    }
+
+                }).show(this, 新界面需要展示的img控件名称);
+
+---------------------------------控件点击，做出动画效果，然后扩散或者不扩散的动画-------------------------------------------------------------
+        1.        TransitionsHeleper.startActivity(activity, btnTransActivity.class, btn_trans);
+
+        2.
+                //扩散效果
+                      TransitionsHeleper.getInstance()
+                              //copy的原来的老的View需要做出什么样的动作之后才能进入到新的界面，若iv_target为空，则进入到页面之后，不做动作
+                              .setShowMethod(new ColorShowMethod(R.color.gray, R.color.white) {
+                                  @Override
+                                  public void loadCopyView(InfoBean bean, ImageView copyView) {
+                                      AnimatorSet set = new AnimatorSet();
+                                      set.playTogether(
+                                              ObjectAnimator.ofFloat(copyView, "rotation", 0, 180),
+                                              ObjectAnimator.ofFloat(copyView, "scaleX", 1, 0),
+                                              ObjectAnimator.ofFloat(copyView, "scaleY", 1, 0)
+                                      );
+                                      set.setInterpolator(new AccelerateInterpolator());
+                                      set.setDuration(duration / 4 * 5).start();
+                                  }
+
+                                  //进入到新的页面的时候最后填入的View做出的动作
+                                  @Override
+                                  public void loadTargetView(InfoBean bean, ImageView targetView) {
+                                      AnimatorSet set = new AnimatorSet();
+                                      set.playTogether(
+                                              ObjectAnimator.ofFloat(targetView, "rotation", 0, 180)
+                                      );
+                                      set.setInterpolator(new AccelerateInterpolator());
+                                      set.setDuration(duration / 4 * 5).start();
+                                  }
+                              })
+                              .show(this, iv_target);
+
+
+                        //不扩散效果
+                        TransitionsHeleper.getInstance()
+                                .setShowMethod(new NoneShowMethod() {
+
+                                    @Override
+                                    public void loadCopyView(InfoBean bean, ImageView copyView) {
+                                        AnimatorSet set = new AnimatorSet();
+                                        set.playTogether(
+                                                ObjectAnimator.ofFloat(copyView, "rotation", 0, 180),
+                                                ObjectAnimator.ofFloat(copyView, "scaleX", 1, 0),
+                                                ObjectAnimator.ofFloat(copyView, "scaleY", 1, 0)
+                                        );
+                                        set.setInterpolator(new AccelerateInterpolator());
+                                        set.setDuration(duration / 4 * 5).start();
+                                    }
+
+
+                                })
+                                .show(this, null);
+----------------------------------------------------------------------------------------------
+
+使用完之后在ondestroy中调用TransitionsHeleper.unbind(activity);
