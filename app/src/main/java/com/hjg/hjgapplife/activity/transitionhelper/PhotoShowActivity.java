@@ -1,6 +1,5 @@
 package com.hjg.hjgapplife.activity.transitionhelper;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,7 +23,7 @@ public class PhotoShowActivity extends BaseActivity {
     protected void initTitle() {
         topBarManage.isVisibleTopbar(true);
         topBarManage.iniTop(true, "大图展示");
-        topBarManage.setLeftBtnBack(true, "", new View.OnClickListener() {
+        topBarManage.setLeftBtnBack(true, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

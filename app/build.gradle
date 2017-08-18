@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 26
@@ -19,10 +20,30 @@ android {
     }
 }
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+    }
+}
+
+//版本号升级会执行删除表，重建表，数据会丢失
+greendao {
+    schemaVersion 1001
+    targetGenDir 'src/main/java'
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':baseapp')
     compile project(':bannerlib')
     compile project(':transitionhelper')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    compile 'org.greenrobot:greendao:3.2.2'
+    // This is only needed if you want to use encrypted databases
+    compile 'net.zetetic:android-database-sqlcipher:3.5.6'
 }

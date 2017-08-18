@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.transitionhelper.PhotoShowActivity" />
-        <activity android:name=".activity.transitionhelper.btnTransActivity"></activity>
+        <activity android:name=".activity.transitionhelper.btnTransActivity" />
+        <activity android:name=".activity.greenDao.GreenDaoActivity"></activity>
     </application>
 
 </manifest>

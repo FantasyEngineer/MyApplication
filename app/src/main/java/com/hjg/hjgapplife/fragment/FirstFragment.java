@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -17,7 +16,6 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.hjg.baseapp.adapter.RvCommonAdapter;
 import com.hjg.baseapp.adapter.ViewHolder;
 import com.hjg.baseapp.fragment.BaseFragment;
-import com.hjg.baseapp.util.ScreenUtils;
 import com.hjg.baseapp.widget.VerticalTextview;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.transitionhelper.PhotoShowActivity;
@@ -156,10 +154,10 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
             @Override
             public void convert(ViewHolder holder, final Integer resid, final int position) {
                 final ImageView iv = holder.getView(R.id.iv);
-                final ViewGroup.LayoutParams lp = iv.getLayoutParams();
-                lp.width = (ScreenUtils.getScreenWidth(mContext) - ScreenUtils.dp2px(mContext, 25)) / 2;
-                lp.height = lp.width * 4 / 7;
-                iv.setLayoutParams(lp);
+//                final ViewGroup.LayoutParams lp = iv.getLayoutParams();
+//                lp.width = (ScreenUtils.getScreenWidth(mContext) - ScreenUtils.dp2px(mContext, 25)) / 2;
+//                lp.height = lp.width * 4 / 7;
+//                iv.setLayoutParams(lp);
                 iv.setImageResource(resid);
                 iv.setOnClickListener(new View.OnClickListener() {
                     @Override

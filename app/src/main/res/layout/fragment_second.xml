@@ -18,11 +18,11 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:ellipsize="marquee"
-            android:textColor="@color/darkorange"
             android:marqueeRepeatLimit="marquee_forever"
             android:paddingRight="20dp"
             android:singleLine="true"
-            android:text="收集开源的lib，将自己写的东西，项目中用的东西都集成起来，以便以后很好的找到           " />
+            android:text="收集开源的lib，将自己写的东西，项目中用的东西都集成起来，以便以后很好的找到           "
+            android:textColor="@color/darkorange" />
 
         <ImageView
             android:layout_width="18dp"
@@ -31,5 +31,31 @@
             android:layout_centerVertical="true"
             android:src="@mipmap/cancel" />
     </RelativeLayout>
+
+    <com.hjg.baseapp.widget.BounceScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.hjg.baseapp.widget.MyListView
+                android:id="@+id/mlv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/lightgray"
+                android:dividerHeight="1px"
+                android:listSelector="@color/transp">
+
+
+            </com.hjg.baseapp.widget.MyListView>
+
+        </LinearLayout>
+
+    </com.hjg.baseapp.widget.BounceScrollView>
 
 </LinearLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingBottom="10dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="10dp">
+
+    <ImageView
+        android:id="@+id/iv_set"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="20dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/icon_set" />
+
+    <TextView
+        android:id="@+id/tv_set_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_arrow"
+        android:layout_toEndOf="@+id/iv_set"
+        android:text="设置"
+        android:textColor="@color/gray"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/iv_arrow"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/icon_right_arrow" />
+
+</RelativeLayout>

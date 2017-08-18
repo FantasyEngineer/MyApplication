@@ -7,10 +7,16 @@ import com.hjg.baseapp.application.BaseApplication;
  */
 
 public class MyApplication extends BaseApplication {
+    private static MyApplication app;
 
     @Override
     public void onCreate() {
         super.onCreate();
-//        CrashHandler.getInstance().init(mApp);
+        //        CrashHandler.getInstance().init(mApp);
+        app = this;
+    }
+
+    public static MyApplication getApplication() {
+        return app;
     }
 }

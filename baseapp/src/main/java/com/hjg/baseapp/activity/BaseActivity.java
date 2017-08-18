@@ -56,7 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         topBarManage = new TopBarManage(this, v);
         topBarManage.setTopBarBackground(this.getResources().getColor(R.color.darkorange));
         //设置状态栏颜色（页面的最上面 电量显示一栏）
-        StatusBarUtil.setColor(activity, getResources().getColor(0), 0);
+        StatusBarUtil.setColor(activity, getResources().getColor(R.color.darkorange), 0);
     }
 
 

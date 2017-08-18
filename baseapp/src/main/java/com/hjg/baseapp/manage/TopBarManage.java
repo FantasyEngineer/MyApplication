@@ -3,7 +3,6 @@ package com.hjg.baseapp.manage;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -93,8 +92,8 @@ public class TopBarManage {
 
     }
 
-    public void setLeftBtnBack(boolean isShow, String txt, View.OnClickListener listener) {
-        setLeftButtonImgAndTxt(isShow, context.getDrawable(R.mipmap.icon_back), txt, listener);
+    public void setLeftBtnBack(boolean isShow, View.OnClickListener listener) {
+        setLeftButtonImgAndTxt(isShow, context.getDrawable(R.mipmap.icon_back), "返回", listener);
     }
 
     /**
