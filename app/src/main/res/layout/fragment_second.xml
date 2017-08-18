@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
+        android:background="@color/lightgray"
         android:gravity="center"
-        android:text="SecondFragment" />
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <com.hjg.baseapp.widget.MarqueeTextView
+            android:id="@+id/mtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="marquee"
+            android:textColor="@color/darkorange"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:text="收集开源的lib，将自己写的东西，项目中用的东西都集成起来，以便以后很好的找到           " />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/cancel" />
+    </RelativeLayout>
+
 </LinearLayout>

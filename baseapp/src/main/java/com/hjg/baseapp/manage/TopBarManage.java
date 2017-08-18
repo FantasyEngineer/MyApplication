@@ -23,6 +23,7 @@ public class TopBarManage {
     private MyRadioButton rightButton;
     private TextView TopTextView;
     private ImageView TopImg;
+    private RelativeLayout topBar;
 
     /**
      * 构造函数，传人需要管理的头部view
@@ -42,10 +43,27 @@ public class TopBarManage {
      */
     private void commonInit(View... view) {
         this.topBarView = view[0];
-        TopTextView = (TextView) topBarView.findViewById(R.id.tvTopTextTitle);
         TopImg = (ImageView) topBarView.findViewById(R.id.ivTopImageTitle);
+        TopTextView = (TextView) topBarView.findViewById(R.id.tvTopTextTitle);
         leftButton = (MyRadioButton) topBarView.findViewById(R.id.btnTopLeft);
         rightButton = (MyRadioButton) topBarView.findViewById(R.id.btnTopRight);
+    }
+
+    public void setTopBarBackground(int color) {
+        topBarView.setBackgroundColor(color);
+    }
+
+    /**
+     * 顶部头部是否可见
+     *
+     * @param show
+     */
+    public void isVisibleTopbar(boolean show) {
+        topBarView.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    public boolean getIsVisiable() {
+        return topBarView.getVisibility() == View.VISIBLE ? true : false;
     }
 
     /**

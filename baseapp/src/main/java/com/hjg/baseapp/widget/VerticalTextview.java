@@ -1,6 +1,7 @@
 package com.hjg.baseapp.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
@@ -14,6 +15,8 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.hjg.baseapp.R;
+
 import java.util.ArrayList;
 
 /**
@@ -24,16 +27,19 @@ public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewF
     private static final int FLAG_START_AUTO_SCROLL = 0;
     private static final int FLAG_STOP_AUTO_SCROLL = 1;
 
-    private float mTextSize = 16;
-    private int mPadding = 5;
-    private int textColor = Color.BLACK;
+    private float mTextSize;
+    private int defaultColor = Color.BLACK;
+    private int mPadding;
+    private int textColor;
+//    private long mDuringTime;//展示时间
+//    private long mSwitiTime;//展示时间
 
     /**
      * @param textSize  字号
      * @param padding   内边距
      * @param textColor 字体颜色
      */
-    public void setText(float textSize, int padding, int textColor) {
+    public void setText(int textSize, int padding, int textColor) {
         mTextSize = textSize;
         mPadding = padding;
         this.textColor = textColor;
@@ -54,7 +60,19 @@ public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewF
         super(context, attrs);
         mContext = context;
         textList = new ArrayList<String>();
+        TypedArray a = context.obtainStyledAttributes(attrs,
+                R.styleable.VerticalTextview);
+
+        mTextSize = a.getDimensionPixelSize(
+                R.styleable.VerticalTextview_vt_textSize, 50);
+        textColor = a.getColor(R.styleable.VerticalTextview_vt_textColor,
+                defaultColor);
+        mPadding = a.getDimensionPixelSize(R.styleable.VerticalTextview_vt_padding,
+                5);
+
+        a.recycle();
     }
+
 
     public void setAnimTime(long animDuration) {
         setFactory(this);

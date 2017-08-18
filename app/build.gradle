@@ -22,5 +22,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':baseapp')
-    compile 'com.android.support:support-v4:26.+'
+    compile project(':bannerlib')
+    compile project(':transitionhelper')
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

@@ -7,7 +7,8 @@
     <color name="ivory">#FFFFF0</color><!--象牙色 -->
     <color name="lightyellow">#FFFFE0</color><!--亮黄色 -->
     <color name="yellow">#FFFF00</color><!--黄色 -->
-
+    <color name="showmethod_start_color">#FFFFFF</color>
+    <color name="showmethod_end_color">#C8C8C8</color>
     <color name="notrans">#ff000000</color>
     <color name="transp">#00000000</color>
     <color name="halftransp">#7f000000</color>

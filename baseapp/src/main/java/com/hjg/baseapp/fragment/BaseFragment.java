@@ -1,82 +1,33 @@
 package com.hjg.baseapp.fragment;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hjg.baseapp.activity.BaseActivity;
 
-import java.util.UUID;
+import butterknife.ButterKnife;
 
-/**
- * 基础Fragment
- *
- * @author tongxu_li
- *         Copyright (c) 2014 Shanghai P&C Information Technology Co., Ltd.
- */
 public abstract class BaseFragment extends Fragment {
-    private static final String LOG_TAG = "BaseFragment";
+    /**
+     * 上下文
+     */
+    public Activity activity;
+    private View view;
 
-    protected String fragmentTag = UUID.randomUUID().toString();
-    protected View contentView = null;
-    protected BaseActivity activity = null;
-    protected boolean isFirstLoad = true;
-
+    /**
+     * 当BaseFragment被创建的时候被系统调用
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = (BaseActivity) activity;
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        if (contentView == null) {
-            contentView = inflater.inflate(getContentLayout(), container, false);
-            isFirstLoad = true;
-        } else {
-            isFirstLoad = false;
-            ViewGroup vp = (ViewGroup) contentView.getParent();
-            if (null != vp) {
-                vp.removeView(contentView);
-            }
-        }
-        return contentView;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (isFirstLoad) {
-            initView();
-            initAction();
-            initData();
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+        activity = getActivity();
     }
 
     @Override
@@ -84,46 +35,100 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroy();
     }
 
-    public String getFragmentTag() {
-        return fragmentTag;
+
+    /**
+     * 当创建视图的时候调用该方法
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(getContentLayout(), null);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     /**
-     * 设置布局文件
+     * 抽象方法，由孩子实现；达到自己特有效果
+     *
+     * @return R.layout.xxx
      */
     public abstract int getContentLayout();
 
     /**
-     * 控件初始化
+     * 当系统创建Activity完成的时候回调这个方法
+     * 绑定数据
+     *
+     * @param savedInstanceState
      */
-    protected void initView() {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        isInitView = true;
+        initView();
+        initListenAndSetAndAdes();
+        lazyLoadData();
     }
 
-    ;
+    protected abstract void initView();
+
+    protected boolean isVisible = false;//当前Fragment是否可见
+    protected boolean isInitView = false;//是否与View建立起映射关系
+    protected boolean isFirstLoad = true;//是否是第一次加载数据
+    protected boolean isInitLazyView = false;//是否懒加载
 
     /**
-     * 事件监听
+     * 懒加载  有对象时  如：  { if (mContentPage == null)
+     * mContentPage = new Page(7);}
+     * 有广告视图需保存list{if (imagesL != null)
+     * loadAdes(imagesL);}
+     *
+     * @param isVisibleToUser
      */
-    protected void initAction() {
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        isVisible = isVisibleToUser;
+        if (isInitLazyView)
+            lazyLoadData();
+
     }
 
-    ;
+    private void lazyLoadData() {
 
-    /**
-     * 数据处理
-     */
-    protected void initData() {
+        if ((!isFirstLoad || !isVisible || !isInitView) && isInitLazyView)
+            return;
+        initData();
+        isFirstLoad = false;
     }
 
-    ;
+    /**
+     * 懒加载  有对象时  如：  { if (mContentPage == null)
+     * mContentPage = new Page(7);}
+     * 有广告视图需保存list{if (imagesL != null)
+     * loadAdes(imagesL);}
+     */
+
+    public abstract void initListenAndSetAndAdes();
 
     /**
-     * 处理硬键点击
-     * 返回false，事件继续传递
-     * 返回true，事件终止
+     * 当孩子需要联网请求数据，绑定数据等重写该方法;
      */
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        return false;
+    public abstract void initData();
+
+
+    /**
+     * 子类点击视图
+     *
+     * @param view
+     */
+    public void onChildClick(View view) {
+
     }
 
     /**
@@ -131,43 +136,10 @@ public abstract class BaseFragment extends Fragment {
      */
     public View findViewById(int id) {
         View v = null;
-        if (contentView != null) {
-            v = contentView.findViewById(id);
+        if (view != null) {
+            v = view.findViewById(id);
         }
         return v;
-    }
-
-
-    private long lastClickTime;
-
-    /**
-     * 判断事件出发时间间隔是否超过预定值
-     */
-    public boolean isFastDoubleClick() {
-        long time = System.currentTimeMillis();
-        long timeD = time - lastClickTime;
-        if (0 < timeD && timeD < 1000) {
-            return true;
-        }
-        lastClickTime = time;
-        return false;
-    }
-
-    @Override
-    public void startActivity(Intent intent) {
-        // 防止连续点击
-        if (isFastDoubleClick()) {
-            return;
-        }
-        super.startActivity(intent);
-    }
-
-
-    /**
-     * 启动Activity，接收返回结果
-     */
-    public void startActivityForResult(Intent intent, int requestCode) {
-        super.startActivityForResult(intent, requestCode);
     }
 
 }

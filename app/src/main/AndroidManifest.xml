@@ -17,8 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"></activity>
-
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.transitionhelper.PhotoShowActivity" />
+        <activity android:name=".activity.transitionhelper.btnTransActivity"></activity>
     </application>
 
 </manifest>

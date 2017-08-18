@@ -1,14 +1,8 @@
 package com.hjg.hjgapplife.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
+import android.support.annotation.Nullable;
 import android.view.WindowManager;
 
 import com.hjg.baseapp.activity.BaseActivity;
@@ -26,18 +20,23 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
-    protected int setBarColor() {
-        return R.color.transp;
+    protected void initTitle() {
+        hideTopBar();
     }
 
-    @Override
-    protected boolean setBarVisiable() {
-        return false;
-    }
+//    @Override
+//    protected int setBarColor() {
+//        return R.color.transp;
+//    }
 
     @Override
     protected int getContentLayout() {
         return R.layout.activity_splash;
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Override
@@ -46,10 +45,16 @@ public class SplashActivity extends BaseActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                activity.finish();
-                activity.startActivity(new Intent(activity, MainActivity.class));
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        activity.finish();
+                        activity.startActivity(new Intent(activity, MainActivity.class));
+                    }
+                });
+
             }
-        }, 1000);
+        }, 200);
 
     }
 

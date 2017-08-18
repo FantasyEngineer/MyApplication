@@ -1,13 +1,11 @@
 package com.hjg.hjgapplife.activity;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.hjg.baseapp.activity.BaseActivity;
 import com.hjg.baseapp.entity.TabEntity;
 import com.hjg.hjgapplife.R;
@@ -37,24 +35,25 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected void initView() {
+        mTabLayout = (CommonTabLayout) findViewById(R.id.tl);
+    }
+
+    @Override
     public void initTitle() {
         topBarManage.iniTop(true, R.mipmap.icon_home);
         topBarManage.setLeftButtonImgAndTxt(true, null, "定位", null);
     }
 
-    @Override
-    protected int setBarColor() {
-        return R.color.darkorange;
-    }
 
-    @Override
-    protected boolean setBarVisiable() {
-        return true;
-    }
+//    @Override
+//    protected int setBarColor() {
+//        return R.color.darkorange;
+//    }
+
 
     @Override
     protected void initData() {
-        mTabLayout = (CommonTabLayout) findViewById(R.id.tl);
         mFragments.add(FirstFragment.getInstance());
         mFragments.add(SecondFragment.getInstance());
         mFragments.add(ThirdFragment.getInstance());
@@ -65,7 +64,31 @@ public class MainActivity extends BaseActivity {
         }
         //给tab设置数据和关联的fragment
         mTabLayout.setTabData(mTabEntities, MainActivity.this, R.id.fl_change, mFragments);
+
+    }
+
+    @Override
+    public void initAction() {
+        super.initAction();
+        mTabLayout.setOnTabSelectListener(new TabSelectListener());
     }
 
 
+    public class TabSelectListener implements OnTabSelectListener {
+
+        @Override
+        public void onTabSelect(int position) {
+            Log.d("TabSelectListener", "position:" + position);
+            if (position == 3) {
+                hideTopBar();
+            } else {
+                showTopBar();
+            }
+        }
+
+        @Override
+        public void onTabReselect(int position) {
+//            showTopBar();
+        }
+    }
 }

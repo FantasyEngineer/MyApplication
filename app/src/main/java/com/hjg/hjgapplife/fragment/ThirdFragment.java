@@ -17,4 +17,19 @@ public class ThirdFragment extends BaseFragment {
     public int getContentLayout() {
         return R.layout.fragment_third;
     }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    public void initListenAndSetAndAdes() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
 }

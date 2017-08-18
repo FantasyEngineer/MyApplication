@@ -2,13 +2,26 @@
 <resources>
     <!--可以自定义图片大小的radiobutton-->
     <declare-styleable name="MyRadioButton">
-
         <attr name="drawableSize" format="dimension" />
         <attr name="drawableTop" format="reference" />
         <attr name="drawableLeft" format="reference" />
         <attr name="drawableRight" format="reference" />
         <attr name="drawableBottom" format="reference" />
-
     </declare-styleable>
 
+    <!--圆形头像-->
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+    <!--上下滚动的textview-->
+    <declare-styleable name="VerticalTextview">
+        <attr name="vt_textSize" format="dimension" />
+        <attr name="vt_textColor" format="color" />
+        <attr name="vt_padding" format="dimension" />
+        <!--<attr name="vt_duringTime" format="integer" />-->
+        <!--<attr name="vt_switchTime" format="integer" />-->
+    </declare-styleable>
 </resources>

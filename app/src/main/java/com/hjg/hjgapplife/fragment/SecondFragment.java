@@ -17,4 +17,19 @@ public class SecondFragment extends BaseFragment {
     public int getContentLayout() {
         return R.layout.fragment_second;
     }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    public void initListenAndSetAndAdes() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
 }

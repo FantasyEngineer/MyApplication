@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:text="FourFragment" />
+        android:layout_height="250dp"
+        android:background="@color/darkorange"
+        android:gravity="center">
+
+        <com.hjg.baseapp.widget.CircleImageView
+            android:id="@+id/civ_official"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/icon_headphoto"
+            app:civ_border_color="@color/black"
+            app:civ_border_overlay="true"
+            app:civ_border_width="2dp"
+            app:civ_fill_color="@color/gray" />
+    </LinearLayout>
+
+
 </LinearLayout>
