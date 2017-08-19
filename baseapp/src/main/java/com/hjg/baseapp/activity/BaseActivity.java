@@ -36,7 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         fl_content = (FrameLayout) findViewById(R.id.fl_content);
         View view = LayoutInflater.from(this).inflate(getContentLayout(), null);
         fl_content.addView(view);
-        ButterKnife.bind(view);
+        ButterKnife.bind(activity);
         initBarColor();
         initTitle();
         initView();

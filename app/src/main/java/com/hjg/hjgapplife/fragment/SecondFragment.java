@@ -20,7 +20,7 @@ import java.util.List;
 
 public class SecondFragment extends BaseFragment implements AdapterView.OnItemClickListener {
     private MyListView mlv;
-    private List<String> setlist = new ArrayList(Arrays.asList("GreenDao的使用", "未知", "未知", "未知", "未知", "未知"
+    private List<String> setlist = new ArrayList(Arrays.asList("GreenDao的使用", "Butter插件", "未知", "未知", "未知", "未知"
             , "未知", "未知", "未知", "未知", "未知", "未知"));
 
     public static SecondFragment getInstance() {

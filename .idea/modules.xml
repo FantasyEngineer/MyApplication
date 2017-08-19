@@ -3,9 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bannerlib/bannerlib.iml" filepath="$PROJECT_DIR$/bannerlib/bannerlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bannerlib/bannerlib.iml" filepath="$PROJECT_DIR$/bannerlib/bannerlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/baseapp/baseapp.iml" filepath="$PROJECT_DIR$/baseapp/baseapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baseapp/baseapp.iml" filepath="$PROJECT_DIR$/baseapp/baseapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/transitionhelper/transitionhelper.iml" filepath="$PROJECT_DIR$/transitionhelper/transitionhelper.iml" />
       <module fileurl="file://$PROJECT_DIR$/transitionhelper/transitionhelper.iml" filepath="$PROJECT_DIR$/transitionhelper/transitionhelper.iml" />
     </modules>
   </component>
