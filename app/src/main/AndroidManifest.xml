@@ -25,7 +25,8 @@
         <activity android:name=".activity.viewpager.ViewPagerActivity" />
         <activity android:name=".activity.ButtonStyleActivity" />
         <activity android:name=".activity.StringDealActivity" />
-        <activity android:name=".activity.seclectCity.SelectCityActivity"></activity>
+        <activity android:name=".activity.seclectCity.SelectCityActivity" />
+        <activity android:name=".activity.titlepage.TitlePagerActivity"></activity>
     </application>
 
 </manifest>

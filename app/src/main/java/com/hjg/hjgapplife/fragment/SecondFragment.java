@@ -11,6 +11,7 @@ import com.hjg.hjgapplife.activity.ButtonStyleActivity;
 import com.hjg.hjgapplife.activity.StringDealActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.greenDao.GreenDaoActivity;
+import com.hjg.hjgapplife.activity.titlepage.TitlePagerActivity;
 import com.hjg.hjgapplife.activity.viewpager.ViewPagerActivity;
 import com.hjg.hjgapplife.adpter.MlvSecondAdapter;
 
@@ -24,8 +25,8 @@ import java.util.List;
 
 public class SecondFragment extends BaseFragment implements AdapterView.OnItemClickListener {
     private MyListView mlv;
-    private List<String> setlist = new ArrayList(Arrays.asList("GreenDao的使用", "Butterknife插件", "ViewPager各种展示效果", "Button的各种样式", "字符串操作", "未知"
-            , "未知", "未知", "未知", "未知", "未知", "未知"));
+    private List<String> setlist = new ArrayList(Arrays.asList("GreenDao的使用", "Butterknife插件", "ViewPager各种展示效果", "Button的各种样式", "字符串操作", "头部pager展示"
+            , "通知栏相关", "另一种方式的状态栏渗透", "MVP", "recycleView吸顶", "仿外卖双RecycleView联动", "recyleView子项侧滑删除", "右滑退出页面", "侧滑slidmenu"));
 
     public static SecondFragment getInstance() {
         SecondFragment sf = new SecondFragment();
@@ -74,6 +75,7 @@ public class SecondFragment extends BaseFragment implements AdapterView.OnItemCl
                 startActivity(new Intent(activity, StringDealActivity.class));
                 break;
             case 5:
+                startActivity(new Intent(activity, TitlePagerActivity.class));
                 break;
             case 6:
                 break;
