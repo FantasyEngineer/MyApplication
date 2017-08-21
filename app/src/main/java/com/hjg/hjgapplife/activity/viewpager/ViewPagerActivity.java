@@ -4,15 +4,19 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.hjg.baseapp.util.ConvertUtils;
+import com.hjg.baseapp.util.ScreenUtils;
+import com.hjg.baseapp.widget.viewPager.ScalePageTransformer;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.base.BaseActivity;
+import com.hjg.hjgapplife.adpter.viewPagerAdapter.TubatuAdapter;
 import com.hjg.hjgapplife.adpter.viewPagerAdapter.VPCirclationAdapter;
 import com.hjg.hjgapplife.adpter.viewPagerAdapter.VpAdapter1;
 import com.hjg.hjgapplife.adpter.viewPagerAdapter.VpAdapter2;
@@ -37,6 +41,13 @@ public class ViewPagerActivity extends BaseActivity {
     ViewPager vp2;
     @BindView(R.id.vp_3)
     ViewPager vp3;
+    @BindView(R.id.vp_4)
+    ViewPager vp4;
+    @BindView(R.id.cvp)
+    ViewPager cvp;
+    @BindView(R.id.rl_clp_container)
+    RelativeLayout rl_clp_container;
+
 
     //设置展示图片的列表
     private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(
@@ -46,6 +57,8 @@ public class ViewPagerActivity extends BaseActivity {
     ArrayList<View> views = new ArrayList<>();
     ArrayList<View> view2s = new ArrayList<>();
     ArrayList<View> view3s = new ArrayList<>();
+    ArrayList<View> view4s = new ArrayList<>();
+    ArrayList<View> view5s = new ArrayList<>();
 
     private LayoutInflater layoutInflater;
 
@@ -76,8 +89,9 @@ public class ViewPagerActivity extends BaseActivity {
         //  }
         initPager2();
         initPager3();
+        initPager4();
+        initPagerCVP5();
     }
-
 
     private void initPager1() {
         for (int i = 0; i < mDatas.size(); i++) {
@@ -86,7 +100,7 @@ public class ViewPagerActivity extends BaseActivity {
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             imageView.setLayoutParams(params);
-            imageView.setPadding(ConvertUtils.dip2px(activity, 20), 0, ConvertUtils.dip2px(activity, 20), 0);
+            imageView.setPadding(ScreenUtils.dp2px(activity, 20), 0, ScreenUtils.dp2px(activity, 20), 0);
             views.add(imageView);
         }
         VpAdapter1 vpAdapter1 = new VpAdapter1(views);
@@ -162,7 +176,7 @@ public class ViewPagerActivity extends BaseActivity {
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             imageView.setLayoutParams(params);
-            imageView.setPadding(ConvertUtils.dip2px(activity, 20), 0, ConvertUtils.dip2px(activity, 20), 0);
+            imageView.setPadding(ScreenUtils.dp2px(activity, 20), 0, ScreenUtils.dp2px(activity, 20), 0);
             view3s.add(imageView);
         }
 
@@ -192,6 +206,50 @@ public class ViewPagerActivity extends BaseActivity {
 //            }
 //        });
     }
+
+    private void initPager4() {
+        for (int i = 0; i < mDatas.size(); i++) {
+            ImageView imageView = new ImageView(activity);
+            imageView.setBackgroundResource(mDatas.get(i));
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            imageView.setLayoutParams(params);
+            imageView.setPadding(ScreenUtils.dp2px(activity, 20), 0, ScreenUtils.dp2px(activity, 20), 0);
+            view4s.add(imageView);
+        }
+        VPCirclationAdapter vpCirclationAdapter4 = new VPCirclationAdapter(view4s);
+        vp4.setAdapter(vpCirclationAdapter4);
+        vp4.setCurrentItem(1000);
+        // 设置2张图之前的间距。
+        vp4.setPageMargin(ScreenUtils.dp2px(activity, 10));
+        vp4.setOffscreenPageLimit(2);//因为是漏边的，必须要有缓存数量
+    }
+
+
+    private void initPagerCVP5() {
+        for (int i = 0; i < mDatas.size(); i++) {
+            ImageView imageView = new ImageView(activity);
+            imageView.setBackgroundResource(mDatas.get(i));
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            imageView.setLayoutParams(params);
+            imageView.setPadding(ScreenUtils.dp2px(activity, 20), 0, ScreenUtils.dp2px(activity, 20), 0);
+            view5s.add(imageView);
+        }
+        TubatuAdapter vpAdapter5 = new TubatuAdapter(view5s);
+        cvp.setAdapter(vpAdapter5);
+        cvp.setPageTransformer(true, new ScalePageTransformer());
+//        这里需要将setOffscreenPageLimit的值设置成数据源的总个数，如果不加这句话，会导致左右切换异常
+        cvp.setOffscreenPageLimit(mDatas.size());
+        //将外部容器的触点分发给Viewpager，让viewpager来处理
+        rl_clp_container.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return cvp.dispatchTouchEvent(motionEvent);
+            }
+        });
+    }
+
 
     @Override
     protected void initData() {

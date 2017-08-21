@@ -23,6 +23,9 @@ import android.widget.ImageView;
 
 import com.hjg.baseapp.R;
 
+/**
+ * 圆形头像控件
+ */
 public class CircleImageView extends ImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;

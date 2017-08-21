@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hjg.hjgapplife.activity.ButtonStyleActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightgray"
+        android:paddingBottom="10dp"
+        android:paddingLeft="@dimen/paddingLeft"
+        android:paddingRight="@dimen/paddingRight"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/iv_show_pic"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/b" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_show_pic"
+            android:text="美女一枚" />
+
+        <TextView
+            android:id="@+id/tv_sell_num"
+            style="@style/TextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_toRightOf="@+id/iv_show_pic"
+            android:text="卖出了20个" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            style="@style/TextViewStyle"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_show_pic"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_show_pic"
+            android:text="Y:200000" />
+
+        <com.hjg.baseapp.widget.QuantityView
+            android:id="@+id/quantityView_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/iv_show_pic"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/tv_price"
+            app:addButtonHeight="10dp"
+            app:addButtonWidth="10dp"
+            app:qv_addButtonBackground="@mipmap/add"
+            app:qv_quantity="10"
+            app:qv_quantityBackground="@android:color/transparent"
+            app:qv_quantityPadding="5dp"
+            app:qv_removeButtonBackground="@mipmap/sub"
+            app:subButtonHeight="10dp"
+            app:subButtonWidth="10dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/iv_set"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="20dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_set" />
+
+        <TextView
+            android:id="@+id/tv_set_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/iv_arrow"
+            android:layout_toEndOf="@+id/iv_set"
+            android:gravity="center_vertical"
+            android:text="设置"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/CustomTextSize" />
+
+        <Button
+            android:id="@+id/iv_arrow"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/icon_right_arrow" />
+
+    </RelativeLayout>
+
+</LinearLayout>

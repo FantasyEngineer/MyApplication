@@ -20,7 +20,7 @@ import com.hjg.baseapp.R;
 import java.util.ArrayList;
 
 /**
- * 可以上下滚动文字的textview，
+ * 可以上下滚动文字的textview(展示公告等)
  */
 public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewFactory {
 

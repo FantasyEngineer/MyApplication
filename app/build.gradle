@@ -55,10 +55,10 @@ dependencies {
 
     // This is only needed if you want to use encrypted databases
 
+    //butterknife
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.6'
-    //butterknife
     compile 'com.jakewharton:butterknife:8.5.1'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
 }

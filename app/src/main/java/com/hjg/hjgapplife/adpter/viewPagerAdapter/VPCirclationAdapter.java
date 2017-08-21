@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @author houjiguo
- * @title
+ * @title 无限循环的PagerAdapter
  * @date 2017/08/20  19:23
  * @Description
  */
@@ -55,6 +55,10 @@ public class VPCirclationAdapter extends PagerAdapter {
                 }
             }
         });
+        if (null != list.get(position % list.size()).getParent()) {
+            container.removeView(list.get(position % list.size()));
+            return list.get(position % list.size()).getParent();
+        }
         container.addView(list.get(position % list.size()));
         return list.get(position % list.size());
     }

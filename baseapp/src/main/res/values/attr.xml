@@ -24,4 +24,40 @@
         <!--<attr name="vt_duringTime" format="integer" />-->
         <!--<attr name="vt_switchTime" format="integer" />-->
     </declare-styleable>
+
+
+    <declare-styleable name="QuantityView">
+        <!--add 按钮上添加字体-->
+        <attr name="qv_addButtonText" format="string" />
+        <!--加按钮上的背景色-->
+        <attr name="qv_addButtonBackground" format="color|reference" />
+        <!--加 按钮上的字体颜色-->
+        <attr name="qv_addButtonTextColor" format="color" />
+        <!--减 按钮上的字-->
+        <attr name="qv_removeButtonText" format="string" />
+        <!--减 按钮的背景-->
+        <attr name="qv_removeButtonBackground" format="color|reference" />
+        <!--减 按钮上的字体颜色-->
+        <attr name="qv_removeButtonTextColor" format="color" />
+        <!--默认数值-->
+        <attr name="qv_quantity" format="integer" />
+        <!--数值所在的textview的背景-->
+        <attr name="qv_quantityBackground" format="color|reference" />
+        <!--数值的字体颜色-->
+        <attr name="qv_quantityTextColor" format="color" />
+        <!--数值所处的textview的padding值-->
+        <attr name="qv_quantityPadding" format="dimension" />
+        <!--数值的最大-->
+        <attr name="qv_maxQuantity" format="integer" />
+        <!--数值的最小-->
+        <attr name="qv_minQuantity" format="integer" />
+        <!--加按钮的宽度-->
+        <attr name="addButtonWidth" format="dimension" />
+        <!--加按钮的高度-->
+        <attr name="addButtonHeight" format="dimension" />
+        <!--减 按钮的宽度-->
+        <attr name="subButtonWidth" format="dimension" />
+        <!--减 按钮的高度-->
+        <attr name="subButtonHeight" format="dimension" />
+    </declare-styleable>
 </resources>

@@ -2,17 +2,26 @@ package com.hjg.baseapp.util;
 
 import android.util.Log;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 
 /**
  * 安全关闭句柄工具类
- *
- * @author tongxu_li
- *         Copyright (c) 2015 Shanghai P&C Information Technology Co., Ltd.
  */
 public class SafeCloseUtils {
+
+    public static void closeQuietly(Closeable closeable) {
+        if (null != closeable) {
+            try {
+                closeable.close();
+            } catch (IOException exception) {
+                Log.d("CloseUtils", exception.getMessage());
+            }
+        }
+    }
 
     public static void close(InputStream inputStream) {
         if (inputStream != null) {

@@ -5,12 +5,12 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.RadioButton;
 
 import com.hjg.baseapp.R;
 
 
 /**
+ * 自定义MyRadioButton
  * 可以自定义radiobutton上的图片大小
  */
 public class MyRadioButton extends android.support.v7.widget.AppCompatRadioButton {

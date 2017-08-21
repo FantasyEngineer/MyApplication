@@ -7,6 +7,8 @@ import android.widget.AdapterView;
 import com.hjg.baseapp.widget.MyListView;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.Butterknife.ButterknifeActivity;
+import com.hjg.hjgapplife.activity.ButtonStyleActivity;
+import com.hjg.hjgapplife.activity.StringDealActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.greenDao.GreenDaoActivity;
 import com.hjg.hjgapplife.activity.viewpager.ViewPagerActivity;
@@ -22,7 +24,7 @@ import java.util.List;
 
 public class SecondFragment extends BaseFragment implements AdapterView.OnItemClickListener {
     private MyListView mlv;
-    private List<String> setlist = new ArrayList(Arrays.asList("GreenDao的使用", "Butterknife插件", "ViewPager各种展示效果", "未知", "未知", "未知"
+    private List<String> setlist = new ArrayList(Arrays.asList("GreenDao的使用", "Butterknife插件", "ViewPager各种展示效果", "Button的各种样式", "字符串操作", "未知"
             , "未知", "未知", "未知", "未知", "未知", "未知"));
 
     public static SecondFragment getInstance() {
@@ -66,8 +68,10 @@ public class SecondFragment extends BaseFragment implements AdapterView.OnItemCl
                 startActivity(new Intent(activity, ViewPagerActivity.class));
                 break;
             case 3:
+                startActivity(new Intent(activity, ButtonStyleActivity.class));
                 break;
             case 4:
+                startActivity(new Intent(activity, StringDealActivity.class));
                 break;
             case 5:
                 break;
