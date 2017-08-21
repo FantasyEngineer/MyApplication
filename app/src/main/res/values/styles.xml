@@ -20,5 +20,12 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
-
+    <style name="TextViewStyle">
+        <item name="android:textColor">@color/darkorange</item>
+        <item name="android:textSize">@dimen/CustomTextSize</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
 </resources>

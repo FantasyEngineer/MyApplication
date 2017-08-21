@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hjg.baseapp.activity.BaseActivity;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.base.BaseActivity;
 import com.hjg.hjgapplife.activity.greenDao.db.GreenDaoUtils;
 import com.hjg.hjgapplife.activity.greenDao.entry.Person;
 import com.hjg.hjgapplife.activity.greenDao.entry.PersonDao;

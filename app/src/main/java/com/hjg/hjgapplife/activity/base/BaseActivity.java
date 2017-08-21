@@ -1,4 +1,4 @@
-package com.hjg.baseapp.activity;
+package com.hjg.hjgapplife.activity.base;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,9 +15,13 @@ import com.hjg.baseapp.R;
 import com.hjg.baseapp.manage.TopBarManage;
 import com.hjg.baseapp.util.StatusBarUtil;
 
+import butterknife.ButterKnife;
+
 
 /**
- * Created by hjg on 2017/8/14 0014.
+ * 这里的BaseActivituy是给使用Knife插件的activity使用的。
+ * 因为插件的build.gradle设置必须在app包下的build.gradle设置。
+ * 如果在baseLib中就引入不到knife的包。
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -35,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         fl_content = (FrameLayout) findViewById(R.id.fl_content);
         View view = LayoutInflater.from(this).inflate(getContentLayout(), null);
         fl_content.addView(view);
-//        ButterKnife.bind(this);
+        ButterKnife.bind(this);
         initBarColor();
         initTitle();
         initView();

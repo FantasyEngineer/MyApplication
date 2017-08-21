@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.WindowManager;
 
-import com.hjg.baseapp.activity.BaseActivity;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.base.BaseActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

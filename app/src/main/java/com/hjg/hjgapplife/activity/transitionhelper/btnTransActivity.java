@@ -2,16 +2,11 @@ package com.hjg.hjgapplife.activity.transitionhelper;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 
-import com.hjg.baseapp.activity.BaseActivity;
-import com.hjg.baseapp.util.StatusBarUtil;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.base.BaseActivity;
 
 import immortalz.me.library.TransitionsHeleper;
 import immortalz.me.library.bean.InfoBean;

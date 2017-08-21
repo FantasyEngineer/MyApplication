@@ -20,7 +20,9 @@
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.transitionhelper.PhotoShowActivity" />
         <activity android:name=".activity.transitionhelper.btnTransActivity" />
-        <activity android:name=".activity.greenDao.GreenDaoActivity"></activity>
+        <activity android:name=".activity.greenDao.GreenDaoActivity" />
+        <activity android:name=".activity.Butterknife.ButterknifeActivity" />
+        <activity android:name=".activity.viewpager.ViewPagerActivity"></activity>
     </application>
 
 </manifest>

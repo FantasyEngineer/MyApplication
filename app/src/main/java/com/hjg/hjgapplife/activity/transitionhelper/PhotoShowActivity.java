@@ -4,9 +4,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.hjg.baseapp.activity.BaseActivity;
 import com.hjg.baseapp.util.GlideCatchUtil;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.base.BaseActivity;
 
 import immortalz.me.library.TransitionsHeleper;
 import immortalz.me.library.bean.InfoBean;

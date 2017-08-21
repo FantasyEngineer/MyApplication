@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hjg.hjgapplife.activity.viewpager.ViewPagerActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="最普通的Viewpager展示效果" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="@dimen/paddingLeft"
+            android:layout_marginRight="@dimen/paddingRight" />
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="展示多个item的viewPager" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="@dimen/paddingLeft"
+            android:layout_marginRight="@dimen/paddingRight" />
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="无线循环向左的viewPager" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_3"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="@dimen/paddingLeft"
+            android:layout_marginRight="@dimen/paddingRight" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:text="111" />
+    </LinearLayout>
+</ScrollView>
