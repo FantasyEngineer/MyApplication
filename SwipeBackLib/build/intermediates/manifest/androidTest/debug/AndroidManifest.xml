@@ -3,7 +3,7 @@
     package="me.imid.swipebacklayout.lib.test" >
 
     <uses-sdk
-        android:minSdkVersion="23"
+        android:minSdkVersion="21"
         android:targetSdkVersion="26" />
 
     <instrumentation

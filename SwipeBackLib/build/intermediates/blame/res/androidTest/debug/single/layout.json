@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\815a16a47f00bdd6b6ada13fdd5a9b709e2ea605\\output\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
-        "merged": "F:\\MyApplication\\SwipeBackLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_search_view.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\815a16a47f00bdd6b6ada13fdd5a9b709e2ea605\\output\\res\\layout\\abc_search_view.xml"
-    },
-    {
         "merged": "F:\\MyApplication\\SwipeBackLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_big_media_narrow.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\815a16a47f00bdd6b6ada13fdd5a9b709e2ea605\\output\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "F:\\MyApplication\\SwipeBackLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_search_view.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\815a16a47f00bdd6b6ada13fdd5a9b709e2ea605\\output\\res\\layout\\abc_search_view.xml"
     },
     {
         "merged": "F:\\MyApplication\\SwipeBackLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_part_time.xml",

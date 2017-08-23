@@ -23,7 +23,7 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
 
 /**
- * BaseOthreRenderActivity 与BaseActivity同级别
+ * 基于BaseOthreRenderActivity的侧滑关闭页面
  * 不同在于状态栏的渲染方式不同
  * 其他OK
  */
