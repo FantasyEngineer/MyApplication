@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
  * 这里的BaseActivituy是给使用Knife插件的activity使用的。
  * 因为插件的build.gradle设置必须在app包下的build.gradle设置。
  * 如果在baseLib中就引入不到knife的包。
+ * BaseActivity沉浸状态栏 使用的是StatusBarUtil
  */
 
 public abstract class BaseActivity extends AppCompatActivity {

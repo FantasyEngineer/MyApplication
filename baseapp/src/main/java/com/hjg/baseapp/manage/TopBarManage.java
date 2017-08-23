@@ -48,6 +48,10 @@ public class TopBarManage {
         rightButton = (MyRadioButton) topBarView.findViewById(R.id.btnTopRight);
     }
 
+    public void setTopBarPaddingTop(int padding) {
+        topBarView.setPadding(0, padding, 0, 0);
+    }
+
     public void setTopBarBackground(int color) {
         topBarView.setBackgroundColor(color);
     }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hjg.hjgapplife.activity.SwipeBackActivity">
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg"
+        android:gravity="center"
+        android:text="跳转到新的activity" />
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg"
+        android:gravity="center"
+        android:text="结束当前的activity" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="离开方式："
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <RadioGroup
+            android:id="@+id/tracking_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp">
+
+            <RadioButton
+                android:id="@+id/mode_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="从左往右滑动离开" />
+
+            <RadioButton
+                android:id="@+id/mode_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="从右往左滑动离开" />
+
+            <RadioButton
+                android:id="@+id/mode_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="从下往上滑动离开" />
+
+            <RadioButton
+                android:id="@+id/mode_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="以上三种方向均可" />
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>

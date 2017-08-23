@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hjg.hjgapplife.activity.titlepage.PageSlidTabActivity">
+
+    <com.hjg.baseapp.widget.PagerSlidingTabStrip
+        android:id="@+id/tabs_act_pro"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffff"
+        app:pstsDividerColor="#00000000"
+        app:pstsIndicatorColor="#4385f5"
+        app:pstsIndicatorHeight="4dp"
+        app:pstsShouldExpand="true"
+        app:pstsTabBackground="@drawable/background_tab"
+        app:pstsTabPaddingLeftRight="15dp"
+        app:pstsUnderlineHeight="0dp"
+        app:selectedTabTextColor="#4385f5"></com.hjg.baseapp.widget.PagerSlidingTabStrip>
+
+    <com.hjg.baseapp.widget.NoScrollViewPager
+        android:id="@+id/pager_act_pro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

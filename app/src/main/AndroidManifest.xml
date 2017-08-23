@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hjg.hjgapplife">
 
+    <!-- 侧滑时震动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -26,7 +29,15 @@
         <activity android:name=".activity.ButtonStyleActivity" />
         <activity android:name=".activity.StringDealActivity" />
         <activity android:name=".activity.seclectCity.SelectCityActivity" />
-        <activity android:name=".activity.titlepage.TitlePagerActivity"></activity>
+        <activity android:name=".activity.titlepage.CommonTabActivity" />
+        <activity android:name=".activity.titlepage.SlidingTabActivity" />
+        <activity android:name=".activity.titlepage.SegmentTabActivity" />
+        <activity android:name=".activity.notification.NoticaficationActivity" />
+        <activity android:name=".activity.SwipeBackActivity" />
+        <activity android:name=".activity.titlepage.PagerMainActivity" />
+        <activity android:name=".activity.titlepage.PageSlidTabActivity" />
+        <activity android:name=".activity.otherBarRender.OntherBarRenderActivity" />
+        <activity android:name=".activity.otherBarRender.LeftbackActivity"></activity>
     </application>
 
 </manifest>

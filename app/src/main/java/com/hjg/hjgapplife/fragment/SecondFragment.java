@@ -9,9 +9,12 @@ import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.Butterknife.ButterknifeActivity;
 import com.hjg.hjgapplife.activity.ButtonStyleActivity;
 import com.hjg.hjgapplife.activity.StringDealActivity;
+import com.hjg.hjgapplife.activity.SwipeBackActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.greenDao.GreenDaoActivity;
-import com.hjg.hjgapplife.activity.titlepage.TitlePagerActivity;
+import com.hjg.hjgapplife.activity.notification.NoticaficationActivity;
+import com.hjg.hjgapplife.activity.otherBarRender.OntherBarRenderActivity;
+import com.hjg.hjgapplife.activity.titlepage.PagerMainActivity;
 import com.hjg.hjgapplife.activity.viewpager.ViewPagerActivity;
 import com.hjg.hjgapplife.adpter.MlvSecondAdapter;
 
@@ -25,8 +28,9 @@ import java.util.List;
 
 public class SecondFragment extends BaseFragment implements AdapterView.OnItemClickListener {
     private MyListView mlv;
-    private List<String> setlist = new ArrayList(Arrays.asList("GreenDao的使用", "Butterknife插件", "ViewPager各种展示效果", "Button的各种样式", "字符串操作", "头部pager展示"
-            , "通知栏相关", "另一种方式的状态栏渗透", "MVP", "recycleView吸顶", "仿外卖双RecycleView联动", "recyleView子项侧滑删除", "右滑退出页面", "侧滑slidmenu"));
+    private List<String> setlist = new ArrayList(Arrays.asList("GreenDao的使用", "Butterknife插件", "ViewPager各种展示效果", "Button的各种样式",
+            "字符串操作", "头部pager展示", "通知栏相关", "另一种方式的状态栏渗透", "MVP", "recycleView吸顶", "仿外卖双RecycleView联动",
+            "recyleView子项侧滑删除", "右滑退出页面", "侧滑slidmenu"));
 
     public static SecondFragment getInstance() {
         SecondFragment sf = new SecondFragment();
@@ -75,9 +79,31 @@ public class SecondFragment extends BaseFragment implements AdapterView.OnItemCl
                 startActivity(new Intent(activity, StringDealActivity.class));
                 break;
             case 5:
-                startActivity(new Intent(activity, TitlePagerActivity.class));
+                startActivity(new Intent(activity, PagerMainActivity.class));
                 break;
-            case 6:
+            case 6://通知栏
+                startActivity(new Intent(activity, NoticaficationActivity.class));
+                break;
+            case 7://另外一种状态栏渗透的方法
+                startActivity(new Intent(activity, OntherBarRenderActivity.class));
+                break;
+            case 8:
+//                startActivity(new Intent(activity, NoticaficationActivity.class));
+                break;
+            case 9:
+//                startActivity(new Intent(activity, NoticaficationActivity.class));
+                break;
+            case 10:
+//                startActivity(new Intent(activity, NoticaficationActivity.class));
+                break;
+            case 11:
+//                startActivity(new Intent(activity, NoticaficationActivity.class));
+                break;
+            case 12:
+                startActivity(new Intent(activity, SwipeBackActivity.class));
+                break;
+            case 13:
+//                startActivity(new Intent(activity, SwipeBackActivity.class));
                 break;
         }
     }

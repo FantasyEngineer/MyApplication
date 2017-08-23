@@ -1,1 +1,1 @@
-include ':app', ':baseapp', ':bannerlib', ':transitionhelper'
+include ':app', ':baseapp', ':bannerlib', ':transitionhelper', ':FlycoTabLayout_Lib', ':SwipeBackLib'

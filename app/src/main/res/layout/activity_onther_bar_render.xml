@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hjg.hjgapplife.activity.otherBarRender.OntherBarRenderActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="166dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/bar_hide_fun" />
+
+    <com.hjg.baseapp.widget.JustifyTextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/jump"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg"
+        android:text="跳转到可以侧滑退出的页面" />
+
+</LinearLayout>

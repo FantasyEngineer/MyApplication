@@ -52,10 +52,10 @@ dependencies {
     compile project(':baseapp')
     compile project(':bannerlib')
     compile project(':transitionhelper')
-
     // This is only needed if you want to use encrypted databases
-
     //butterknife
+    compile project(':FlycoTabLayout_Lib')
+    compile project(':SwipeBackLib')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.6'
