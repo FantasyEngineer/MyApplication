@@ -12,6 +12,7 @@ import com.hjg.hjgapplife.activity.StringDealActivity;
 import com.hjg.hjgapplife.activity.SwipeBackActivity;
 import com.hjg.hjgapplife.activity.WindowManager.WindowAlertActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
+import com.hjg.hjgapplife.activity.cardlayout.CardStackViewActivity;
 import com.hjg.hjgapplife.activity.greenDao.GreenDaoActivity;
 import com.hjg.hjgapplife.activity.notification.NoticaficationActivity;
 import com.hjg.hjgapplife.activity.otherBarRender.OntherBarRenderActivity;
@@ -30,8 +31,8 @@ import java.util.List;
 public class SecondFragment extends BaseFragment implements AdapterView.OnItemClickListener {
     private MyListView mlv;
     private List<String> setlist = new ArrayList(Arrays.asList("GreenDao的使用", "Butterknife插件", "ViewPager各种展示效果", "Button的各种样式",
-            "字符串操作", "头部pager展示", "通知栏相关", "另一种方式的状态栏渗透", "不需要权限的悬浮窗实现", "recycleView吸顶", "仿外卖双RecycleView联动",
-            "recyleView子项侧滑删除", "右滑退出页面", "侧滑slidmenu"));
+            "字符串操作", "头部pager展示", "通知栏相关", "另一种方式的状态栏渗透", "需要申请权限实现全局悬浮", "recycleView吸顶", "仿外卖双RecycleView联动",
+            "recyleView子项侧滑删除", "右滑退出页面", "卡片式布局"));
 
     public static SecondFragment getInstance() {
         SecondFragment sf = new SecondFragment();
@@ -104,7 +105,7 @@ public class SecondFragment extends BaseFragment implements AdapterView.OnItemCl
                 startActivity(new Intent(activity, SwipeBackActivity.class));
                 break;
             case 13:
-//                startActivity(new Intent(activity, SwipeBackActivity.class));
+                startActivity(new Intent(activity, CardStackViewActivity.class));
                 break;
         }
     }

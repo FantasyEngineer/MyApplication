@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hjg.baseapp.util.ACache;
+
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 public abstract class BaseFragment extends Fragment {
@@ -17,6 +20,8 @@ public abstract class BaseFragment extends Fragment {
      */
     public Activity activity;
     private View view;
+    Unbinder unbinder;
+    protected ACache mCache;
 
     /**
      * 当BaseFragment被创建的时候被系统调用
@@ -27,11 +32,13 @@ public abstract class BaseFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = getActivity();
+        mCache = ACache.get(activity);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        unbinder.unbind();
     }
 
 
@@ -47,7 +54,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(getContentLayout(), null);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
         return view;
     }
 

@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 
 import com.hjg.baseapp.R;
 import com.hjg.baseapp.manage.TopBarManage;
+import com.hjg.baseapp.util.ACache;
 import com.hjg.baseapp.util.StatusBarUtil;
 
 import butterknife.ButterKnife;
@@ -29,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Activity activity;
     private FrameLayout fl_content;//最外层布局
     protected TopBarManage topBarManage;
+    protected ACache mCache;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         fl_content = (FrameLayout) findViewById(R.id.fl_content);
         View view = LayoutInflater.from(this).inflate(getContentLayout(), null);
         fl_content.addView(view);
+        mCache = ACache.get(this);
         ButterKnife.bind(this);
         initBarColor();
         initTitle();

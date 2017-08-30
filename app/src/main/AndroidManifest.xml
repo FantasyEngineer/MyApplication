@@ -4,29 +4,28 @@
 
     <!-- 侧滑时震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    <!--悬浮窗-->
+    <!-- 悬浮窗 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <!--网络-->
+    <!-- 网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--读写-->
+    <!-- 读写 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!--打电话-->
+    <!-- 打电话 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <!--使用相机-->
+    <!-- 使用相机 -->
     <uses-permission android:name="android.permission.CAMERA" />
-    <!--使用定位-->
+    <!-- 使用定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!--网络状态-->
+    <!-- 网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--wifi状态-->
+    <!-- wifi状态 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--读取电话记录-->
+    <!-- 读取电话记录 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--读写设置-->
+    <!-- 读写设置 -->
     <uses-permission android:name="android.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-
     <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
@@ -62,7 +61,9 @@
         <activity android:name=".activity.titlepage.PageSlidTabActivity" />
         <activity android:name=".activity.otherBarRender.OntherBarRenderActivity" />
         <activity android:name=".activity.otherBarRender.LeftbackActivity" />
-        <activity android:name=".activity.WindowManager.WindowAlertActivity"></activity>
+        <activity android:name=".activity.WindowManager.WindowAlertActivity" />
+        <activity android:name=".activity.cardlayout.CardStackViewActivity" />
+        <activity android:name=".activity.dragRecycleView.DragRecycleListActivity"></activity>
     </application>
 
 </manifest>

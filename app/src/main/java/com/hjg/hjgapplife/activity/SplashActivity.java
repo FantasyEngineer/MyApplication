@@ -19,8 +19,6 @@ import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class SplashActivity extends BaseActivity implements EasyPermissions.PermissionCallbacks {
-    private static final int RC_CAMERA_PERM = 123;
-    private static final int RC_LOCATION_CONTACTS_PERM = 124;
     private static final int RC_CAMERA_AND_WIFI = 1;
 
     @Override
@@ -34,10 +32,6 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
         hideTopBar();
     }
 
-//    @Override
-//    protected int setBarColor() {
-//        return R.color.transp;
-//    }
 
     @Override
     protected int getContentLayout() {

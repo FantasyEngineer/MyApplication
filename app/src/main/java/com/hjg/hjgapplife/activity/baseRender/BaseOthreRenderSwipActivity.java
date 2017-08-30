@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 
 import com.hjg.baseapp.R;
 import com.hjg.baseapp.manage.TopBarManage;
+import com.hjg.baseapp.util.ACache;
 
 import butterknife.ButterKnife;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
@@ -33,12 +34,13 @@ public abstract class BaseOthreRenderSwipActivity extends me.imid.swipebacklayou
     private FrameLayout fl_content;//最外层布局
     protected TopBarManage topBarManage;
     private SwipeBackLayout mSwipeBackLayout;
+    protected ACache mCache;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 取消标题栏
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         activity = this;
         //最终方案
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -58,6 +60,8 @@ public abstract class BaseOthreRenderSwipActivity extends me.imid.swipebacklayou
         fl_content = (FrameLayout) findViewById(R.id.fl_content);
         View view = LayoutInflater.from(this).inflate(getContentLayout(), null);
         fl_content.addView(view);
+        mCache = ACache.get(this);
+
         ButterKnife.bind(this);
         initSwipe();
         initBarColor();

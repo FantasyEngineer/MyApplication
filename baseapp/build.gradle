@@ -21,10 +21,9 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     //glide
     compile 'com.github.bumptech.glide:glide:3.6.1'
-//请求权限
+    //请求权限
     compile 'pub.devrel:easypermissions:0.4.3'
-
-    //transitionhelper
-//    compile 'me.immortalz:transitionhelper:1.0.6'
+    //卡片式折叠交互CardStackView
+    compile 'com.loopeer.library:cardstack:1.0.2'
 
 }
