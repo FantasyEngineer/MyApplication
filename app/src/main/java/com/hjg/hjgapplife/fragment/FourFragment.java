@@ -14,11 +14,13 @@ import com.hjg.hjgapplife.activity.base.BaseFragment;
  */
 
 public class FourFragment extends BaseFragment implements View.OnClickListener {
+    private static FourFragment fourFragment;
     private CircleImageView civ_official;
 
     public static FourFragment getInstance() {
-        FourFragment sf = new FourFragment();
-        return sf;
+        if (fourFragment == null)
+            fourFragment = new FourFragment();
+        return fourFragment;
     }
 
     @Override

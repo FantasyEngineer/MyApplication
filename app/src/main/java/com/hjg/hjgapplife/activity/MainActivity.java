@@ -11,7 +11,7 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.hjg.hjgapplife.R;
-import com.hjg.hjgapplife.activity.base.BaseActivity;
+import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderActivity;
 import com.hjg.hjgapplife.activity.seclectCity.SelectCityActivity;
 import com.hjg.hjgapplife.entity.TabEntity;
 import com.hjg.hjgapplife.fragment.FirstFragment;
@@ -21,7 +21,7 @@ import com.hjg.hjgapplife.fragment.ThirdFragment;
 
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseOthreRenderActivity {
     private String[] mTitles = {"首页", "功能", "消息", "我的"};
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private CommonTabLayout mTabLayout;
@@ -39,7 +39,6 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
-    @Override
     protected void initView() {
         mTabLayout = (CommonTabLayout) findViewById(R.id.tl);
     }
@@ -64,6 +63,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        initView();
+        initAction();
         mFragments.add(FirstFragment.getInstance());
         mFragments.add(SecondFragment.getInstance());
         mFragments.add(ThirdFragment.getInstance());
@@ -77,9 +78,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @Override
     public void initAction() {
-        super.initAction();
         mTabLayout.setOnTabSelectListener(new TabSelectListener());
     }
 

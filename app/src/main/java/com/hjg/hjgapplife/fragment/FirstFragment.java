@@ -35,6 +35,7 @@ import immortalz.me.library.TransitionsHeleper;
 
 public class FirstFragment extends BaseFragment implements View.OnClickListener {
 
+    private static FirstFragment firstFragment;
     //    滚动广告的集合
     private ArrayList<String> titleList = new ArrayList<String>();
     //banner切换动画特效集合
@@ -51,8 +52,9 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
 
 
     public static FirstFragment getInstance() {
-        FirstFragment sf = new FirstFragment();
-        return sf;
+        if (firstFragment == null)
+            firstFragment = new FirstFragment();
+        return firstFragment;
     }
 
     @Override

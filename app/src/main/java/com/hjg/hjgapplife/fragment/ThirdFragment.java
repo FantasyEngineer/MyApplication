@@ -1,15 +1,18 @@
 package com.hjg.hjgapplife.fragment;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.hjg.baseapp.ItemDecoration.DividerGridItemDecoration;
 import com.hjg.baseapp.util.ACache;
 import com.hjg.baseapp.util.ToastUtil;
 import com.hjg.baseapp.util.VibratorUtil;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.animation.AnimationListActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.dragRecycleView.DragRecycleListActivity;
 import com.hjg.hjgapplife.activity.dragRecycleView.Item;
@@ -27,15 +30,19 @@ import butterknife.BindView;
  */
 
 public class ThirdFragment extends BaseFragment {
+    private static ThirdFragment thirdFragment;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.shimmer_view_container)
+    ShimmerFrameLayout shimmerViewContainer;
     private List<Item> results = new ArrayList<Item>();
     private ItemTouchHelper itemTouchHelper;
 
 
     public static ThirdFragment getInstance() {
-        ThirdFragment sf = new ThirdFragment();
-        return sf;
+        if (thirdFragment == null)
+            thirdFragment = new ThirdFragment();
+        return thirdFragment;
     }
 
     @Override
@@ -45,8 +52,15 @@ public class ThirdFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+    }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        //高亮的开启
+        shimmerViewContainer.setDuration(1000);
+        shimmerViewContainer.setRepeatMode(ObjectAnimator.REVERSE);
+        shimmerViewContainer.startShimmerAnimation();
     }
 
     @Override
@@ -58,8 +72,8 @@ public class ThirdFragment extends BaseFragment {
             results.addAll(items);
         else {
             results.add(new Item(0, "可拖拽的ListView", R.mipmap.icon_grid));
-            results.add(new Item(1, "转账", R.mipmap.icon_grid));
-            results.add(new Item(2, "余额宝", R.mipmap.icon_grid));
+            results.add(new Item(1, "动画", R.mipmap.icon_grid));
+            results.add(new Item(2, "ka", R.mipmap.icon_grid));
             results.add(new Item(3, "手机充值", R.mipmap.icon_grid));
             results.add(new Item(4, "医疗", R.mipmap.icon_grid));
             results.add(new Item(5, "彩票", R.mipmap.icon_grid));
@@ -82,7 +96,7 @@ public class ThirdFragment extends BaseFragment {
             @Override
             public void onFinishDrag() {
                 //存入缓存
-                ACache.get(getActivity()).put("items", (ArrayList<Item>) results);
+//                ACache.get(getActivity()).put("items", (ArrayList<Item>) results);
             }
         }));
         itemTouchHelper.attachToRecyclerView(recyclerView);
@@ -109,6 +123,7 @@ public class ThirdFragment extends BaseFragment {
                         startActivity(new Intent(activity, DragRecycleListActivity.class));
                         break;
                     case 1:
+                        startActivity(new Intent(activity, AnimationListActivity.class));
                         break;
                 }
             }

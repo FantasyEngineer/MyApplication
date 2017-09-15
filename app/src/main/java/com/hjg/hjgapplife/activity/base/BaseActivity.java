@@ -2,6 +2,7 @@ package com.hjg.hjgapplife.activity.base;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -37,6 +38,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // 取消标题栏
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //不允许横屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         activity = this;
         setContentView(R.layout.baselayout);
         fl_content = (FrameLayout) findViewById(R.id.fl_content);

@@ -34,6 +34,7 @@
         android:icon="@mipmap/ic_luncher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_luncher"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.SplashActivity">
@@ -63,7 +64,13 @@
         <activity android:name=".activity.otherBarRender.LeftbackActivity" />
         <activity android:name=".activity.WindowManager.WindowAlertActivity" />
         <activity android:name=".activity.cardlayout.CardStackViewActivity" />
-        <activity android:name=".activity.dragRecycleView.DragRecycleListActivity"></activity>
+        <activity android:name=".activity.dragRecycleView.DragRecycleListActivity" />
+        <activity android:name=".activity.animation.CardFlipActivity" />
+        <activity android:name=".activity.animation.AnimationListActivity" />
+        <activity android:name=".activity.animation.ScaleActivity" />
+        <activity android:name=".activity.animation.RotationActivity" />
+        <activity android:name=".activity.animation.BezierLineActivity"></activity>
+        <activity android:name=".activity.animation.ShimmerActivity"></activity>
     </application>
 
 </manifest>

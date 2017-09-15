@@ -6,13 +6,13 @@ import android.widget.ImageView;
 
 import com.hjg.baseapp.util.GlideCatchUtil;
 import com.hjg.hjgapplife.R;
-import com.hjg.hjgapplife.activity.base.BaseActivity;
+import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipActivity;
 
 import immortalz.me.library.TransitionsHeleper;
 import immortalz.me.library.bean.InfoBean;
 import immortalz.me.library.method.InflateShowMethod;
 
-public class PhotoShowActivity extends BaseActivity {
+public class PhotoShowActivity extends BaseOthreRenderSwipActivity {
 
 
     private ImageView iv_bigshow;
@@ -41,7 +41,6 @@ public class PhotoShowActivity extends BaseActivity {
         return R.layout.activity_photo_show;
     }
 
-    @Override
     protected void initView() {
         iv_bigshow = (ImageView) findViewById(R.id.iv_bigshow);
         btn_trans = (Button) findViewById(R.id.btn_trans);
@@ -50,6 +49,8 @@ public class PhotoShowActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        initView();
+        initAction();
         TransitionsHeleper.getInstance()
                 .setShowMethod(new InflateShowMethod(this, R.layout.activity_rv_inflate) {
                     @Override
@@ -65,9 +66,7 @@ public class PhotoShowActivity extends BaseActivity {
                 .show(activity, iv_bigshow);
     }
 
-    @Override
     public void initAction() {
-        super.initAction();
         //扩散点击
         btn_trans.setOnClickListener(new View.OnClickListener() {
             @Override

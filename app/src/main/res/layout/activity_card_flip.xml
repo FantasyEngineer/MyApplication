@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_fl_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="flipCard"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp">
+
+    <include layout="@layout/cell_card_back" />
+
+    <include layout="@layout/cell_card_front" />
+
+</FrameLayout>
