@@ -8,12 +8,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/BaseApp" />
             <option value="$PROJECT_DIR$/FlycoTabLayout_Lib" />
+            <option value="$PROJECT_DIR$/PupWindowlib" />
             <option value="$PROJECT_DIR$/Shimmer" />
             <option value="$PROJECT_DIR$/SwipeBackLib" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/bannerlib" />
-            <option value="$PROJECT_DIR$/baseapp" />
             <option value="$PROJECT_DIR$/transitionhelper" />
           </set>
         </option>

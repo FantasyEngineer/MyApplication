@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 26
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    //recyclerview
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    //glide
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    //请求权限
+    compile 'pub.devrel:easypermissions:0.4.3'
+    //卡片式折叠交互CardStackView
+    compile 'com.loopeer.library:cardstack:1.0.2'
+    //全局字体加载,http://hao.jobbole.com/calligraphy/
+    compile 'uk.co.chrisjenx:calligraphy:2.1.0'
+
+}

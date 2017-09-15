@@ -21,6 +21,7 @@ import com.hjg.baseapp.util.ACache;
 
 import butterknife.ButterKnife;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 /**
@@ -190,5 +191,11 @@ public abstract class BaseOthreRenderSwipActivity extends me.imid.swipebacklayou
                 0, duration
         };
         vibrator.vibrate(pattern, -1);
+    }
+
+    // 更改应用字体重写的方法
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

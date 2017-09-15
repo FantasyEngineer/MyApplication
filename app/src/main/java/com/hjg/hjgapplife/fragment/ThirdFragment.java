@@ -19,6 +19,7 @@ import com.hjg.hjgapplife.activity.dragRecycleView.Item;
 import com.hjg.hjgapplife.activity.dragRecycleView.MyItemTouchCallback;
 import com.hjg.hjgapplife.activity.dragRecycleView.OnRecyclerItemClickListener;
 import com.hjg.hjgapplife.activity.dragRecycleView.adapter.DragGridRecyclerAdapter;
+import com.hjg.hjgapplife.activity.pupwindow.PupWindowActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,8 +73,8 @@ public class ThirdFragment extends BaseFragment {
             results.addAll(items);
         else {
             results.add(new Item(0, "可拖拽的ListView", R.mipmap.icon_grid));
-            results.add(new Item(1, "动画", R.mipmap.icon_grid));
-            results.add(new Item(2, "ka", R.mipmap.icon_grid));
+            results.add(new Item(1, "......动画...... ", R.mipmap.icon_grid));
+            results.add(new Item(2, "PupWindow样式展示", R.mipmap.icon_grid));
             results.add(new Item(3, "手机充值", R.mipmap.icon_grid));
             results.add(new Item(4, "医疗", R.mipmap.icon_grid));
             results.add(new Item(5, "彩票", R.mipmap.icon_grid));
@@ -124,6 +125,9 @@ public class ThirdFragment extends BaseFragment {
                         break;
                     case 1:
                         startActivity(new Intent(activity, AnimationListActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(activity, PupWindowActivity.class));
                         break;
                 }
             }

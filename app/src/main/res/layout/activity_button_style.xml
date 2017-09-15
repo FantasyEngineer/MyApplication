@@ -137,9 +137,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="获取验证码"
-        android:layout_marginRight="20dp" />
+        android:text="获取验证码" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg"
+        android:text="扩散的button"
+        android:textAllCaps="false"
+        android:textColor="@color/red" />
 
 
 </LinearLayout>

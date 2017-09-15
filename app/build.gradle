@@ -49,17 +49,18 @@ greendao {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':baseapp')
+    compile project(':BaseApp')
     compile project(':bannerlib')
     compile project(':transitionhelper')
     // This is only needed if you want to use encrypted databases
     //butterknife
     compile project(':FlycoTabLayout_Lib')
     compile project(':SwipeBackLib')
+    compile project(path: ':Shimmer')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.6'
     compile 'com.jakewharton:butterknife:8.5.1'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile project(path: ':Shimmer')
+    compile project(path: ':PupWindowlib')
 }

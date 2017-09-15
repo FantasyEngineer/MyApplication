@@ -69,8 +69,9 @@
         <activity android:name=".activity.animation.AnimationListActivity" />
         <activity android:name=".activity.animation.ScaleActivity" />
         <activity android:name=".activity.animation.RotationActivity" />
-        <activity android:name=".activity.animation.BezierLineActivity"></activity>
-        <activity android:name=".activity.animation.ShimmerActivity"></activity>
+        <activity android:name=".activity.animation.BezierLineActivity" />
+        <activity android:name=".activity.animation.ShimmerActivity" />
+        <activity android:name=".activity.pupwindow.PupWindowActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/topBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/darkorange">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <!--文字标题-->
+        <TextView
+            android:id="@+id/tvTopTextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="#323232"
+            android:textSize="18dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivTopImageTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:padding="5dp"
+            android:visibility="gone" />
+
+
+        <com.hjg.baseapp.widget.MyRadioButton
+            android:id="@+id/btnTopLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:drawablePadding="5dp"
+            android:gravity="center|left"
+            android:textColor="#323232"
+            android:textSize="15dp"
+            android:visibility="gone"
+            app:drawableSize="20dp" />
+
+        <!-- 头部右侧文字选项按钮 -->
+        <!--<Button-->
+        <!--android:id="@+id/btnTopRight"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--android:drawablePadding="5dp"-->
+        <!--android:gravity="right|center_vertical"-->
+        <!--android:textColor="#323232"-->
+        <!--android:textSize="15dp"-->
+        <!--android:visibility="gone" />-->
+
+        <com.hjg.baseapp.widget.MyRadioButton
+            android:id="@+id/btnTopRight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@null"
+            android:drawablePadding="5dp"
+            android:gravity="right|center_vertical"
+            android:textColor="#323232"
+            android:textSize="15dp"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/top_line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="#dbdbdb"></View>
+    </RelativeLayout>
+</RelativeLayout>
