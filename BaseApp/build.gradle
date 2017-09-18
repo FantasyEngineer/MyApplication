@@ -27,5 +27,8 @@ dependencies {
     compile 'com.loopeer.library:cardstack:1.0.2'
     //全局字体加载,http://hao.jobbole.com/calligraphy/
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
+//    Gif库  GifImageView，GifImageButton，GifTextView
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
+
 
 }

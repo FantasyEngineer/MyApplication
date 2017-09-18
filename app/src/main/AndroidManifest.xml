@@ -71,7 +71,8 @@
         <activity android:name=".activity.animation.RotationActivity" />
         <activity android:name=".activity.animation.BezierLineActivity" />
         <activity android:name=".activity.animation.ShimmerActivity" />
-        <activity android:name=".activity.pupwindow.PupWindowActivity"></activity>
+        <activity android:name=".activity.pupwindow.PupWindowActivity" />
+        <activity android:name=".activity.GifActivity"></activity>
     </application>
 
 </manifest>

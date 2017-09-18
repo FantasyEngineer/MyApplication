@@ -12,6 +12,7 @@ import com.hjg.baseapp.util.ACache;
 import com.hjg.baseapp.util.ToastUtil;
 import com.hjg.baseapp.util.VibratorUtil;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.GifActivity;
 import com.hjg.hjgapplife.activity.animation.AnimationListActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.dragRecycleView.DragRecycleListActivity;
@@ -72,10 +73,10 @@ public class ThirdFragment extends BaseFragment {
         if (items != null)
             results.addAll(items);
         else {
-            results.add(new Item(0, "可拖拽的ListView", R.mipmap.icon_grid));
-            results.add(new Item(1, "......动画...... ", R.mipmap.icon_grid));
+            results.add(new Item(0, "可拖拽的 ListView", R.mipmap.icon_grid));
+            results.add(new Item(1, "动画操作", R.mipmap.icon_grid));
             results.add(new Item(2, "PupWindow样式展示", R.mipmap.icon_grid));
-            results.add(new Item(3, "手机充值", R.mipmap.icon_grid));
+            results.add(new Item(3, "GIF相关操作", R.mipmap.icon_grid));
             results.add(new Item(4, "医疗", R.mipmap.icon_grid));
             results.add(new Item(5, "彩票", R.mipmap.icon_grid));
             results.add(new Item(6, "电影", R.mipmap.icon_grid));
@@ -128,6 +129,9 @@ public class ThirdFragment extends BaseFragment {
                         break;
                     case 2:
                         startActivity(new Intent(activity, PupWindowActivity.class));
+                        break;
+                    case 3:
+                        startActivity(new Intent(activity, GifActivity.class));
                         break;
                 }
             }
