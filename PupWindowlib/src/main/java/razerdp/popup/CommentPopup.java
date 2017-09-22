@@ -18,8 +18,7 @@ import razerdp.basepopup.BasePopupWindow;
 import razerdp.library.R;
 
 /**
- * Created by 大灯泡 on 2016/1/16.
- * 微信朋友圈评论弹窗
+ * 微信朋友圈评论弹窗，打开的pupwind在该view左侧并且与左上角齐平的位置
  */
 public class CommentPopup extends BasePopupWindow implements View.OnClickListener {
 

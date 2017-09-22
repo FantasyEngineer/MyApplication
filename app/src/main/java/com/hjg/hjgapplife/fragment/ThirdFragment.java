@@ -9,9 +9,9 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.hjg.baseapp.ItemDecoration.DividerGridItemDecoration;
 import com.hjg.baseapp.util.ACache;
-import com.hjg.baseapp.util.ToastUtil;
 import com.hjg.baseapp.util.VibratorUtil;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.BLE.BleMainActivity;
 import com.hjg.hjgapplife.activity.GifActivity;
 import com.hjg.hjgapplife.activity.animation.AnimationListActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
@@ -21,6 +21,8 @@ import com.hjg.hjgapplife.activity.dragRecycleView.MyItemTouchCallback;
 import com.hjg.hjgapplife.activity.dragRecycleView.OnRecyclerItemClickListener;
 import com.hjg.hjgapplife.activity.dragRecycleView.adapter.DragGridRecyclerAdapter;
 import com.hjg.hjgapplife.activity.pupwindow.PupWindowActivity;
+import com.hjg.hjgapplife.activity.takephoto.LikeWeChatSelectPhotoActivity;
+import com.hjg.hjgapplife.activity.zoomview.PullToZoomMainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,10 +79,10 @@ public class ThirdFragment extends BaseFragment {
             results.add(new Item(1, "动画操作", R.mipmap.icon_grid));
             results.add(new Item(2, "PupWindow样式展示", R.mipmap.icon_grid));
             results.add(new Item(3, "GIF相关操作", R.mipmap.icon_grid));
-            results.add(new Item(4, "医疗", R.mipmap.icon_grid));
-            results.add(new Item(5, "彩票", R.mipmap.icon_grid));
-            results.add(new Item(6, "电影", R.mipmap.icon_grid));
-            results.add(new Item(7, "游戏", R.mipmap.icon_grid));
+            results.add(new Item(4, "文件管理器", R.mipmap.icon_grid));
+            results.add(new Item(5, "下拉后背景变大", R.mipmap.icon_grid));
+            results.add(new Item(6, "仿微信选择图片", R.mipmap.icon_grid));
+            results.add(new Item(7, "蓝牙", R.mipmap.icon_grid));
         }
 //        results.remove(results.size() - 1);
 //        results.add(new Item(results.size(), "更多", R.drawable.takeout_ic_more));
@@ -118,8 +120,6 @@ public class ThirdFragment extends BaseFragment {
             @Override
             public void onItemClick(RecyclerView.ViewHolder vh) {
                 Item item = results.get(vh.getLayoutPosition());
-                //弹出确认按下的是哪一个
-                ToastUtil.show(activity, item.getName());
                 switch (item.getId()) {
                     case 0:
                         startActivity(new Intent(activity, DragRecycleListActivity.class));
@@ -133,10 +133,19 @@ public class ThirdFragment extends BaseFragment {
                     case 3:
                         startActivity(new Intent(activity, GifActivity.class));
                         break;
+                    case 4:
+                        break;
+                    case 5:
+                        startActivity(new Intent(activity, PullToZoomMainActivity.class));
+                        break;
+                    case 6:
+                        startActivity(new Intent(activity, LikeWeChatSelectPhotoActivity.class));
+                        break;
+                    case 7:
+                        startActivity(new Intent(activity, BleMainActivity.class));
+                        break;
                 }
             }
         });
     }
-
-
 }

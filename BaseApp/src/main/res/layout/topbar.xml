@@ -4,7 +4,7 @@
     android:id="@+id/topBar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/darkorange">
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"

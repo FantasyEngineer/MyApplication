@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background1">
+
+    <Button
+        android:id="@+id/btn_go_second"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="点击进入嵌套scrollview"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_go_third"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btn_go_second"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="点击进入嵌套recycleview"
+        android:textColor="@color/white" />
+
+
+    <com.yinglan.scrolllayout.ScrollLayout
+        android:id="@+id/scroll_down_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.yinglan.scrolllayout.content.ContentListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"></com.yinglan.scrolllayout.content.ContentListView>
+
+            <TextView
+                android:id="@+id/text_foot"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimaryDark"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="点击或上滑打开" />
+
+
+        </RelativeLayout>
+
+    </com.yinglan.scrolllayout.ScrollLayout>
+
+
+</RelativeLayout>

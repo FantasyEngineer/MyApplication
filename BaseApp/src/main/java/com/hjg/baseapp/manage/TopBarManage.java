@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -52,8 +53,14 @@ public class TopBarManage {
         topBarView.setPadding(0, padding, 0, 0);
     }
 
+    //设置背景色
     public void setTopBarBackground(int color) {
         topBarView.setBackgroundColor(color);
+    }
+
+    //设置背景透明度
+    public void setTopBarBackgroundAlpha(int alpha) {
+        topBarView.getBackground().setAlpha(alpha);
     }
 
     /**
@@ -147,4 +154,21 @@ public class TopBarManage {
         return TopTextView;
     }
 
+    /**
+     * 获取左边控件
+     *
+     * @return
+     */
+    public RadioButton getLeftBtn() {
+        return leftButton;
+    }
+
+    /**
+     * 获取右边控件
+     *
+     * @return
+     */
+    public RadioButton getRightBtn() {
+        return rightButton;
+    }
 }

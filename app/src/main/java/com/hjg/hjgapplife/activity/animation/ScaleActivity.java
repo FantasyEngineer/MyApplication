@@ -39,7 +39,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 放大缩小
+ * 仿淘宝点击商品加入到购物车特效
  */
 public class ScaleActivity extends BaseOthreRenderSwipActivity {
 

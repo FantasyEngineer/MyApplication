@@ -21,6 +21,7 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipActivity;
 
+//高光效果
 public class ShimmerActivity extends BaseOthreRenderSwipActivity {
 
     private ShimmerFrameLayout mShimmerViewContainer;

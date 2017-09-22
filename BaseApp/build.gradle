@@ -29,6 +29,10 @@ dependencies {
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
 //    Gif库  GifImageView，GifImageButton，GifTextView
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
+//    仿百度地图上拉滑动效果，在动画一项中展示
+    compile 'com.yinglan.scrolllayout:scrolllayout:1.0.2'
+    // 添加 HermesEventBus 依赖
+    compile 'xiaofei.library:hermes-eventbus:0.3.0'
 
 
 }

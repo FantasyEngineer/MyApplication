@@ -14,24 +14,26 @@ import razerdp.library.R;
 /**
  * 客串一下dialog
  */
-public class DialogPopup extends BasePopupWindow implements View.OnClickListener{
+public class DialogPopup extends BasePopupWindow implements View.OnClickListener {
 
+    private TextView title;
     private TextView ok;
     private TextView cancel;
+    private TextView content;
 
     public DialogPopup(Activity context) {
         super(context);
-
-        ok= (TextView) findViewById(R.id.ok);
-        cancel= (TextView) findViewById(R.id.cancel);
-
-        setViewClickListener(this,ok,cancel);
+        ok = (TextView) findViewById(R.id.ok);
+        cancel = (TextView) findViewById(R.id.cancel);
+        title = (TextView) findViewById(R.id.title);
+        content = (TextView) findViewById(R.id.content);
+        setViewClickListener(this, ok, cancel);
     }
 
     @Override
     protected Animation initShowAnimation() {
-        AnimationSet set=new AnimationSet(false);
-        Animation shakeAnima=new RotateAnimation(0,15, Animation.RELATIVE_TO_SELF,0.5f, Animation.RELATIVE_TO_SELF,0.5f);
+        AnimationSet set = new AnimationSet(false);
+        Animation shakeAnima = new RotateAnimation(0, 15, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         shakeAnima.setInterpolator(new CycleInterpolator(5));
         shakeAnima.setDuration(400);
         set.addAnimation(getDefaultAlphaAnimation());
@@ -53,6 +55,27 @@ public class DialogPopup extends BasePopupWindow implements View.OnClickListener
     public View initAnimaView() {
         return findViewById(R.id.popup_anima);
     }
+
+    public void setSingleBtn(String btnName, View.OnClickListener onClickListener) {
+        if (!btnName.isEmpty()) {
+            ok.setText(btnName);
+        }
+        ok.setOnClickListener(onClickListener);
+        cancel.setVisibility(View.GONE);
+    }
+
+    public void setDoubleBtn(String leftbtnName, View.OnClickListener onleftClickListener, String rightbtnName, View.OnClickListener onrightClickListener) {
+        ok.setText(leftbtnName);
+        cancel.setText(rightbtnName);
+        ok.setOnClickListener(onleftClickListener);
+        cancel.setOnClickListener(onrightClickListener);
+    }
+
+    public void setTitleAndContent(String title1, String content1) {
+        title.setText(title1);
+        content.setText(content1);
+    }
+
 
     @Override
     public void onClick(View v) {

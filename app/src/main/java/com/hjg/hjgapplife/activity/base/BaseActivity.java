@@ -18,8 +18,12 @@ import com.hjg.baseapp.manage.TopBarManage;
 import com.hjg.baseapp.util.ACache;
 import com.hjg.baseapp.util.StatusBarUtil;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import xiaofei.library.hermeseventbus.HermesEventBus;
 
 
 /**
@@ -48,6 +52,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         View view = LayoutInflater.from(this).inflate(getContentLayout(), null);
         fl_content.addView(view);
         mCache = ACache.get(this);
+        //注册eventbus
+        HermesEventBus.getDefault().register(this);
+
         ButterKnife.bind(this);
         initBarColor();
         initTitle();
@@ -144,11 +151,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        HermesEventBus.getDefault().unregister(this);
     }
 
     // 更改应用字体重写的方法
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)//在ui线程执行
+    public void onEventMainThread(Object object) {
     }
 }

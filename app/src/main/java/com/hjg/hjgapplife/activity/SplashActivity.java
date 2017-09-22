@@ -56,7 +56,9 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
     private void initPermission() {
         String[] perms = {Manifest.permission.CALL_PHONE
                 , Manifest.permission.CAMERA
-                , Manifest.permission.ACCESS_FINE_LOCATION};
+                , Manifest.permission.ACCESS_FINE_LOCATION
+                , Manifest.permission.BLUETOOTH
+                , Manifest.permission.BLUETOOTH_ADMIN};
         //检查有没有权限
         if (EasyPermissions.hasPermissions(this, perms)) {
             jumpActivty();

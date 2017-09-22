@@ -12,9 +12,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 
 /**
- * 这里的BaseActivituy是给使用Knife插件的activity使用的。
- * 因为插件的build.gradle设置必须在app包下的build.gradle设置。
- * 如果在baseLib中就引入不到knife的包。
+ * 不可以侧滑关闭的展示List的基类
  */
 
 public abstract class BaseListActivity extends BaseActivity implements AdapterView.OnItemClickListener {

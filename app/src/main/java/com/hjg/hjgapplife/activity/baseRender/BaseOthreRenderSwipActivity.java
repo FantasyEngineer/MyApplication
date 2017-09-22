@@ -3,6 +3,7 @@ package com.hjg.hjgapplife.activity.baseRender;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,9 +20,13 @@ import com.hjg.baseapp.R;
 import com.hjg.baseapp.manage.TopBarManage;
 import com.hjg.baseapp.util.ACache;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.ButterKnife;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import xiaofei.library.hermeseventbus.HermesEventBus;
 
 
 /**
@@ -43,6 +48,8 @@ public abstract class BaseOthreRenderSwipActivity extends me.imid.swipebacklayou
         // 取消标题栏
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
         activity = this;
+        //不允许横屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //最终方案
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //5.0 全透明实现
@@ -61,7 +68,10 @@ public abstract class BaseOthreRenderSwipActivity extends me.imid.swipebacklayou
         fl_content = (FrameLayout) findViewById(R.id.fl_content);
         View view = LayoutInflater.from(this).inflate(getContentLayout(), null);
         fl_content.addView(view);
+        //缓存，类似于sharepreference
         mCache = ACache.get(this);
+        //注册eventbus
+        HermesEventBus.getDefault().register(this);
 
         ButterKnife.bind(this);
         initSwipe();
@@ -138,6 +148,7 @@ public abstract class BaseOthreRenderSwipActivity extends me.imid.swipebacklayou
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        HermesEventBus.getDefault().unregister(this);
     }
 
     /**
@@ -198,4 +209,9 @@ public abstract class BaseOthreRenderSwipActivity extends me.imid.swipebacklayou
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)//在ui线程执行
+    public void onEventMainThread(Object object) {
+    }
+
 }

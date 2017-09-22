@@ -4,9 +4,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.blog.www.guideview.Guide;
+import com.blog.www.guideview.GuideBuilder;
 import com.hjg.baseapp.util.GlideCatchUtil;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipActivity;
+import com.hjg.hjgapplife.activity.guide.SimpleComponent;
 
 import immortalz.me.library.TransitionsHeleper;
 import immortalz.me.library.bean.InfoBean;
@@ -45,6 +48,12 @@ public class PhotoShowActivity extends BaseOthreRenderSwipActivity {
         iv_bigshow = (ImageView) findViewById(R.id.iv_bigshow);
         btn_trans = (Button) findViewById(R.id.btn_trans);
         btn_trans_no_spread = (Button) findViewById(R.id.btn_trans_no_spread);
+        btn_trans.post(new Runnable() {
+            @Override
+            public void run() {
+                showGuideView();
+            }
+        });
     }
 
     @Override
@@ -88,5 +97,31 @@ public class PhotoShowActivity extends BaseOthreRenderSwipActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    Guide guide;
+
+    public void showGuideView() {
+        GuideBuilder builder = new GuideBuilder();
+        builder.setTargetView(btn_trans)
+                .setAlpha(150)
+                .setHighTargetCorner(20)
+                .setHighTargetPadding(10)
+                .setOverlayTarget(false)
+                .setOutsideTouchable(false);
+        builder.setOnVisibilityChangedListener(new GuideBuilder.OnVisibilityChangedListener() {
+            @Override
+            public void onShown() {
+            }
+
+            @Override
+            public void onDismiss() {
+            }
+        });
+
+        builder.addComponent(new SimpleComponent());
+        guide = builder.createGuide();
+        guide.setShouldCheckLocInWindow(true);
+        guide.show(this);
     }
 }

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hjg.hjgapplife">
 
+    <!-- 蓝牙 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <!-- 侧滑时震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <!-- 悬浮窗 -->
@@ -72,7 +75,23 @@
         <activity android:name=".activity.animation.BezierLineActivity" />
         <activity android:name=".activity.animation.ShimmerActivity" />
         <activity android:name=".activity.pupwindow.PupWindowActivity" />
-        <activity android:name=".activity.GifActivity"></activity>
+        <activity android:name=".activity.GifActivity" />
+        <activity android:name=".activity.animation.LikeBDMapActivity" />
+        <activity android:name=".activity.animation.LikeBDMap2Activity" />
+        <activity android:name=".activity.animation.LikeBDMapRecyActivity" />
+        <activity android:name=".activity.zoomview.PullToZoomScrollActivity" />
+        <activity android:name=".activity.zoomview.PullToZoomListActivity" />
+        <activity android:name=".activity.zoomview.PullToZoomMainActivity" />
+        <activity
+            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".activity.takephoto.LikeWeChatSelectPhotoActivity" />
+        <activity android:name=".activity.animation.AutoUPChangeActivity" />
+        <activity android:name=".activity.BLE.BleClientActivity" />
+        <activity android:name=".activity.BLE.BleServerActivity" />
+        <activity android:name=".activity.BLE.BleMainActivity" />
+        <activity android:name=".activity.BLE.TestBLEActivity"></activity>
+
     </application>
 
 </manifest>

@@ -7,11 +7,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.blog.www.guideview.Guide;
+import com.blog.www.guideview.GuideBuilder;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderActivity;
+import com.hjg.hjgapplife.activity.guide.SimpleComponent;
 import com.hjg.hjgapplife.activity.seclectCity.SelectCityActivity;
 import com.hjg.hjgapplife.entity.TabEntity;
 import com.hjg.hjgapplife.fragment.FirstFragment;
@@ -41,6 +44,13 @@ public class MainActivity extends BaseOthreRenderActivity {
 
     protected void initView() {
         mTabLayout = (CommonTabLayout) findViewById(R.id.tl);
+        mTabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                showGuideView();
+
+            }
+        });
     }
 
     @Override
@@ -116,5 +126,31 @@ public class MainActivity extends BaseOthreRenderActivity {
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    Guide guide;
+
+    public void showGuideView() {
+        GuideBuilder builder = new GuideBuilder();
+        builder.setTargetView(topBarManage.getLeftBtn())
+                .setAlpha(150)
+                .setHighTargetCorner(20)
+                .setHighTargetPadding(10)
+                .setOverlayTarget(false)
+                .setOutsideTouchable(false);
+        builder.setOnVisibilityChangedListener(new GuideBuilder.OnVisibilityChangedListener() {
+            @Override
+            public void onShown() {
+            }
+
+            @Override
+            public void onDismiss() {
+            }
+        });
+
+        builder.addComponent(new SimpleComponent());
+        guide = builder.createGuide();
+        guide.setShouldCheckLocInWindow(true);
+        guide.show(this);
     }
 }

@@ -46,6 +46,10 @@ greendao {
     schemaVersion 1001
     targetGenDir 'src/main/java'
 }
+//MultiImageSelector使用的到的
+repositories {
+    maven { url "https://jitpack.io" }
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -58,9 +62,12 @@ dependencies {
     compile project(':SwipeBackLib')
     compile project(path: ':Shimmer')
     compile project(path: ':PupWindowlib')
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile project(path: ':GuideView')
+
+    //    仿微信多图选择
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.6'
     compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.github.lovetuzitong:MultiImageSelector:1.2'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
 }

@@ -10,8 +10,6 @@ import razerdp.basepopup.BasePopupWindow;
 import razerdp.library.R;
 
 /**
- * Created by 大灯泡 on 2016/11/23.
- * <p>
  * 自动定位的popup，空间不足显示在上面
  */
 public class AutoLocatedPopup extends BasePopupWindow implements View.OnClickListener {
