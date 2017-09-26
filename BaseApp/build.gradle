@@ -11,6 +11,12 @@ android {
     }
 }
 
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -19,7 +25,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     //recyclerview
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
-    //glide
+    //glide加载图片
     compile 'com.github.bumptech.glide:glide:3.6.1'
     //请求权限
     compile 'pub.devrel:easypermissions:0.4.3'
@@ -33,6 +39,8 @@ dependencies {
     compile 'com.yinglan.scrolllayout:scrolllayout:1.0.2'
     // 添加 HermesEventBus 依赖
     compile 'xiaofei.library:hermes-eventbus:0.3.0'
+//    万能的recycleview的适配器
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.2'
 
 
 }

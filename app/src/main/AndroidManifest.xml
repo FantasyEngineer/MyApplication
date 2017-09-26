@@ -87,7 +87,8 @@
             android:configChanges="orientation|screenSize" />
         <activity android:name=".activity.takephoto.LikeWeChatSelectPhotoActivity" />
         <activity android:name=".activity.animation.AutoUPChangeActivity" />
-        <activity android:name=".activity.BLE.BleClientActivity" />
+        <activity android:name=".activity.BLE.BleClientActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".activity.BLE.BleServerActivity" />
         <activity android:name=".activity.BLE.BleMainActivity" />
         <activity android:name=".activity.BLE.TestBLEActivity"></activity>

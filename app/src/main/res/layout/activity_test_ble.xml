@@ -15,13 +15,22 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="获取蓝牙地址" />
+            android:text="获取蓝牙相关数据" />
 
         <TextView
             android:id="@+id/tv_show_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp" />
+
+        <Button
+            android:id="@+id/btn_search"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="搜索设备" />
 
     </LinearLayout>
 

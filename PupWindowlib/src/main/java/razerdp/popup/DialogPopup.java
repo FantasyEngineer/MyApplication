@@ -1,6 +1,7 @@
 package razerdp.popup;
 
 import android.app.Activity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -28,6 +29,12 @@ public class DialogPopup extends BasePopupWindow implements View.OnClickListener
         title = (TextView) findViewById(R.id.title);
         content = (TextView) findViewById(R.id.content);
         setViewClickListener(this, ok, cancel);
+        //不允许点击外部消失
+        setDismissWhenTouchOuside(false);
+        //全屏
+        setPopupWindowFullScreen(true);
+        setBackPressEnable(true);
+
     }
 
     @Override
@@ -91,4 +98,19 @@ public class DialogPopup extends BasePopupWindow implements View.OnClickListener
 //        }
 
     }
+
+    private View.OnKeyListener onKeyListener = new View.OnKeyListener() {
+
+        @Override
+        public boolean onKey(View v, int keyCode, KeyEvent event) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                dismiss();
+                return true;
+            }
+
+            return false;
+        }
+    };
+
+
 }

@@ -38,4 +38,18 @@
     <string name="action_hide_head">Hide Head</string>
     <string name="action_disable_zoom">Disable Zoom</string>
     <string name="action_enable_zoom">Enable Zoom</string>
+
+
+
+    <string name="client">客户端</string>
+    <string name="server">服务端</string>
+    <string name="btn_blth_connect">连接设备</string>
+    <string name="btn_blth_visiblity">设置蓝牙可见性</string>
+    <string name="btn_blth_disconnect">断开连接</string>
+    <string name="connect_state">状态</string>
+    <string name="progress_scaning">正在扫描</string>
+    <string name="progress_connecting">正在连接</string>
+    <string name="send">发送</string>
+    <string name="write_tip">请输入数字、字母或汉字</string>
+    <string name="bluetooth_unopened">蓝牙未开启，请先开启蓝牙</string>
 </resources>

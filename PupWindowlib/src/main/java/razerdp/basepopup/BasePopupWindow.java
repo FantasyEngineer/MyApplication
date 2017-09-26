@@ -109,11 +109,10 @@ public abstract class BasePopupWindow implements BasePopup, PopupWindow.OnDismis
             popupLayoutid = mAnimaView.getId();
         }
         checkPopupAnimaView();
-
-        //默认占满全屏
         mPopupWindow = new PopupWindowProxy(mPopupView, w, h, this);
+        //默认占满全屏
         mPopupWindow.setOnDismissListener(this);
-        setDismissWhenTouchOuside(true);
+        setDismissWhenTouchOuside(false);
 
         preMeasurePopupView(w, h);
 
@@ -126,7 +125,9 @@ public abstract class BasePopupWindow implements BasePopup, PopupWindow.OnDismis
             mDismissView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dismiss();
+                    if (dismissWhenTouchOuside) {
+                        dismiss();
+                    }
                 }
             });
         }

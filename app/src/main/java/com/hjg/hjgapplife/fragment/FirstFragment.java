@@ -48,7 +48,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
             R.mipmap.a, R.mipmap.b, R.mipmap.c, R.mipmap.d,
             R.mipmap.e, R.mipmap.f, R.mipmap.g, R.mipmap.h,
             R.mipmap.i));
-    private RecyclerView recycleView;
+    private RecyclerView recycleViewHorizatal;
 
 
     public static FirstFragment getInstance() {
@@ -68,9 +68,9 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
         banner = (SliderLayout) findViewById(R.id.slider);
         btn_switch = (Button) findViewById(R.id.btn_switch);
 
-        recycleView = (RecyclerView) findViewById(R.id.recycleView);
+        recycleViewHorizatal = (RecyclerView) findViewById(R.id.recycleViewHorizatal);
         //设置横向
-        recycleView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
+        recycleViewHorizatal.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
     }
 
     @Override
@@ -166,7 +166,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
                     @Override
                     public void onClick(View v) {
                         LinearLayoutManager linearManager = (LinearLayoutManager)
-                                recycleView.getLayoutManager();
+                                recycleViewHorizatal.getLayoutManager();
                         int lastposition = linearManager.findLastVisibleItemPosition();
                         Log.d("FirstFragment", "最后的position===:" + lastposition);
                         TransitionsHeleper.startActivity(activity, PhotoShowActivity.class, iv, resid, position == lastposition);
@@ -174,7 +174,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
                 });
             }
         };
-        recycleView.setAdapter(hot_adapter);
+        recycleViewHorizatal.setAdapter(hot_adapter);
     }
 
 
