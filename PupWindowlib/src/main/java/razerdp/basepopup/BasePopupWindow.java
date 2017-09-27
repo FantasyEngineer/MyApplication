@@ -112,7 +112,7 @@ public abstract class BasePopupWindow implements BasePopup, PopupWindow.OnDismis
         mPopupWindow = new PopupWindowProxy(mPopupView, w, h, this);
         //默认占满全屏
         mPopupWindow.setOnDismissListener(this);
-        setDismissWhenTouchOuside(false);
+        setDismissWhenTouchOuside(true);
 
         preMeasurePopupView(w, h);
 

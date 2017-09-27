@@ -72,9 +72,13 @@ public class ThirdFragment extends BaseFragment {
 
         /////////初始化数据，如果缓存中有就使用缓存中的
         ArrayList<Item> items = (ArrayList<Item>) ACache.get(getActivity()).getAsObject("items");
-        if (items != null)
+        if (items != null) {
+            //防止多次加载
+            results.removeAll(results);
             results.addAll(items);
-        else {
+        } else {
+            //防止多次加载
+            results.removeAll(results);
             results.add(new Item(0, "可拖拽的 ListView", R.mipmap.icon_grid));
             results.add(new Item(1, "动画操作", R.mipmap.icon_grid));
             results.add(new Item(2, "PupWindow样式展示", R.mipmap.icon_grid));
@@ -99,8 +103,8 @@ public class ThirdFragment extends BaseFragment {
         itemTouchHelper = new ItemTouchHelper(new MyItemTouchCallback(adapter).setOnDragListener(new MyItemTouchCallback.OnDragListener() {
             @Override
             public void onFinishDrag() {
-                //存入缓存
-//                ACache.get(getActivity()).put("items", (ArrayList<Item>) results);
+                //将移动之后的位置list 存入缓存
+                ACache.get(getActivity()).put("items", (ArrayList<Item>) results);
             }
         }));
         itemTouchHelper.attachToRecyclerView(recyclerView);

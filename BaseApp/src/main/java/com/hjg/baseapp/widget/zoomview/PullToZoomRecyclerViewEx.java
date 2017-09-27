@@ -2,6 +2,7 @@ package com.hjg.baseapp.widget.zoomview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Parcelable;
 import android.os.SystemClock;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -398,5 +399,15 @@ public class PullToZoomRecyclerViewEx extends PullToZoomBase<RecyclerView> imple
 
     public void setOnScrollValueListener(OnScrollValueListener onScrollValueListener) {
         this.onScrollValueListener = onScrollValueListener;
+    }
+
+    //解决翻转屏幕异常
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        try {
+            super.onRestoreInstanceState(state);
+        } catch (Exception e) {
+            state = null;
+        }
     }
 }

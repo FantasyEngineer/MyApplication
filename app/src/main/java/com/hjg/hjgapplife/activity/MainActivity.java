@@ -1,8 +1,8 @@
 package com.hjg.hjgapplife.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -47,8 +47,9 @@ public class MainActivity extends BaseOthreRenderActivity {
         mTabLayout.post(new Runnable() {
             @Override
             public void run() {
-                showGuideView();
-
+                if (mCache.getAsString("isShowed") == null) {
+                    showGuideView();
+                }
             }
         });
     }
@@ -85,19 +86,19 @@ public class MainActivity extends BaseOthreRenderActivity {
         }
         //给tab设置数据和关联的fragment
         mTabLayout.setTabData(mTabEntities, MainActivity.this, R.id.fl_change, mFragments);
-
     }
 
     public void initAction() {
         mTabLayout.setOnTabSelectListener(new TabSelectListener());
     }
 
+    private int currentPosition;
 
     public class TabSelectListener implements OnTabSelectListener {
 
         @Override
         public void onTabSelect(int position) {
-            Log.d("TabSelectListener", "position:" + position);
+            currentPosition = position;
             if (position == 3) {
                 hideTopBar();
             } else {
@@ -110,6 +111,7 @@ public class MainActivity extends BaseOthreRenderActivity {
 //            showTopBar();
         }
     }
+
 
     long firstTime;
 
@@ -131,6 +133,8 @@ public class MainActivity extends BaseOthreRenderActivity {
     Guide guide;
 
     public void showGuideView() {
+        //标记是否已经展示过
+        mCache.put("isShowed", "isShowed");
         GuideBuilder builder = new GuideBuilder();
         builder.setTargetView(topBarManage.getLeftBtn())
                 .setAlpha(150)
@@ -152,5 +156,24 @@ public class MainActivity extends BaseOthreRenderActivity {
         guide = builder.createGuide();
         guide.setShouldCheckLocInWindow(true);
         guide.show(this);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        currentPosition = savedInstanceState.getInt("position");
+        //旋转屏幕的时候进行
+        mTabLayout.setCurrentTab(currentPosition);
+        if (currentPosition == 3) {
+            hideTopBar();
+        } else {
+            showTopBar();
+        }
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putInt("position", currentPosition);
+        super.onSaveInstanceState(outState);
     }
 }
