@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.View;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.hjg.baseapp.ItemDecoration.DividerGridItemDecoration;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import razerdp.popup.DialogPopup;
 
 /**
  * 可拖拽的gridview
@@ -146,7 +148,17 @@ public class ThirdFragment extends BaseFragment {
                         startActivity(new Intent(activity, LikeWeChatSelectPhotoActivity.class));
                         break;
                     case 7:
-                        startActivity(new Intent(activity, BleMainActivity.class));
+                        final DialogPopup dialogPopup = new DialogPopup(activity);
+                        dialogPopup.setSingleBtn("知道了", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                startActivity(new Intent(activity, BleMainActivity.class));
+                                dialogPopup.dismiss();
+                            }
+                        });
+                        dialogPopup.setTitleAndContent("友情提醒", "  一部手机先要开启服务端，待服务端开启完毕后，另一部手机" +
+                                "点击客户端，客户端点击连接，待两端连接成功之后，可以进行通信。");
+                        dialogPopup.showPopupWindow();
                         break;
                 }
             }

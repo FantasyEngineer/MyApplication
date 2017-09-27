@@ -18,7 +18,7 @@ public class BleMainActivity extends BaseOtherRenderListActivity {
         registerReceiver(bleReveiver, intentFilter);
 
         dataList.add("客户端");
-        dataList.add("服务端");
+        dataList.add("先开启服务端");
         dataList.add("测试");
     }
 
