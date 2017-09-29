@@ -99,7 +99,8 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="true"
             android:launchMode="singleTask" />
-        <activity android:name=".activity.recycleViewAbout.AboutRecycleViewMainActivity"></activity>
+        <activity android:name=".activity.recycleViewAbout.AboutRecycleViewMainActivity" />
+        <activity android:name=".activity.GIFshowFunctionAcitivity"></activity>
     </application>
 
 </manifest>

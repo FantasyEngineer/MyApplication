@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/wait_dialog_shape">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/loadingIv"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"></pl.droidsonroids.gif.GifImageView>
+
+        <TextView
+            android:id="@+id/loadingTv"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="加载中..."
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+</RelativeLayout>
+
+
+
