@@ -11,6 +11,7 @@ import com.hjg.baseapp.widget.AmountView;
 import com.hjg.baseapp.widget.goodsview.GoodView;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.base.BaseActivity;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -52,11 +53,14 @@ public class ButtonStyleActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-//        购物车商品数量加减
+        // 购物车商品数量加减
         amountView.setFocus(false);
         amountView.setDefaultNum(5);
         amountView.setGoods_storage(100);
         amountView.setMinNum(2);
+        //Spinner
+        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinner);
+        spinner.setItems("AlphaIn", "ScaleIn", "SlideInBottom", "SlideInLeft", "SlideInRight", "Custom");
 
     }
 
@@ -128,7 +132,7 @@ public class ButtonStyleActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (timeCount!=null){
+        if (timeCount != null) {
             timeCount.cancel();
         }
     }

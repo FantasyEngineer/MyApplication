@@ -74,8 +74,10 @@ public class MainActivity extends BaseOthreRenderActivity {
 
     @Override
     protected void initData() {
+        mFragments.removeAll(mFragments);
         initView();
         initAction();
+        //如果有存在就不进行添加了。
         mFragments.add(FirstFragment.getInstance());
         mFragments.add(SecondFragment.getInstance());
         mFragments.add(ThirdFragment.getInstance());

@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/SwipeBackLib/SwipeBackLib.iml" filepath="$PROJECT_DIR$/SwipeBackLib/SwipeBackLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bannerlib/bannerlib.iml" filepath="$PROJECT_DIR$/bannerlib/bannerlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/material-spinner-1.0.5/material-spinner-1.0.5.iml" filepath="$PROJECT_DIR$/material-spinner-1.0.5/material-spinner-1.0.5.iml" />
       <module fileurl="file://$PROJECT_DIR$/transitionhelper/transitionhelper.iml" filepath="$PROJECT_DIR$/transitionhelper/transitionhelper.iml" />
     </modules>
   </component>

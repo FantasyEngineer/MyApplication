@@ -18,7 +18,7 @@ allprojects {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -33,14 +33,13 @@ dependencies {
     compile 'com.loopeer.library:cardstack:1.0.2'
     //全局字体加载,http://hao.jobbole.com/calligraphy/
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
-//    Gif库  GifImageView，GifImageButton，GifTextView
+    //    Gif库  GifImageView，GifImageButton，GifTextView
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
-//    仿百度地图上拉滑动效果，在动画一项中展示
+    //    仿百度地图上拉滑动效果，在动画一项中展示
     compile 'com.yinglan.scrolllayout:scrolllayout:1.0.2'
     // 添加 HermesEventBus 依赖
     compile 'xiaofei.library:hermes-eventbus:0.3.0'
-//    万能的recycleview的适配器
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.2'
-
-
+    //   新版的dsign 和cardview
+    compile 'com.android.support:cardview-v7:26.0.0-alpha1'
+    compile 'com.android.support:design:26.0.0-alpha1'
 }

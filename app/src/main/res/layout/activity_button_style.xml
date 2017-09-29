@@ -154,5 +154,30 @@
         android:textAllCaps="false"
         android:textColor="@color/red" />
 
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/switch_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@drawable/custom_text_state_color"
+        app:kswTextOff="false"
+        app:kswTextOn="true"
+        app:kswThumbColor="#555771"
+        app:kswThumbDrawable="@drawable/thumb_drawable"
+        app:kswTintColor="#00ddB6" />
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        app:ms_background_color="#333244"
+        app:ms_hide_arrow="false"
+        app:ms_text_color="#ffffff" />
+
 
 </LinearLayout>

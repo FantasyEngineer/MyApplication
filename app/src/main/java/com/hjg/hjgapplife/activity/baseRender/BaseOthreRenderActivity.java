@@ -64,6 +64,7 @@ public abstract class BaseOthreRenderActivity extends AppCompatActivity {
         initBarColor();
         initTitle();
         initData();
+        initDataWithBundle(savedInstanceState);
     }
 
     /**
@@ -90,6 +91,13 @@ public abstract class BaseOthreRenderActivity extends AppCompatActivity {
      * 初始化试图
      */
     protected abstract void initData();
+
+    /**
+     * 初始化试图带bundle的
+     */
+    protected void initDataWithBundle(Bundle savedInstanceState) {
+
+    }
 
 
     private long lastClickTime;
