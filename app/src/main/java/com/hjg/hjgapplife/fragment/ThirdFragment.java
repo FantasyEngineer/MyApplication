@@ -13,7 +13,6 @@ import com.hjg.baseapp.util.ACache;
 import com.hjg.baseapp.util.VibratorUtil;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.BLE.BleMainActivity;
-import com.hjg.hjgapplife.activity.GIFshowFunctionAcitivity;
 import com.hjg.hjgapplife.activity.GifActivity;
 import com.hjg.hjgapplife.activity.animation.AnimationListActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
@@ -24,6 +23,7 @@ import com.hjg.hjgapplife.activity.dragRecycleView.OnRecyclerItemClickListener;
 import com.hjg.hjgapplife.activity.dragRecycleView.adapter.DragGridRecyclerAdapter;
 import com.hjg.hjgapplife.activity.pupwindow.PupWindowActivity;
 import com.hjg.hjgapplife.activity.takephoto.LikeWeChatSelectPhotoActivity;
+import com.hjg.hjgapplife.activity.takephoto.PhotoDealMainActivity;
 import com.hjg.hjgapplife.activity.zoomview.PullToZoomMainActivity;
 
 import java.util.ArrayList;
@@ -163,7 +163,7 @@ public class ThirdFragment extends BaseFragment {
                         dialogPopup.showPopupWindow();
                         break;
                     case 8:
-                        startActivity(new Intent(activity, GIFshowFunctionAcitivity.class));
+                        startActivity(new Intent(activity, PhotoDealMainActivity.class));
                         break;
                 }
             }

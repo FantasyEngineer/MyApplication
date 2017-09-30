@@ -1,5 +1,10 @@
 package com.hjg.hjgapplife.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
+
+import com.hjg.baseapp.util.StringUtils;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipActivity;
 import com.hjg.hjgapplife.activity.webview.WebViewActivity;
@@ -16,6 +21,7 @@ public class GIFshowFunctionAcitivity extends BaseOthreRenderSwipActivity {
 
     @BindView(R.id.gifImageView)
     GifImageView gifImageView;
+    private String flag;
 
     @Override
     protected int getContentLayout() {
@@ -25,13 +31,26 @@ public class GIFshowFunctionAcitivity extends BaseOthreRenderSwipActivity {
     @Override
     protected void initTitle() {
         hideTopBar();
-//        topBarManage.iniTop(true, "GIF展示效果");
     }
 
     @Override
     protected void initData() {
+        String gifName = "";
+        flag = getIntent().getStringExtra("flag");
+        if (StringUtils.isBlank(flag)) {
+            Toast.makeText(activity, "未声明来源", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        //根据页面不同，加载不同的GIF
+        switch (flag) {
+            case "crop":
+                gifName = "crop.gif";
+                break;
+
+        }
+        GifDrawable gifDrawable = null;
         try {
-            GifDrawable gifDrawable = new GifDrawable(getAssets(), "crop.gif");
+            gifDrawable = new GifDrawable(getAssets(), gifName);
             gifImageView.setBackground(gifDrawable);
             gifDrawable.start();
         } catch (IOException e) {
@@ -42,8 +61,20 @@ public class GIFshowFunctionAcitivity extends BaseOthreRenderSwipActivity {
     @OnClick(R.id.gifImageView)
     public void onViewClicked() {
         finish();
-
         WebViewActivity.startActivityToWebView(activity, "https://github.com/fengyuanchen/cropper", "图片裁剪");
+    }
+
+
+    /**
+     * 供外部调用跳转到本activity
+     *
+     * @param context
+     * @param flag
+     */
+    public static void startActivityToGIFView(Context context, String flag) {
+        Intent intent = new Intent(context, GIFshowFunctionAcitivity.class);
+        intent.putExtra("flag", flag);
+        context.startActivity(intent);
     }
 
 

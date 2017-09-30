@@ -1,13 +1,11 @@
 package com.hjg.hjgapplife.activity.webview;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.webkit.GeolocationPermissions;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -109,7 +107,6 @@ public class WebViewManage {
 
         @Override
         public void onReceivedTitle(WebView view, String title) {
-            Log.d(TAG, "title:" + title);
             if (titleChangeListener != null) {
                 titleChangeListener.titleChanged(title);
             }
@@ -118,7 +115,10 @@ public class WebViewManage {
 
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
-            ((Activity) context).getWindow().setFeatureInt(Window.FEATURE_PROGRESS, newProgress * 100);
+            if (titleChangeListener != null) {
+                titleChangeListener.progressChanged(newProgress);
+            }
+//            ((Activity) context).getWindow().setFeatureInt(Window.FEATURE_PROGRESS, newProgress * 100);
         }
 
         @Override

@@ -100,7 +100,8 @@
             android:hardwareAccelerated="true"
             android:launchMode="singleTask" />
         <activity android:name=".activity.recycleViewAbout.AboutRecycleViewMainActivity" />
-        <activity android:name=".activity.GIFshowFunctionAcitivity"></activity>
+        <activity android:name=".activity.GIFshowFunctionAcitivity" />
+        <activity android:name=".activity.takephoto.PhotoDealMainActivity"></activity>
     </application>
 
 </manifest>

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import me.nereo.multi_image_selector.MultiImageSelector;
 
+//仿微信多图选择
 public class LikeWeChatSelectPhotoActivity extends BaseOthreRenderSwipActivity {
     private static final int REQUEST_IMAGE = 2;
     protected static final int REQUEST_STORAGE_READ_ACCESS_PERMISSION = 101;

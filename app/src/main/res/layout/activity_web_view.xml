@@ -6,10 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.hjg.hjgapplife.activity.webview.WebViewActivity">
 
+
     <WebView
         android:id="@+id/webView"
-        android:overScrollMode="never"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></WebView>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/progressBar"
+        android:overScrollMode="never"></WebView>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:max="100"
+        android:progressDrawable="@drawable/bar_color" />
 </FrameLayout>

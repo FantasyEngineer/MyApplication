@@ -6,4 +6,5 @@ package com.hjg.hjgapplife.activity.webview;
 
 public interface TitleChangeListener {
     void titleChanged(String title);
+    void progressChanged(int newProgress);
 }

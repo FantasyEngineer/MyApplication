@@ -3,12 +3,19 @@ package com.hjg.baseapp.util;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 /**
  * 快速更新弹出吐司
  */
 
 public class ToastUtil {
     static Toast toast = null;
+    private static Field mTN;
+    private static Object mObj;
+    private static Method showMethod;
+    private static Method hideMethod;
 
     public static void show(Context ctx, String msg) {
         if (toast == null) {
@@ -24,4 +31,6 @@ public class ToastUtil {
             toast.cancel();
         }
     }
+
+
 }
