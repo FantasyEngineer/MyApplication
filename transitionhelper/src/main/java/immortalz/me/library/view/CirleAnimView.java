@@ -62,7 +62,7 @@ public class CirleAnimView extends RenderView{
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setAntiAlias(true);
-        mPaint.setColor(getResources().getColor(R.color.showmethod_end_color));
+        mPaint.setColor(getResources().getColor(R.color.transitionhelperShowmethod_end_color));
 
         xfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
 

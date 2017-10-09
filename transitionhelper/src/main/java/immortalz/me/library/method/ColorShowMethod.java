@@ -30,13 +30,13 @@ public abstract class ColorShowMethod extends ShowMethod {
         if (startColor != 0) {
             startColor = parent.getResources().getColor(startColor);
         } else {
-            startColor = parent.getResources().getColor(R.color.showmethod_start_color);
+            startColor = parent.getResources().getColor(R.color.transitionhelperShowmethod_start_color);
         }
 
         if (endColor != 0) {
             endColor = parent.getResources().getColor(endColor);
         } else {
-            endColor = parent.getResources().getColor(R.color.showmethod_end_color);
+            endColor = parent.getResources().getColor(R.color.transitionhelperShowmethod_end_color);
         }
         parent.setPaintColor(endColor);
         ObjectAnimator colorAnimator = ObjectAnimator.ofInt(parent, "backgroundColor", startColor, endColor);

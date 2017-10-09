@@ -51,8 +51,8 @@ public class CardFlipActivity extends BaseOthreRenderSwipActivity {
 
     // 设置动画
     private void setAnimators() {
-        mRightOutSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.anim_out);
-        mLeftInSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.anim_in);
+        mRightOutSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.anim_out);
+        mLeftInSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.anim_in);
 
         // 设置点击事件
         mRightOutSet.addListener(new AnimatorListenerAdapter() {

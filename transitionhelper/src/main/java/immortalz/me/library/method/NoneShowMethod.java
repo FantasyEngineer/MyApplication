@@ -24,8 +24,8 @@ public  class NoneShowMethod extends ShowMethod {
     @Override
     public void translate(InfoBean bean, RenderView parent, View child) {
 
-        startColor = parent.getResources().getColor(R.color.showmethod_start_color);
-        endColor = parent.getResources().getColor(R.color.showmethod_end_color);
+        startColor = parent.getResources().getColor(R.color.transitionhelperShowmethod_start_color);
+        endColor = parent.getResources().getColor(R.color.transitionhelperShowmethod_end_color);
 
         set.setInterpolator(new AccelerateInterpolator());
         set.setDuration(duration).start();
