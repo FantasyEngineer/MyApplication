@@ -9,7 +9,7 @@ android {
         applicationId "com.hjg.hjgapplife"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 1
+        versionCode 1//每一次版本更新，versioncode必须要增加
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

@@ -160,7 +160,9 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
 ////            }
 //        }
 //        else {
-        outRect.set(0, 0, lineWidth, lineWidth);
+//        outRect.set(0, 0, lineWidth, lineWidth);
 //        }
+
+        outRect.set(lineWidth, lineWidth, lineWidth, lineWidth);
     }
 }
