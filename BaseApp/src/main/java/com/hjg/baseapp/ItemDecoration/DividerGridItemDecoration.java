@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.State;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -68,6 +69,10 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
                     + lineWidth;
             final int top = child.getBottom() + params.bottomMargin;
             final int bottom = top + lineWidth;
+            Log.d("DividerGridItemDecorati", "left:" + left);
+            Log.d("DividerGridItemDecorati", "top:" + top);
+            Log.d("DividerGridItemDecorati", "right:" + right);
+            Log.d("DividerGridItemDecorati", "bottom:" + bottom);
             mDivider.setBounds(left, top, right, bottom);
             mDivider.draw(c);
         }

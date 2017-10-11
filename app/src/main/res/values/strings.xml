@@ -51,4 +51,16 @@
     <string name="send">发送</string>
     <string name="write_tip">请输入数字、字母或汉字</string>
     <string name="bluetooth_unopened">蓝牙未开启，请先开启蓝牙</string>
+
+
+    <string name="txt">layout_scrollFlags根据官方文档，layout_scrollFlags的取值可以为以下几种。scrol设成这个值的效果就好比本View和scrolling view是“一体”的
+        具体示例我们在上面已经给出。有一点特别需要我们的注意，为了其他的滚动行为生效，必须同时指定scroll和相应的标记，比如我们想要exitUntilCollapsed所表现的滚动行为，必须将layout_scrollFlags指定为“scroll|exitUntilCollapsed”。exitUntilCollapsed当本View离开屏幕时，会被“折叠”直到达到其最小高度。我们可以这样理解这个效果：当我们开始向上滚动scrolling view时，本View会先接管滚动事件，这样本View会先进行滚动，直到滚动到了最小高度（折叠了），scrolling view才开始实际滚动。而当本View已完全折叠后，再向下滚动scrolling view，直到scrolling view顶部的内容完全显示后，本View才会开始向下滚动以显现出来。Demo如下：（为了演示效果，把ToolBar高度设为了150dp）exitUntilCollapsedenterAlways
+        当scrolling view向下滚动时，本View会一起跟着向下滚动。实际上就好比我们同时对scrolling view和本View进行向下滚动，具体效果如下图所示：enterAlways
+        仔细观察上图可以发现，与exitUntilCollapsed不同，当scrolling view一开始滚动，ToolBar便已开始跟着滚动，而无需scrolling view将其内容滚动到顶部。layout_scrollFlags根据官方文档，layout_scrollFlags的取值可以为以下几种。scrol设成这个值的效果就好比本View和scrolling view是“一体”的
+        具体示例我们在上面已经给出。有一点特别需要我们的注意，为了其他的滚动行为生效，必须同时指定scroll和相应的标记，比如我们想要exitUntilCollapsed所表现的滚动行为，必须将layout_scrollFlags指定为“scroll|exitUntilCollapsed”。exitUntilCollapsed当本View离开屏幕时，会被“折叠”直到达到其最小高度。我们可以这样理解这个效果：当我们开始向上滚动scrolling view时，本View会先接管滚动事件，这样本View会先进行滚动，直到滚动到了最小高度（折叠了），scrolling view才开始实际滚动。而当本View已完全折叠后，再向下滚动scrolling view，直到scrolling view顶部的内容完全显示后，本View才会开始向下滚动以显现出来。Demo如下：（为了演示效果，把ToolBar高度设为了150dp）exitUntilCollapsedenterAlways
+        当scrolling view向下滚动时，本View会一起跟着向下滚动。实际上就好比我们同时对scrolling view和本View进行向下滚动，具体效果如下图所示：enterAlways
+        仔细观察上图可以发现，与exitUntilCollapsed不同，当scrolling view一开始滚动，ToolBar便已开始跟着滚动，而无需scrolling view将其内容滚动到顶部。
+        enterAlwaysCollapsed从名字上就可以看出，这是在enterAlways的基础上，加上了“折叠”的效果。当我们开始向下滚动scrolling view时，本View会一起跟着滚动直到达到其“折叠高度”（即最小高度）。然后当scrolling view滚动至顶部内容完全显示后，再向下滚动scrolling view，本View会继续滚动到完全显示出来。具体效果如下：
+        enterAlwaysCollapse注意，要达到上图所示效果，需要把layout_scrollFlags指定为“scroll|enterAlways|enterAlwaysCollapsed”。
+        nap在一次滚动结束时，本View很可能只处于“部分显示”的状态，加上这个标记能够达到“要么完全隐藏，要么完全显示”的效果。到了这里，我们就把AppBarLayout能够实现的滚动行为介绍完毕了，很简单有木有。接下来我们再来介绍一下AppBarLayout的一个亲密朋友——CollapsingToolbarLayout。</string>
 </resources>

@@ -21,7 +21,9 @@ import com.hjg.hjgapplife.activity.dragRecycleView.Item;
 import com.hjg.hjgapplife.activity.dragRecycleView.MyItemTouchCallback;
 import com.hjg.hjgapplife.activity.dragRecycleView.OnRecyclerItemClickListener;
 import com.hjg.hjgapplife.activity.dragRecycleView.adapter.DragGridRecyclerAdapter;
+import com.hjg.hjgapplife.activity.md.MDMainActivity;
 import com.hjg.hjgapplife.activity.pupwindow.PupWindowActivity;
+import com.hjg.hjgapplife.activity.stickyHeadRecycleview.StickyMainActivity;
 import com.hjg.hjgapplife.activity.takephoto.LikeWeChatSelectPhotoActivity;
 import com.hjg.hjgapplife.activity.takephoto.PhotoDealMainActivity;
 import com.hjg.hjgapplife.activity.zoomview.PullToZoomMainActivity;
@@ -91,6 +93,8 @@ public class ThirdFragment extends BaseFragment {
             results.add(new Item(6, "仿微信多选图片", R.mipmap.icon_grid));
             results.add(new Item(7, "蓝牙", R.mipmap.icon_grid));
             results.add(new Item(8, "图片处理", R.mipmap.icon_grid));
+            results.add(new Item(9, "粘性标签", R.mipmap.icon_grid));
+            results.add(new Item(10, "Material Design", R.mipmap.icon_grid));
         }
 //        results.remove(results.size() - 1);
 //        results.add(new Item(results.size(), "更多", R.drawable.takeout_ic_more));
@@ -164,6 +168,12 @@ public class ThirdFragment extends BaseFragment {
                         break;
                     case 8:
                         startActivity(new Intent(activity, PhotoDealMainActivity.class));
+                        break;
+                    case 9:
+                        startActivity(new Intent(activity, StickyMainActivity.class));
+                        break;
+                    case 10:
+                        startActivity(new Intent(activity, MDMainActivity.class));
                         break;
                 }
             }

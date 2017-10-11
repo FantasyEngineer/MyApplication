@@ -18,6 +18,8 @@ import razerdp.popup.SlideFromTopPopup;
 
 public class PupWindowActivity extends BaseListActivity {
 
+    private DialogPopup dialogPopup;
+
     @Override
     protected void initTitle() {
         topBarManage.iniTop(true, "PupWindow各种样式展示");
@@ -39,7 +41,7 @@ public class PupWindowActivity extends BaseListActivity {
         dataList.add("自动定位的popup，空间不足显示在上面");
         dataList.add("微信朋友圈评论弹窗");
         dataList.add("各种插值器的popup");
-        dataList.add("客串一下dialog");
+        dataList.add("客串dialog(不响应返回键不响应空白)");
         dataList.add("全屏的popup");
         dataList.add("InputPopup");
         dataList.add("ListPopup");
@@ -62,7 +64,15 @@ public class PupWindowActivity extends BaseListActivity {
                 new CustomInterpolatorPopup(activity).showPopupWindow();
                 break;
             case 3:
-                new DialogPopup(activity).showPopupWindow();
+                dialogPopup = new DialogPopup(activity);
+                dialogPopup.setTitleAndContent("温馨提示", "测试是否响应返回键和不响应返回键，测试点击外部是否消失和外部不消失");
+                dialogPopup.setSingleBtn("知道了", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogPopup.dismiss();
+                    }
+                });
+                dialogPopup.showPopupWindow();
                 break;
             case 4:
                 new FullScreenPopup(activity).showPopupWindow();
@@ -90,6 +100,19 @@ public class PupWindowActivity extends BaseListActivity {
                 new SlideFromTopPopup(activity).showPopupWindow();
                 break;
 
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (dialogPopup.isShowing()) {
+            if (dialogPopup.getBackPressEnable()) {
+                dialogPopup.dismiss();
+            } else {
+                //不响应返回键
+            }
+        } else {
+            super.onBackPressed();
         }
     }
 }

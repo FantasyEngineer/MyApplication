@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hjg.hjgapplife.activity.md.SwipeRefreshActivity">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=" Android下拉刷新控件SwipeRefreshLayout解析
+
+SwipeRefreshLayout是Google在support v4 19.1版本的library更新的一个下拉刷新组件，实现刷新效果更方便。我们知道现在存在很多种类的下拉刷新，所以谷歌在推出SwipeRefreshLayout控件也是希望为了进一步的规范android市场吧！随着现在版本的不断更新，谷歌推出的SwipeRefreshLayout的效果也在发生着变化，主要变化点在系统5.0之后，SwipeRefreshLayout重新改变下拉的样式。
+
+在使用之前我们需要更新我们的android-support-v4.jar版本在19.1之前，这样我们才能使用。所以下面我们就透过源码分析下SwipeRefreshLayout。先看看此类的介绍
+
+上面的意思就是说，当用户通过swipe gesture（刷卡手势）进行刷新的时候，都可以使用SwipeRefreshLayout进行数据刷新。同时呢？我们应该在展现该控件的activity中添加OnRefreshListener接口来控制刷新什么时候完成。同时我们发现SwipeRefreshLayout是继承在ViewGroup，不是我们常见的继承ListView，所以它的实现逻辑和ListView是没关系的，这样就解放了我们使用ListView，不需要复杂的逻辑判断处理。SwipeRefreshLayout应该是需要刷新的View的父控件，它只能有一个子View。同时它的直接子View要具有滑动功能。
+
+通过上面的注释，我们队SwipeRefreshLayout的基本使用有了一个了解，下面我们看看它有哪些方法需要我们注意：
+1、public void setProgressViewOffset(boolean scale, int start, int end)，用来设置刷新控件的起始位置和终止位置。下面是scale的属性值解释。
+
+scale：
+     Set to true if there is no view at a higher z-order than
+      where the progress spinner is set to appear
+1
+2
+3
+2、public void setProgressViewEndTarget(boolean scale, int end)，设置刷新控件的终止位置，scale属性设置同上
+3、 public void setSize(int size)，设置刷新控件的大小，系统默认给我们提供两个选项：SwipeRefreshLayout.LARGE（大图）和SwipeRefreshLayout.DEFAULT（小图）。
+4、public void setOnRefreshListener(OnRefreshListener listener)，用于设置我们的下拉刷新回调事件，很重要的一个方法。
+
+5、 public void setRefreshing(boolean refreshing)，设置是否进行刷新，刷新完毕后设置为false，则刷新控件消失。
+
+6、public void setProgressBackgroundColor(int colorRes)，设置刷新控件的背景色。
+
+param colorRes Resource id of the color.
+1
+2
+7、public void setColorSchemeResources(int… colorResIds)，设置刷新控件动画中的颜色。参数为资源id
+
+8、public void setColorSchemeColors(int… colors)，设置刷新控件动画中的颜色。参数为颜色值。
+
+9、 public boolean isRefreshing()判断是否正在进行刷新状态。
+
+10、public void setRefreshing(boolean refreshing)，设置控件是否进行刷新
+
+以上就是我们比较常见的几个方法，其中5-10方法是我们比较常用的。下面我们就来进行使用下。
+
+我们在api21上进行使用，所以是新版的刷新效果。我们在android studio中建立一个名称为swiperefreshdemo的module来进行测试。" />
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

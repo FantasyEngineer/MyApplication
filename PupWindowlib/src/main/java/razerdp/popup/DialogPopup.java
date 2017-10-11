@@ -31,9 +31,11 @@ public class DialogPopup extends BasePopupWindow implements View.OnClickListener
         setViewClickListener(this, ok, cancel);
         //不允许点击外部消失
         setDismissWhenTouchOuside(false);
+        //不允许响应返回键
+        setBackPressEnable(false);
         //全屏
         setPopupWindowFullScreen(true);
-        setBackPressEnable(true);
+
 
     }
 

@@ -366,15 +366,27 @@ public abstract class BasePopupWindow implements BasePopup, PopupWindow.OnDismis
         }
     }
 
+    private boolean backPressEnable;
+
     /**
-     * 这个参数决定点击返回键是否可以取消掉PopupWindow
+     * 这个参数决定点击返回键是否可以取消掉PopupWindow（设置为true，是ok的，但是设置为false是不行的，按返回键会导致整个页面销毁。所以获取false之后，在activity中
+     * onBackPressed判断mPopupWindow是否打开，是否可以取消，然后适当的消费掉这个返回键）
      */
     public void setBackPressEnable(boolean backPressEnable) {
+        this.backPressEnable = backPressEnable;
         if (backPressEnable) {
             mPopupWindow.setBackgroundDrawable(new ColorDrawable());
         } else {
             mPopupWindow.setBackgroundDrawable(null);
         }
+    }
+
+    /**
+     * 获取是否响应返回键状态
+     * @return
+     */
+    public boolean getBackPressEnable() {
+        return backPressEnable;
     }
 
     /**
@@ -628,8 +640,7 @@ public abstract class BasePopupWindow implements BasePopup, PopupWindow.OnDismis
 
     /**
      * 点击外部是否消失
-     * <p>
-     * dismiss popup when touch ouside from popup
+     * 当为false时，不允许点击外部消失，点击返回键activity响应返回，造成整个页面销毁,将setFocusable置为true，是指在任何时候，back键都会响应pupwindow
      *
      * @param dismissWhenTouchOuside true for dismiss
      */
@@ -642,11 +653,13 @@ public abstract class BasePopupWindow implements BasePopup, PopupWindow.OnDismis
             mPopupWindow.setBackgroundDrawable(new ColorDrawable());
         } else {
             mPopupWindow.setFocusable(false);
+//            mPopupWindow.setFocusable(true);
             mPopupWindow.setOutsideTouchable(false);
             mPopupWindow.setBackgroundDrawable(null);
         }
 
     }
+
 
     public boolean isDismissWhenTouchOuside() {
         return dismissWhenTouchOuside;

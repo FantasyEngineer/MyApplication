@@ -101,7 +101,19 @@
             android:launchMode="singleTask" />
         <activity android:name=".activity.recycleViewAbout.AboutRecycleViewMainActivity" />
         <activity android:name=".activity.GIFshowFunctionAcitivity" />
-        <activity android:name=".activity.takephoto.PhotoDealMainActivity"></activity>
+        <activity android:name=".activity.takephoto.PhotoDealMainActivity" />
+        <activity android:name=".activity.stickyHeadRecycleview.StickyMainActivity" />
+        <activity android:name=".activity.md.MDMainActivity" />
+        <activity android:name=".activity.md.SwipeRefreshActivity" />
+        <activity
+            android:name=".activity.md.AppBarLayoutActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.md.AppBarLayoutActivity2"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.md.AppLayoutAndTableLayoutActivity"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
