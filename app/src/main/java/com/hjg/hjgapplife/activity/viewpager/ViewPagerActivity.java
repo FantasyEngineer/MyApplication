@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -22,6 +24,7 @@ import com.hjg.hjgapplife.adpter.viewPagerAdapter.VpAdapter1;
 import com.hjg.hjgapplife.adpter.viewPagerAdapter.VpAdapter2;
 import com.hjg.hjgapplife.listener.ViewPagerItemListener;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -61,6 +64,16 @@ public class ViewPagerActivity extends BaseActivity {
     ArrayList<View> view5s = new ArrayList<>();
 
     private LayoutInflater layoutInflater;
+    private ViewPager mViewPager;
+    private Button mLeft;
+    private Button mRight;
+    private static final int PAGER_NUM = 10;
+    private int mCurrentViewID = 0;
+    private int mMyDuration = 100;
+
+    private FixedSpeedScroller mScroller;
+    private YLeiPageAdapter mYLeiPageAdapter = null;
+    private List<View> mListViews;
 
     @Override
     protected void initTitle() {
@@ -87,10 +100,40 @@ public class ViewPagerActivity extends BaseActivity {
         //  public float getPageWidth(int position) {
         //      return 0.4f;//0-1范围。 0.5的时候一屏显示2个，0.4的时候显示2.5个。
         //  }
+        initViewPager();
         initPager2();
         initPager3();
         initPager4();
         initPagerCVP5();
+    }
+
+    private void initViewPager() {
+
+        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        mLeft = (Button) findViewById(R.id.left);
+        mRight = (Button) findViewById(R.id.right);
+        mLeft.setOnClickListener(mOnClickListener);
+        mRight.setOnClickListener(mOnClickListener);
+
+        mListViews = new ArrayList<View>();
+        for (int i = 1; i <= PAGER_NUM; i++) {
+            MyPagerView view = new MyPagerView(this, i);
+            mListViews.add(view);
+        }
+        mYLeiPageAdapter = new YLeiPageAdapter(this, mListViews);
+        mViewPager.setAdapter(mYLeiPageAdapter);
+        mViewPager.setOnPageChangeListener(mOnPageChangeListener);
+
+        try {
+            Field mField = ViewPager.class.getDeclaredField("mScroller");
+            mField.setAccessible(true);
+            mScroller = new FixedSpeedScroller(mViewPager.getContext(), new AccelerateInterpolator());
+            mField.set(mViewPager, mScroller);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //设置滑动时间,也可以在FixedSpeedScroller中设置mDuration
+//        mScroller.setmDuration(250);
     }
 
     private void initPager1() {
@@ -274,4 +317,57 @@ public class ViewPagerActivity extends BaseActivity {
         super.onResume();
         handler.sendEmptyMessageDelayed(msgWhat, 1000);
     }
+
+
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.left:
+                    //如果正在滑动，则点击无效
+                    if (isScroll) {
+                        return;
+                    }
+                    if (mCurrentViewID != 0) {
+                        mCurrentViewID--;
+                        mViewPager.setCurrentItem(mCurrentViewID, true);
+                    }
+                    //设置滑动时间
+                    break;
+                case R.id.right:
+                    //如果正在滑动，则点击无效
+                    if (isScroll) {
+                        return;
+                    }
+                    if (mCurrentViewID != PAGER_NUM - 1) {
+                        mCurrentViewID++;
+                        mViewPager.setCurrentItem(mCurrentViewID, true);
+                    }
+                    //设置滑动时间
+                    break;
+            }
+
+        }
+    };
+    boolean isScroll = false;
+    private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener() {
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            if (state == ViewPager.SCROLL_STATE_IDLE) {//滑动结束
+                isScroll = false;
+            } else if (state == ViewPager.SCROLL_STATE_SETTLING) {//正在滑动
+                isScroll = true;
+            }
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+        }
+
+        @Override
+        public void onPageSelected(int currentID) {
+            mCurrentViewID = currentID;
+        }
+    };
 }
