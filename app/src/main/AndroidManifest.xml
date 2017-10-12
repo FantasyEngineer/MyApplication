@@ -113,7 +113,11 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.md.AppLayoutAndTableLayoutActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".zxing.CaptureActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.CreateTwoBarActivity"></activity>
     </application>
 
 </manifest>

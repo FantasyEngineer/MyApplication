@@ -21,6 +21,7 @@ import com.hjg.hjgapplife.fragment.FirstFragment;
 import com.hjg.hjgapplife.fragment.FourFragment;
 import com.hjg.hjgapplife.fragment.SecondFragment;
 import com.hjg.hjgapplife.fragment.ThirdFragment;
+import com.hjg.hjgapplife.zxing.CaptureActivity;
 
 import java.util.ArrayList;
 
@@ -61,6 +62,12 @@ public class MainActivity extends BaseOthreRenderActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(activity, SelectCityActivity.class));
+            }
+        });
+        topBarManage.setRightButtonImgAndTxt(true, getResources().getDrawable(R.mipmap.saoyisao), "", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(activity, CaptureActivity.class));
             }
         });
     }

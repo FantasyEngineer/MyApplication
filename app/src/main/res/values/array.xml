@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string-array name="map_type">
+        <item>高德地图</item>
+        <item>百度地图</item>
+    </string-array>
+    <!--银行选择activity测试数据-->
+    <string-array name="date">
+        <item>中国银行</item>
+        <item>工商银行</item>
+        <item>农业银行</item>
+        <item>开发银行</item>
+        <item>中信实业银行</item>
+        <item>深圳发展银行</item>
+        <item>上海浦东发展银行</item>
+        <item>光大银行</item>
+        <item>浦发银行</item>
+    </string-array>
+    <!--二维码-->
+    <string-array name="preferences_front_light_values" tools:ignore="MissingTranslation">
+        <item>ON</item>
+        <item>AUTO</item>
+        <item>OFF</item>
+    </string-array>
+    <string-array name="preferences_front_light_options">
+        <item>@string/preferences_front_light_on</item>
+        <item>@string/preferences_front_light_auto</item>
+        <item>@string/preferences_front_light_off</item>
+    </string-array>
+</resources>

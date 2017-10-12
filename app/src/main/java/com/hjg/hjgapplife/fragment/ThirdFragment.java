@@ -28,6 +28,7 @@ import com.hjg.hjgapplife.activity.takephoto.LikeWeChatSelectPhotoActivity;
 import com.hjg.hjgapplife.activity.takephoto.PhotoDealMainActivity;
 import com.hjg.hjgapplife.activity.webview.WebViewActivity;
 import com.hjg.hjgapplife.activity.zoomview.PullToZoomMainActivity;
+import com.hjg.hjgapplife.zxing.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,6 +98,7 @@ public class ThirdFragment extends BaseFragment {
             results.add(new Item(9, "粘性标签", R.mipmap.icon_grid));
             results.add(new Item(10, "Material Design", R.mipmap.icon_grid));
             results.add(new Item(11, "app换肤", R.mipmap.icon_grid));
+            results.add(new Item(12, "二维码扫描", R.mipmap.icon_grid));
         }
 //        results.remove(results.size() - 1);
 //        results.add(new Item(results.size(), "更多", R.drawable.takeout_ic_more));
@@ -179,6 +181,9 @@ public class ThirdFragment extends BaseFragment {
                         break;
                     case 11:
                         WebViewActivity.startActivityToWebView(activity, "https://github.com/burgessjp/ThemeSkinning", "app换肤");
+                        break;
+                    case 12:
+                        startActivity(new Intent(activity, CaptureActivity.class));
                         break;
                 }
             }

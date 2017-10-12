@@ -70,7 +70,8 @@
             android:gravity="right|center_vertical"
             android:textColor="#323232"
             android:textSize="15dp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:drawableSize="20dp" />
 
         <View
             android:id="@+id/top_line"

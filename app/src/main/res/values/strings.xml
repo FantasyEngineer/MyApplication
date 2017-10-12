@@ -63,4 +63,45 @@
         enterAlwaysCollapsed从名字上就可以看出，这是在enterAlways的基础上，加上了“折叠”的效果。当我们开始向下滚动scrolling view时，本View会一起跟着滚动直到达到其“折叠高度”（即最小高度）。然后当scrolling view滚动至顶部内容完全显示后，再向下滚动scrolling view，本View会继续滚动到完全显示出来。具体效果如下：
         enterAlwaysCollapse注意，要达到上图所示效果，需要把layout_scrollFlags指定为“scroll|enterAlways|enterAlwaysCollapsed”。
         nap在一次滚动结束时，本View很可能只处于“部分显示”的状态，加上这个标记能够达到“要么完全隐藏，要么完全显示”的效果。到了这里，我们就把AppBarLayout能够实现的滚动行为介绍完毕了，很简单有木有。接下来我们再来介绍一下AppBarLayout的一个亲密朋友——CollapsingToolbarLayout。</string>
+
+    <!--二维码-->
+    <string name="app_name_qr">二维码扫描</string>
+    <string name="button_ok">确定</string>
+
+    <string name="msg_camera_framework_bug">无法开启摄像头，请在设置-应用管理-宁波银行-权限中开启【相机】权限</string>
+    <string name="msg_default_status">将二维码放入框内，即可自动扫描</string>
+
+    <string name="preferences_actions_title">找到条码时</string>
+    <string name="preferences_auto_focus_title">使用自动对焦</string>
+    <string name="preferences_bulk_mode_summary">连续扫描并保存多个条形码</string>
+    <string name="preferences_bulk_mode_title">批量扫描模式</string>
+    <string name="preferences_decode_1D_industrial_title">1D工业</string>
+    <string name="preferences_decode_1D_product_title">1D产品</string>
+    <string name="preferences_decode_Aztec_title">阿兹台克人</string>
+    <string name="preferences_decode_Data_Matrix_title">扫描 DM码</string>
+    <string name="preferences_decode_PDF417_title">PDF417 (β)</string>
+    <string name="preferences_decode_QR_title">扫描 QR码</string>
+    <string name="preferences_device_bug_workarounds_title">设备问题解决办法</string>
+    <string name="preferences_front_light_auto">自动</string>
+    <string name="preferences_front_light_off">待用</string>
+    <string name="preferences_front_light_on">活跃</string>
+    <string name="preferences_front_light_summary">前灯可用时，打开前灯</string>
+    <string name="preferences_front_light_title">前灯</string>
+    <string name="preferences_general_title">一般设置</string>
+    <string name="preferences_invert_scan_summary">黑色背景上的白色条形码扫描。在某些设备上。</string>
+    <string name="preferences_invert_scan_title">反向扫描</string>
+    <string name="preferences_name">设置</string>
+    <string name="preferences_play_beep_title">提示音</string>
+    <string name="preferences_result_title">结果设置</string>
+    <string name="preferences_scanning_title">条码类型选择</string>
+    <string name="preferences_supplemental_summary">尝试检索关于条码内容的更多信息</string>
+    <string name="preferences_supplemental_title">检索更多信息</string>
+    <string name="preferences_vibrate_title">振动</string>
+    <string name="twocode_tip">二维码扫描信息有误！</string>
+
+    <string name="album">相册</string>
+    <string name="flash_lamp_open">开灯</string>
+    <string name="flash_lamp_close">关灯</string>
+    <string name="barcode_create">生成</string>
+
 </resources>
