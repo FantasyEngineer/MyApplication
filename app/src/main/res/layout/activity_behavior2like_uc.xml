@@ -23,20 +23,35 @@
 
             <ImageView
                 android:id="@+id/backdrop"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax" />
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                app:layout_collapseMode="pin" />
+                android:src="@mipmap/a"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.8" />
+            <!--parallax为视差效果  app:layout_collapseParallaxMultiplier="0.8"-->
+            <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="60dp"-->
+            <!--app:layout_collapseMode="pin" />-->
             <!--pin属性是Toolbar会始终固定在顶部。-->
-
+            <TextView
+                android:id="@+id/holdToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="顶部是否有Toolbar保持,需要的话在xml中解除注释"
+                android:textColor="@color/red" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="立即购买" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView

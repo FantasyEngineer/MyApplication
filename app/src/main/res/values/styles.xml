@@ -20,6 +20,12 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+    <!--透明的activity主题-->
+    <style name="translucent" parent="AppTheme">
+        <item name="android:windowBackground">@color/transp</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <style name="TextViewStyle">
         <item name="android:textColor">@color/darkorange</item>
         <item name="android:textSize">@dimen/CustomTextSize</item>

@@ -398,11 +398,5 @@ public final class CaptureActivity extends BaseOthreRenderSwipActivity implement
     public void onClick(View view) {
         startActivity(new Intent(activity, CreateTwoBarActivity.class));
         overridePendingTransition(R.anim.startactivity_up_enter, 0);
-//        try {
-//            Bitmap bitmap = BarcodeCreateUtil.creatBarcode(activity, "这是生成的一维码", 700, 200, false);
-//            Bitmap bitmapTwo = BarcodeCreateUtil.createBarcode1("这是生成的二维码", 800, 800);
-//        } catch (WriterException e) {
-//            e.printStackTrace();
-//        }
     }
 }

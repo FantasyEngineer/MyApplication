@@ -6,7 +6,7 @@
 
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/appBarLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/darkorange">
@@ -23,16 +23,17 @@
 
             <ImageView
                 android:id="@+id/backdrop"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
+                android:src="@mipmap/background"
                 app:layout_collapseMode="parallax" />
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                app:layout_collapseMode="pin" />
+            <!--<android.support.v7.widget.Toolbar-->
+                <!--android:id="@+id/toolbar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="60dp"-->
+                <!--app:layout_collapseMode="pin" />-->
             <!--pin属性是Toolbar会始终固定在顶部。-->
 
 

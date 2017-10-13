@@ -117,7 +117,12 @@
         <activity
             android:name=".zxing.CaptureActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.CreateTwoBarActivity"></activity>
+        <activity
+            android:name=".activity.CreateTwoBarActivity"
+            android:theme="@style/translucent" />
+        <activity android:name=".activity.md.ImgAbsorbToolBarActivity" />
+        <activity android:name=".activity.md.Behavior1Activity" />
+        <activity android:name=".activity.md.Behavior2likeUCActivity"></activity>
     </application>
 
 </manifest>

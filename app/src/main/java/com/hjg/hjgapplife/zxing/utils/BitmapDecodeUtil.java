@@ -12,8 +12,6 @@ import com.hjg.baseapp.util.Logs;
 import java.io.FileNotFoundException;
 
 /**
- * @author tongxu_li
- *         Copyright (c) 2014 Shanghai P&C Information Technology Co., Ltd.
  */
 public class BitmapDecodeUtil {
 
