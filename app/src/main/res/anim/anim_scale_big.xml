@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="700"
+    android:fillAfter="true"
+    android:fromXScale="0.1"
+    android:fromYScale="0.1"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:toXScale="1.0"
+    android:toYScale="1.0">
+
+</scale><!--
+    android:fillAfter="true"    是否保持最后的状态， true保持  false 不保持
+    android:duration="700"      持续时间
+    android:fromXScale="0.0"    起始的X方向上相对自身的缩放比例 浮点值，比如1.0代表自身无变化，0.5代表起始时缩小一倍，2.0代表放大一倍
+    android:fromYScale="0.0"    起始的Y方向上相对自身的缩放比例，浮点值，
+    android:pivotX="50%"         缩放起点X轴坐标，可以是数值、百分数、百分数p 三种样式，比如 50、50%、50%p，当为数值时，表示在当前View的左上角，即原点处加上50px，做为起始缩放点；
+                                如果是50%，表示在当前控件的左上角加上自己宽度的50%做为起始点；如果是50%p，那么就是表示在当前的左上角加上父控件宽度的50%做为起始点x轴坐标。
+    android:pivotY="50%"         缩放起点Y轴坐标，取值及意义跟android:pivotX一样。
+    android:toXScale="1.4"
+    android:toYScale="1.4"
+
+-->
