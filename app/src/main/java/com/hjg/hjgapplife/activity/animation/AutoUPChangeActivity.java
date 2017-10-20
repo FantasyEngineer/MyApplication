@@ -39,7 +39,7 @@ public class AutoUPChangeActivity extends BaseOthreRenderSwipActivity {
         ll.postDelayed(new Runnable() {
             @Override
             public void run() {
-                ll.setAnimation(animation);
+                ll.startAnimation(animation);
 //                animation.start();
             }
         }, 200);

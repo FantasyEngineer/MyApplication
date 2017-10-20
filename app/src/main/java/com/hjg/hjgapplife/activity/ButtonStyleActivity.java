@@ -2,12 +2,16 @@ package com.hjg.hjgapplife.activity;
 
 import android.graphics.Color;
 import android.os.CountDownTimer;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hjg.baseapp.widget.AmountView;
+import com.hjg.baseapp.widget.FlowLayout;
 import com.hjg.baseapp.widget.goodsview.GoodView;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.base.BaseActivity;
@@ -15,6 +19,8 @@ import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.hjg.hjgapplife.activity.animation.AutoUPChangeActivity.dip2px;
 
 public class ButtonStyleActivity extends BaseActivity {
 
@@ -32,6 +38,8 @@ public class ButtonStyleActivity extends BaseActivity {
     TextView reset;
     @BindView(R.id.btn_count_time)
     Button btnCountTime;
+    @BindView(R.id.flowlayout)
+    FlowLayout flowlayout;
     private GoodView mGoodView;
     private TimeCount timeCount;
 
@@ -62,6 +70,31 @@ public class ButtonStyleActivity extends BaseActivity {
         MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinner);
         spinner.setItems("AlphaIn", "ScaleIn", "SlideInBottom", "SlideInLeft", "SlideInRight", "Custom");
 
+        //流式布局
+        initFlowLayout();
+    }
+
+    private void initFlowLayout() {
+        for (int i = 0; i < 10; i++) {
+            int ranHeight = dip2px(this, 30);
+            ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ranHeight);
+            lp.setMargins(dip2px(this, 3), 0, dip2px(this, 3), 0);
+            TextView tv = new TextView(this);
+            tv.setPadding(dip2px(this, 15), 0, dip2px(this, 15), 0);
+            tv.setTextColor(Color.parseColor("#FF3030"));
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+            if (i > 3) {
+                tv.setText("测试");
+            } else {
+                tv.setText("测");
+            }
+            tv.setGravity(Gravity.CENTER);
+            tv.setLines(1);
+            tv.setBackgroundResource(R.drawable.bg);
+            flowlayout.addView(tv, lp);
+        }
+        //设置展示行数
+        flowlayout.setMaxLines(1);
     }
 
     @Override
@@ -107,6 +140,7 @@ public class ButtonStyleActivity extends BaseActivity {
                 break;
         }
     }
+
 
     //计时器
     private class TimeCount extends CountDownTimer {

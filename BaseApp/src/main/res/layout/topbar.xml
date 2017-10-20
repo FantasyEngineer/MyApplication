@@ -4,10 +4,11 @@
     android:id="@+id/topBar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/transp">
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:background="@color/transp"
         android:layout_height="50dp">
         <!--文字标题-->
         <TextView

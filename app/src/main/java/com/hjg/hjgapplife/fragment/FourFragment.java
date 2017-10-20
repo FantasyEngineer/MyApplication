@@ -14,13 +14,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.hjg.baseapp.util.glide.GlideCircleTransform;
 import com.hjg.baseapp.widget.zoomview.OnScrollValueListener;
 import com.hjg.baseapp.widget.zoomview.PullToZoomBase;
 import com.hjg.baseapp.widget.zoomview.PullToZoomRecyclerViewEx;
 import com.hjg.baseapp.widget.zoomview.RecyclerViewHeaderAdapter;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+
+import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 /**
  * Created by Administrator on 2017/8/15 0015.
@@ -108,9 +111,14 @@ public class FourFragment extends BaseFragment {
             }
         });
         iv_user_head = (ImageView) headerView.findViewById(R.id.iv_user_head);
-        String url = "http://img.zcool.cn/community/016fa1587b3965a8012060c89283f6.jpg";
-        Glide.with(this).load(url).transform(new GlideCircleTransform(activity)).placeholder(R.mipmap.circle_bg).error(R.mipmap.circle_bg).into(iv_user_head);
-
+        String url = "http://img0.imgtn.bdimg.com/it/u=2398075737,160631337&fm=214&gp=0.jpg";
+        //老版本gilide
+//        Glide.with(this).load(url).transform(new GlideCircleTransform(activity)).placeholder(R.mipmap.circle_bg).error(R.mipmap.circle_bg).into(iv_user_head);
+        //新版本glide圆形头像
+        Glide.with(activity)
+                .load(url)
+                .apply(bitmapTransform(new CropCircleTransformation()).placeholder(R.mipmap.circle_bg).error(R.mipmap.circle_bg))
+                .into(iv_user_head);
     }
 
 //    @Override

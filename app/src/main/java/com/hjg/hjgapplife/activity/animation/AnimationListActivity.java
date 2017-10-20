@@ -2,6 +2,7 @@ package com.hjg.hjgapplife.activity.animation;
 
 import android.content.Intent;
 
+import com.hjg.hjgapplife.activity.TestActivity;
 import com.hjg.hjgapplife.activity.base.BaseListActivity;
 
 public class AnimationListActivity extends BaseListActivity {
@@ -16,6 +17,7 @@ public class AnimationListActivity extends BaseListActivity {
         dataList.add("高光部分界面");
         dataList.add("仿百度地图上拉滑动效果");
         dataList.add("济南汽车站首页效果");
+        dataList.add("头部动画，属性动画和视图动画");
     }
 
     @Override
@@ -43,6 +45,9 @@ public class AnimationListActivity extends BaseListActivity {
                 break;
             case 6:
                 startActivity(new Intent(activity, AutoUPChangeActivity.class));
+                break;
+            case 7:
+                startActivity(new Intent(activity, TestActivity.class));
                 break;
         }
     }

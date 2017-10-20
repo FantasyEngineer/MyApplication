@@ -140,7 +140,7 @@ public final class CaptureActivityHandler extends Handler {
             // continue
         }
 
-        // Be absolutely sure we don't send any queued startactivity_down_exit messages
+        // Be absolutely sure we don't send any queued top_exit messages
         removeMessages(R.id.decode_succeeded);
         removeMessages(R.id.decode_failed);
     }

@@ -122,7 +122,9 @@
             android:theme="@style/translucent" />
         <activity android:name=".activity.md.ImgAbsorbToolBarActivity" />
         <activity android:name=".activity.md.Behavior1Activity" />
-        <activity android:name=".activity.md.Behavior2likeUCActivity"></activity>
+        <activity android:name=".activity.md.Behavior2likeUCActivity" />
+        <activity android:name=".activity.takephoto.glide.GlideUseActivity" />
+        <activity android:name=".activity.TestActivity"></activity>
     </application>
 
 </manifest>

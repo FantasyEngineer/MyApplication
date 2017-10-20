@@ -21,8 +21,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:src="@mipmap/icon_headphoto" />
+        android:layout_marginTop="80dp" />
 
     <TextView
         android:id="@+id/tv_user_name"

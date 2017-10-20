@@ -1,9 +1,12 @@
 package com.hjg.baseapp.manage;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -47,6 +50,7 @@ public class TopBarManage {
         TopTextView = (TextView) topBarView.findViewById(R.id.tvTopTextTitle);
         leftButton = (MyRadioButton) topBarView.findViewById(R.id.btnTopLeft);
         rightButton = (MyRadioButton) topBarView.findViewById(R.id.btnTopRight);
+        topBar = (RelativeLayout) topBarView.findViewById(R.id.topBar);
     }
 
     public void setTopBarPaddingTop(int padding) {
@@ -164,6 +168,15 @@ public class TopBarManage {
     }
 
     /**
+     * 获取最外层布局
+     *
+     * @return
+     */
+    public RelativeLayout getTopBar() {
+        return topBar;
+    }
+
+    /**
      * 获取右边控件
      *
      * @return
@@ -171,4 +184,44 @@ public class TopBarManage {
     public RadioButton getRightBtn() {
         return rightButton;
     }
+
+    int height = 0;
+
+    //从展示到消失，逐渐改变高度的值，然后动态设置高度值实现动画效果
+    public void dismiss() {
+        height = getTopBar().getHeight();
+        Log.d("TopBarManage", "height:" + height);
+        ValueAnimator scaleY = ValueAnimator.ofInt(height, 0); ////第二个高度 需要注意一下, 因为view默认是GONE  无法直接获取高度
+        scaleY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int animatorValue = Integer.valueOf(animation.getAnimatedValue() + "");
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) getTopBar().getLayoutParams();
+                params.height = animatorValue;
+                getTopBar().setLayoutParams(params);
+            }
+        });
+        scaleY.setTarget(getTopBar());
+        scaleY.setDuration(250);
+        scaleY.start();
+    }
+
+    //从无到展示，逐渐改变高度的值，然后动态设置高度值实现动画效果
+    public void show() {
+        isVisibleTopbar(true);
+        ValueAnimator scaleY = ValueAnimator.ofInt(0, height); ////第二个高度 需要注意一下, 因为view默认是GONE  无法直接获取高度
+        scaleY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int animatorValue = Integer.valueOf(animation.getAnimatedValue() + "");
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) getTopBar().getLayoutParams();
+                params.height = animatorValue;
+                getTopBar().setLayoutParams(params);
+            }
+        });
+        scaleY.setTarget(getTopBar());
+        scaleY.setDuration(250);
+        scaleY.start();
+    }
+
 }

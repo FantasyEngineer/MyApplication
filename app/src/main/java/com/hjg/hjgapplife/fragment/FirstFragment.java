@@ -1,5 +1,6 @@
 package com.hjg.hjgapplife.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -18,6 +20,7 @@ import com.hjg.baseapp.adapter.RvCommonAdapter;
 import com.hjg.baseapp.adapter.ViewHolder;
 import com.hjg.baseapp.widget.VerticalTextview;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.TestActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.transitionhelper.PhotoShowActivity;
 
@@ -27,6 +30,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import butterknife.BindView;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import immortalz.me.library.TransitionsHeleper;
 
 /**
@@ -36,6 +42,9 @@ import immortalz.me.library.TransitionsHeleper;
 public class FirstFragment extends BaseFragment implements View.OnClickListener {
 
     private static FirstFragment firstFragment;
+    @BindView(R.id.btn_test)//测试按钮
+            TextView btnTest;
+    Unbinder unbinder;
     //    滚动广告的集合
     private ArrayList<String> titleList = new ArrayList<String>();
     //banner切换动画特效集合
@@ -200,6 +209,19 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    /**
+     * 跳转到测试界面
+     */
+    @OnClick(R.id.btn_test)
+    public void onViewClicked() {
     }
 
     public class PageChangeListener implements ViewPagerEx.OnPageChangeListener {

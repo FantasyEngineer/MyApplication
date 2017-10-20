@@ -1,7 +1,10 @@
 package com.hjg.hjgapplife.activity.takephoto;
 
+import android.content.Intent;
+
 import com.hjg.hjgapplife.activity.GIFshowFunctionAcitivity;
 import com.hjg.hjgapplife.activity.baseRender.BaseOtherRenderListActivity;
+import com.hjg.hjgapplife.activity.takephoto.glide.GlideUseActivity;
 
 public class PhotoDealMainActivity extends BaseOtherRenderListActivity {
     @Override
@@ -19,6 +22,11 @@ public class PhotoDealMainActivity extends BaseOtherRenderListActivity {
                 GIFshowFunctionAcitivity.startActivityToGIFView(activity, "crop");
                 break;
             case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                startActivity(new Intent(activity, GlideUseActivity.class));
                 break;
         }
     }
