@@ -72,7 +72,7 @@ public class TopBarManage {
      *
      * @param show
      */
-    public void isVisibleTopbar(boolean show) {
+    public void setVisibleTopbar(boolean show) {
         topBarView.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
@@ -208,7 +208,7 @@ public class TopBarManage {
 
     //从无到展示，逐渐改变高度的值，然后动态设置高度值实现动画效果
     public void show() {
-        isVisibleTopbar(true);
+        setVisibleTopbar(true);
         ValueAnimator scaleY = ValueAnimator.ofInt(0, height); ////第二个高度 需要注意一下, 因为view默认是GONE  无法直接获取高度
         scaleY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override

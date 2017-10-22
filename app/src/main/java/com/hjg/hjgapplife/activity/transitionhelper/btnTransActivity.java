@@ -26,7 +26,7 @@ public class btnTransActivity extends BaseActivity {
 
     @Override
     protected void initTitle() {
-        topBarManage.isVisibleTopbar(true);
+        topBarManage.setVisibleTopbar(true);
         topBarManage.iniTop(true, "btn穿透");
     }
 

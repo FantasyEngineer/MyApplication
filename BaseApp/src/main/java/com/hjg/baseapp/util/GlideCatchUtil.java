@@ -1,15 +1,9 @@
 package com.hjg.baseapp.util;//package cn.com.xizhi.linktown.c;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Looper;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -71,34 +65,34 @@ public class GlideCatchUtil {
         return false;
     }
 
-    public static void loadImg(Activity at, String path, int reeorRes, ImageView iv) {
-        Glide.with(at).load(path).error(reeorRes).into(iv);
-    }
-
-    public static void loadImg(Context at, String path, int reeorRes, ImageView iv) {
-        Glide.with(at).load(path).error(reeorRes).into(iv);
-    }
-
-
-    public static void loadResImg(Activity at, int reeorRes, ImageView iv) {
-        Glide.with(at).load(reeorRes).into(iv);
-    }
-
-    public static void loadResImg(Context at, int reeorRes, ImageView iv) {
-        Glide.with(at).load(reeorRes).into(iv);
-    }
-
-    public static void loadRoundmg(final Activity at, String path, int reeorRes, final ImageView iv) {
-        Glide.with(at).load(path).asBitmap().centerCrop().error(reeorRes).into(new BitmapImageViewTarget(iv) {
-            @Override
-            protected void setResource(Bitmap resource) {
-                RoundedBitmapDrawable circularBitmapDrawable =
-                        RoundedBitmapDrawableFactory.create(at.getResources(), resource);
-                circularBitmapDrawable.setCircular(true);
-                iv.setImageDrawable(circularBitmapDrawable);
-            }
-        });
-    }
+//    public static void loadImg(Activity at, String path, int reeorRes, ImageView iv) {
+//        Glide.with(at).load(path).error(reeorRes).into(iv);
+//    }
+//
+//    public static void loadImg(Context at, String path, int reeorRes, ImageView iv) {
+//        Glide.with(at).load(path).error(reeorRes).into(iv);
+//    }
+//
+//
+//    public static void loadResImg(Activity at, int reeorRes, ImageView iv) {
+//        Glide.with(at).load(reeorRes).into(iv);
+//    }
+//
+//    public static void loadResImg(Context at, int reeorRes, ImageView iv) {
+//        Glide.with(at).load(reeorRes).into(iv);
+//    }
+//
+//    public static void loadRoundmg(final Activity at, String path, int reeorRes, final ImageView iv) {
+//        Glide.with(at).load(path).asBitmap().centerCrop().error(reeorRes).into(new BitmapImageViewTarget(iv) {
+//            @Override
+//            protected void setResource(Bitmap resource) {
+//                RoundedBitmapDrawable circularBitmapDrawable =
+//                        RoundedBitmapDrawableFactory.create(at.getResources(), resource);
+//                circularBitmapDrawable.setCircular(true);
+//                iv.setImageDrawable(circularBitmapDrawable);
+//            }
+//        });
+//    }
 
     //    public static void setImageSrc(final SimpleDraweeView draweeView, Uri uri, int width, int height) {
     //        ImageRequestBuilder builder = ImageRequestBuilder.newBuilderWithSource(uri);

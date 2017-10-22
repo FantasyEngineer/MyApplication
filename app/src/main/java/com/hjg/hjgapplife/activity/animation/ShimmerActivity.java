@@ -37,7 +37,7 @@ public class ShimmerActivity extends BaseOthreRenderSwipActivity {
 
     @Override
     protected void initTitle() {
-        topBarManage.isVisibleTopbar(false);
+        topBarManage.setVisibleTopbar(false);
     }
 
     @Override

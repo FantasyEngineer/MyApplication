@@ -30,7 +30,7 @@ public class RotationActivity extends BaseOthreRenderSwipActivity {
 
     @Override
     protected void initTitle() {
-        topBarManage.isVisibleTopbar(false);
+        topBarManage.setVisibleTopbar(false);
     }
 
     @Override

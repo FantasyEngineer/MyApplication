@@ -26,7 +26,9 @@ dependencies {
     //recyclerview
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     //glide加载图片
-    compile 'com.github.bumptech.glide:glide:3.6.1'
+//    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'jp.wasabeef:glide-transformations:3.0.1'
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
     //请求权限
     compile 'pub.devrel:easypermissions:0.4.3'
     //卡片式折叠交互CardStackView
@@ -44,5 +46,7 @@ dependencies {
     compile 'com.android.support:design:26.0.0-alpha1'
     //  recycleview粘性标签
     compile 'com.oushangfeng:PinnedSectionItemDecoration:1.2.4'
+    //图片手势
+    compile 'com.github.chrisbanes:PhotoView:1.2.6'
 
 }

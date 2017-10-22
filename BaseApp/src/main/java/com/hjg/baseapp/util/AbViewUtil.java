@@ -28,14 +28,9 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.hjg.baseapp.R;
-import com.hjg.baseapp.util.glide.GlideRoundTransform;
 
 import java.io.InputStream;
 
@@ -506,15 +501,4 @@ public class AbViewUtil {
 
 	}
 
-	/**
-	 *  设置圆角图片
-	 * @param imageView imageView ID
-	 * @param imgUrl 路径
-	 * @param imgRadian	弧度
-	 */
-	public static void filletImageView(Context context, ImageView imageView, String imgUrl, int imgRadian){
-
-		Glide.with(context).load(imgUrl).error(R.mipmap.ic_luncher).transform(new GlideRoundTransform(context,imgRadian)).into(imageView);
-
-	}
 }

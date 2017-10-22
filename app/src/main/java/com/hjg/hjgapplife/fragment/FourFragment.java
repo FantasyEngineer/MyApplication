@@ -113,7 +113,6 @@ public class FourFragment extends BaseFragment {
         iv_user_head = (ImageView) headerView.findViewById(R.id.iv_user_head);
         String url = "http://img0.imgtn.bdimg.com/it/u=2398075737,160631337&fm=214&gp=0.jpg";
         //老版本gilide
-//        Glide.with(this).load(url).transform(new GlideCircleTransform(activity)).placeholder(R.mipmap.circle_bg).error(R.mipmap.circle_bg).into(iv_user_head);
         //新版本glide圆形头像
         Glide.with(activity)
                 .load(url)

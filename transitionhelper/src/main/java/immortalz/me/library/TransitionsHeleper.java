@@ -237,6 +237,7 @@ public class TransitionsHeleper {
                 //create a temp ImageView to replace origin view
                 final ImageView ivTemp = new ImageView(activity);
                 ivTemp.setScaleType(ImageView.ScaleType.FIT_XY);
+                ivTemp.setScaleType(ImageView.ScaleType.FIT_XY);
                 if (bean.bitmap != null) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         ivTemp.setImageDrawable(new BitmapDrawable(bean.bitmap));

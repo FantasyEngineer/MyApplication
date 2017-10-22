@@ -33,7 +33,7 @@ public class LikeBDMap2Activity extends BaseOthreRenderSwipActivity {
     @Override
     protected void initTitle() {
 //        topBarManage.iniTop(true, "嵌套ScrollView效果");
-        topBarManage.isVisibleTopbar(false);
+        topBarManage.setVisibleTopbar(false);
         topBar = (RelativeLayout) findViewById(R.id.topBar);
         tvTopTextTitle = (TextView) topBar.findViewById(R.id.tvTopTextTitle);
         tvTopTextTitle.setVisibility(View.VISIBLE);

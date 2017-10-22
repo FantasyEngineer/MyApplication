@@ -138,14 +138,14 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 隐藏bar
      */
     public void hideTopBar() {
-        topBarManage.isVisibleTopbar(false);
+        topBarManage.setVisibleTopbar(false);
     }
 
     /**
      * 展示bar
      */
     public void showTopBar() {
-        topBarManage.isVisibleTopbar(true);
+        topBarManage.setVisibleTopbar(true);
     }
 
     @Override
