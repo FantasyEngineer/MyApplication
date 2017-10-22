@@ -31,6 +31,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import uk.co.senab.photoview.PhotoView;
 
 /**
  * 首页展示的各种ViewPager的样式
@@ -138,8 +139,8 @@ public class ViewPagerActivity extends BaseActivity {
 
     private void initPager1() {
         for (int i = 0; i < mDatas.size(); i++) {
-            ImageView imageView = new ImageView(activity);
-            imageView.setBackgroundResource(mDatas.get(i));
+            PhotoView imageView = new PhotoView(activity);
+            imageView.setImageResource(mDatas.get(i));
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             imageView.setLayoutParams(params);

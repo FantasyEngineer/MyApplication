@@ -52,7 +52,7 @@
             style="@style/TextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="最普通的Viewpager展示效果" />
+            android:text="最普通的Viewpager展示效果(内嵌photoView)" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_1"
