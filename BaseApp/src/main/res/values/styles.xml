@@ -41,4 +41,15 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
     </style>
+
+    <!-- ***************************************GifView*************************************** -->
+    <declare-styleable name="CustomTheme">
+        <attr name="gifViewStyle" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="GifView">
+        <attr name="gif" format="reference"/>
+        <attr name="paused" format="boolean"/>
+    </declare-styleable>
+
+    <style name="Widget_GifView"></style>
 </resources>
