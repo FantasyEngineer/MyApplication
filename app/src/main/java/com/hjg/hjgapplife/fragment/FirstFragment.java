@@ -20,6 +20,7 @@ import com.hjg.baseapp.adapter.ViewHolder;
 import com.hjg.baseapp.widget.VerticalTextview;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
+import com.hjg.hjgapplife.activity.takephoto.PhotoViewActivity;
 import com.hjg.hjgapplife.activity.transitionhelper.PhotoShowActivity;
 
 import java.util.ArrayList;
@@ -174,7 +175,12 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
                                 recycleViewHorizatal.getLayoutManager();
                         int lastposition = linearManager.findLastVisibleItemPosition();
                         Log.d("FirstFragment", "最后的position===:" + lastposition);
-                        TransitionsHeleper.startActivity(activity, PhotoShowActivity.class, iv, resid, position == lastposition);
+                        //两种不同的图片展示方式
+                        if (position % 2 == 0) {
+                            TransitionsHeleper.startActivity(activity, PhotoShowActivity.class, iv, resid, position == lastposition);
+                        } else {
+                            TransitionsHeleper.startActivity(activity, PhotoViewActivity.class, iv, resid, position == lastposition);
+                        }
                     }
                 });
             }

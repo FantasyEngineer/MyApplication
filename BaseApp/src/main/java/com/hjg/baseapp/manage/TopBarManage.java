@@ -5,8 +5,8 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -196,7 +196,7 @@ public class TopBarManage {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 int animatorValue = Integer.valueOf(animation.getAnimatedValue() + "");
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) getTopBar().getLayoutParams();
+                ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) getTopBar().getLayoutParams();
                 params.height = animatorValue;
                 getTopBar().setLayoutParams(params);
             }
@@ -214,7 +214,7 @@ public class TopBarManage {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 int animatorValue = Integer.valueOf(animation.getAnimatedValue() + "");
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) getTopBar().getLayoutParams();
+                ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) getTopBar().getLayoutParams();
                 params.height = animatorValue;
                 getTopBar().setLayoutParams(params);
             }

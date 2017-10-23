@@ -2,11 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical">
 
-    <View
+    <FrameLayout
+        android:id="@+id/fl_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/gray" />
+        android:layout_height="match_parent"></FrameLayout>
+
+    <include
+        android:id="@+id/topBar"
+        layout="@layout/topbar" />
 </RelativeLayout>
