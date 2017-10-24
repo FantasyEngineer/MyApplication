@@ -105,7 +105,7 @@ public class PupWindowActivity extends BaseListActivity {
 
     @Override
     public void onBackPressed() {
-        if (dialogPopup.isShowing()) {
+        if (dialogPopup != null && dialogPopup.isShowing()) {
             if (dialogPopup.getBackPressEnable()) {
                 dialogPopup.dismiss();
             } else {

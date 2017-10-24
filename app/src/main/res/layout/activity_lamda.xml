@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hjg.hjgapplife.activity.Lambda.LamdaActivity">
+
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="匿名内部类使用Lambda" />
+
+    <Button
+        android:id="@+id/btn_foreach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用Lambda打印循环体内容" />
+
+
+    <Button
+        android:id="@+id/btn_runnable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用Lambda实现runnable内容" />
+
+    <Button
+        android:id="@+id/btn_sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用Lambda实现排序" />
+
+    <Button
+        android:id="@+id/btn_modify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用Lambdas修改对象的属性" />
+
+    <Button
+        android:id="@+id/btn_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用Lambdas根据条件过滤对象" />
+    <Button
+        android:id="@+id/btn_limit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用Lambdas限制结果集数量" />
+
+</LinearLayout>

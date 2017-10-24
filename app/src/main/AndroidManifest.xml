@@ -125,7 +125,10 @@
         <activity android:name=".activity.md.Behavior2likeUCActivity" />
         <activity android:name=".activity.takephoto.glide.GlideUseActivity" />
         <activity android:name=".activity.TestActivity" />
-        <activity android:name=".activity.takephoto.PhotoViewActivity"></activity>
+        <activity android:name=".activity.takephoto.PhotoViewActivity" />
+        <activity android:name=".activity.animation.LikeQQShakeActivity" />
+        <activity android:name=".activity.Lambda.LamdaActivity" />
+        <activity android:name=".activity.TestUPviewActivity"></activity>
     </application>
 
 </manifest>

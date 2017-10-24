@@ -18,6 +18,7 @@ public class AnimationListActivity extends BaseListActivity {
         dataList.add("仿百度地图上拉滑动效果");
         dataList.add("济南汽车站首页效果");
         dataList.add("头部动画，属性动画和视图动画");
+        dataList.add("仿qq震动");
     }
 
     @Override
@@ -48,6 +49,9 @@ public class AnimationListActivity extends BaseListActivity {
                 break;
             case 7:
                 startActivity(new Intent(activity, TestActivity.class));
+                break;
+            case 8:
+                startActivity(new Intent(activity, LikeQQShakeActivity.class));
                 break;
         }
     }

@@ -1,5 +1,6 @@
 package com.hjg.hjgapplife.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import com.hjg.baseapp.adapter.RvCommonAdapter;
 import com.hjg.baseapp.adapter.ViewHolder;
 import com.hjg.baseapp.widget.VerticalTextview;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.TestUPviewActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.takephoto.PhotoViewActivity;
 import com.hjg.hjgapplife.activity.transitionhelper.PhotoShowActivity;
@@ -223,6 +225,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
      */
     @OnClick(R.id.btn_test)
     public void onViewClicked() {
+        startActivity(new Intent(activity, TestUPviewActivity.class));
     }
 
     public class PageChangeListener implements ViewPagerEx.OnPageChangeListener {
