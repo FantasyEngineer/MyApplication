@@ -4,7 +4,9 @@ import android.content.Context;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -13,10 +15,12 @@ import android.widget.Toast;
 
 import com.hjg.baseapp.adapter.listViewAdapter.mBaseAdapter;
 import com.hjg.baseapp.adapter.listViewAdapter.mViewHolder;
+import com.hjg.baseapp.util.AbAppUtil;
 import com.hjg.baseapp.util.pinyin.CharacterParser;
 import com.hjg.baseapp.widget.ClearEditText;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.base.BaseActivity;
+import com.hjg.hjgapplife.entity.EventBusBean;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +28,7 @@ import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
+import xiaofei.library.hermeseventbus.HermesEventBus;
 
 public class SelectCityActivity extends BaseActivity implements com.hjg.baseapp.widget.SideBar.OnTouchingLetterChangedListener {
 
@@ -76,12 +81,30 @@ public class SelectCityActivity extends BaseActivity implements com.hjg.baseapp.
         adapter = new SortAdapter(this, SourceDateList);
         lvCountry.setAdapter(adapter);
         lvCountry.addHeaderView(view);
+
+        //地址被点击之后，发送到首页，用于头部显示
         lvCountry.setOnItemClickListener(((adapterView, view1, positon, l) -> {
-            Toast.makeText(activity, SourceDateList.get(positon - 1).getName(), Toast.LENGTH_SHORT).show();
+            HermesEventBus.getDefault().post(new EventBusBean(EventBusBean.CitySelect, SourceDateList.get(positon - 1).getName()));
+            activity.finish();
         }));
-        mGridView.setOnItemClickListener((adapterView, view1, i, l) ->
-                Toast.makeText(activity, remenCity.get(i) + "", Toast.LENGTH_SHORT).show()
+        mGridView.setOnItemClickListener((adapterView, view1, i, l) -> {
+                    HermesEventBus.getDefault().post(new EventBusBean(EventBusBean.CitySelect, remenCity.get(i) + ""));
+                    activity.finish();
+                }
         );
+        //当listview滑动的时候，关闭键盘
+        lvCountry.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_MOVE:
+                        // 触摸移动时的操作
+                        AbAppUtil.closeSoftInput(activity);
+                        break;
+                }
+                return false;
+            }
+        });
 
     }
 

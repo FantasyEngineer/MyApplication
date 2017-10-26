@@ -3,6 +3,7 @@ package com.hjg.hjgapplife.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderActivity;
 import com.hjg.hjgapplife.activity.guide.SimpleComponent;
 import com.hjg.hjgapplife.activity.seclectCity.SelectCityActivity;
+import com.hjg.hjgapplife.entity.EventBusBean;
 import com.hjg.hjgapplife.entity.TabEntity;
 import com.hjg.hjgapplife.fragment.FirstFragment;
 import com.hjg.hjgapplife.fragment.FourFragment;
@@ -198,5 +200,17 @@ public class MainActivity extends BaseOthreRenderActivity {
     public void onSaveInstanceState(Bundle outState) {
         outState.putInt("position", currentPosition);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onEventMainThread(Object object) {
+        //从地址选择界面选中后，重置title
+        if (object instanceof EventBusBean) {
+            EventBusBean bean = (EventBusBean) object;
+            if (bean.getFlag() == EventBusBean.CitySelect) {
+                topBarManage.getLeftBtn().setText(bean.getContent());
+            }
+        }
+
     }
 }

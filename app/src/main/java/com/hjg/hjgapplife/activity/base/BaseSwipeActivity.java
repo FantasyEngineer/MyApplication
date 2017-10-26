@@ -16,11 +16,16 @@ import com.hjg.baseapp.manage.TopBarManage;
 import com.hjg.baseapp.util.ACache;
 import com.hjg.baseapp.util.StatusBarUtil;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.ButterKnife;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import xiaofei.library.hermeseventbus.HermesEventBus;
 
 
 /**
+ * 无用的基类（采用的是系统的头部布局，可以侧滑删除页面）
  * 这里的BaseActivituy是给使用Knife插件的activity使用的。
  * 因为插件的build.gradle设置必须在app包下的build.gradle设置。
  * 如果在baseLib中就引入不到knife的包。
@@ -39,6 +44,7 @@ public abstract class BaseSwipeActivity extends me.imid.swipebacklayout.lib.app.
         super.onCreate(savedInstanceState);
         // 取消标题栏
         activity = this;
+        HermesEventBus.getDefault().register(activity);
         setContentView(R.layout.baselayout);
         fl_content = (FrameLayout) findViewById(R.id.fl_content);
         View view = LayoutInflater.from(this).inflate(getContentLayout(), null);
@@ -175,6 +181,13 @@ public abstract class BaseSwipeActivity extends me.imid.swipebacklayout.lib.app.
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        HermesEventBus.getDefault().unregister(activity);
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)//在ui线程执行
+    public void onEventMainThread(Object object) {
+        
     }
 
 

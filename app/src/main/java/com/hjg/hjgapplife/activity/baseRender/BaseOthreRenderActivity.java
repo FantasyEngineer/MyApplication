@@ -17,11 +17,13 @@ import android.widget.FrameLayout;
 import com.hjg.baseapp.R;
 import com.hjg.baseapp.manage.TopBarManage;
 import com.hjg.baseapp.util.ACache;
+import com.hjg.hjgapplife.entity.EventBusBean;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.ButterKnife;
+import xiaofei.library.hermeseventbus.HermesEventBus;
 
 
 /**
@@ -57,7 +59,7 @@ public abstract class BaseOthreRenderActivity extends AppCompatActivity {
             //4.4 全透明状态栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-
+        HermesEventBus.getDefault().register(activity);
         setContentView(R.layout.baselayout);
         fl_content = (FrameLayout) findViewById(R.id.fl_content);
         View view = LayoutInflater.from(this).inflate(getContentLayout(), null);
@@ -145,6 +147,7 @@ public abstract class BaseOthreRenderActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        HermesEventBus.getDefault().unregister(this);
     }
 
     /**
@@ -163,6 +166,6 @@ public abstract class BaseOthreRenderActivity extends AppCompatActivity {
 
     //eventbus
     @Subscribe(threadMode = ThreadMode.MAIN)//在ui线程执行
-    public void onEventMainThread(Object object) {
+    public void onEventMainThread(Object bean) {
     }
 }

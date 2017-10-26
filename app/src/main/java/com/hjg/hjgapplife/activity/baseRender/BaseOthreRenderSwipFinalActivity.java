@@ -30,9 +30,10 @@ import xiaofei.library.hermeseventbus.HermesEventBus;
 
 
 /**
+ * 基类最优选择
  * 基于BaseOthreRenderActivity的侧滑关闭页面
  * 不同在于状态栏的渲染方式不同
- * 外布局可以修改是scrollview或者Relativelayoyut
+ * 外布局可以修改是scrollview或者Relativelayoyut可以为Linearlayout
  */
 
 public abstract class BaseOthreRenderSwipFinalActivity extends me.imid.swipebacklayout.lib.app.SwipeBackActivity {

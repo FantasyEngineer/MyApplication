@@ -15,6 +15,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import xiaofei.library.hermeseventbus.HermesEventBus;
 
 
 public abstract class BaseFragment extends Fragment {
@@ -154,5 +155,4 @@ public abstract class BaseFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)//在ui线程执行
     public void onEventMainThread(Object object) {
     }
-
 }

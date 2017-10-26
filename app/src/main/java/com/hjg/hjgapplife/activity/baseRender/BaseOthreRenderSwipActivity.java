@@ -32,7 +32,7 @@ import xiaofei.library.hermeseventbus.HermesEventBus;
 /**
  * 基于BaseOthreRenderActivity的侧滑关闭页面
  * 不同在于状态栏的渲染方式不同
- * 其他OK
+ * 外部布局为Linearlayout
  */
 
 public abstract class BaseOthreRenderSwipActivity extends me.imid.swipebacklayout.lib.app.SwipeBackActivity {
