@@ -39,14 +39,14 @@ public class SecondFragment extends BaseFragment implements AdapterView.OnItemCl
             "ViewPager各种展示效果",
             "Button的各种样式",
             "字符串操作",
-            "头部pager展示",
+            "仿TableLayout顶部标签",
             "通知栏相关",
             "另一种方式的状态栏渗透",
             "需要申请权限实现全局悬浮",
             "RecycleView相关",
-            "右滑退出页面",
+            "左、右、上滑退出页面",
             "卡片式布局",
-            "BaseRecyclerViewAdapterHelper",
+            "此处无效果",
             "Lambda范例使用"));
 
     public static SecondFragment getInstance() {
@@ -119,7 +119,6 @@ public class SecondFragment extends BaseFragment implements AdapterView.OnItemCl
                 startActivity(new Intent(activity, CardStackViewActivity.class));
                 break;
             case 12:
-                WebViewActivity.startActivityToWebView(activity, "http://www.recyclerview.org/", "RecyViewAdapterHelper");
                 break;
             case 13:
                 startActivity(new Intent(activity, LamdaActivity.class));

@@ -1,4 +1,4 @@
-package com.hjg.hjgapplife.activity.stickyHeadRecycleview.adapter;
+package com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.adapter;
 
 import android.support.v7.widget.RecyclerView;
 

@@ -1,4 +1,4 @@
-//package com.hjg.hjgapplife.activity.stickyHeadRecycleview.adapter;
+//package com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.adapter;
 //
 //import android.graphics.Color;
 //import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,7 @@
 //import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 //import com.chad.library.adapter.base.BaseViewHolder;
 //import com.hjg.hjgapplife.R;
-//import com.hjg.hjgapplife.activity.stickyHeadRecycleview.entitiy.StockEntity;
+//import com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.entitiy.StockEntity;
 //import com.oushangfeng.pinnedsectionitemdecoration.utils.FullSpanUtil;
 //
 //import java.util.List;

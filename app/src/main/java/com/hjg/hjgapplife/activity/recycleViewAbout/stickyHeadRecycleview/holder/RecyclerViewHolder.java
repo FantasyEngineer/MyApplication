@@ -1,4 +1,4 @@
-package com.hjg.hjgapplife.activity.stickyHeadRecycleview.holder;
+package com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.holder;
 
 import android.content.Context;
 import android.graphics.Bitmap;

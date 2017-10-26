@@ -1,4 +1,4 @@
-package com.hjg.hjgapplife.activity.stickyHeadRecycleview.callback;
+package com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.callback;
 
 import android.view.View;
 

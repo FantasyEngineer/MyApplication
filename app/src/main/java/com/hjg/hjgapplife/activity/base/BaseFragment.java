@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 
 import com.hjg.baseapp.util.ACache;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -146,6 +149,10 @@ public abstract class BaseFragment extends Fragment {
             v = view.findViewById(id);
         }
         return v;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)//在ui线程执行
+    public void onEventMainThread(Object object) {
     }
 
 }

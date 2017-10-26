@@ -61,18 +61,11 @@ public class MainActivity extends BaseOthreRenderActivity {
     @Override
     public void initTitle() {
         topBarManage.iniTop(true, R.mipmap.icon_home);
-        topBarManage.setLeftButtonImgAndTxt(true, getResources().getDrawable(R.mipmap.icon_location), "定位", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(activity, SelectCityActivity.class));
-            }
+        topBarManage.setLeftButtonImgAndTxt(true, getResources().getDrawable(R.mipmap.icon_location), "定位", view -> {
+            startActivity(new Intent(activity, SelectCityActivity.class));
         });
-        topBarManage.setRightButtonImgAndTxt(true, getResources().getDrawable(R.mipmap.saoyisao), "", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(activity, CaptureActivity.class));
-            }
-        });
+        topBarManage.setRightButtonImgAndTxt(true,
+                getResources().getDrawable(R.mipmap.saoyisao), "", view -> startActivity(new Intent(activity, CaptureActivity.class)));
     }
 
 
@@ -112,7 +105,7 @@ public class MainActivity extends BaseOthreRenderActivity {
         mTabLayout.showDot(2);
         MsgView rtv_2_2 = mTabLayout.getMsgView(2);
         if (rtv_2_2 != null) {
-            UnreadMsgUtils.setSize(rtv_2_2, ScreenUtils.dp2px(activity,7.5f));
+            UnreadMsgUtils.setSize(rtv_2_2, ScreenUtils.dp2px(activity, 7.5f));
 
         }
     }
@@ -139,6 +132,7 @@ public class MainActivity extends BaseOthreRenderActivity {
         public void onTabReselect(int position) {
 //            showTopBar();
         }
+
     }
 
 

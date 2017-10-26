@@ -23,7 +23,7 @@ import com.hjg.hjgapplife.activity.dragRecycleView.OnRecyclerItemClickListener;
 import com.hjg.hjgapplife.activity.dragRecycleView.adapter.DragGridRecyclerAdapter;
 import com.hjg.hjgapplife.activity.md.MDMainActivity;
 import com.hjg.hjgapplife.activity.pupwindow.PupWindowActivity;
-import com.hjg.hjgapplife.activity.stickyHeadRecycleview.StickyMainActivity;
+import com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.StickyMainActivity;
 import com.hjg.hjgapplife.activity.takephoto.LikeWeChatSelectPhotoActivity;
 import com.hjg.hjgapplife.activity.takephoto.PhotoDealMainActivity;
 import com.hjg.hjgapplife.activity.webview.WebViewActivity;
@@ -95,10 +95,9 @@ public class ThirdFragment extends BaseFragment {
             results.add(new Item(6, "仿微信多选图片", R.mipmap.icon_grid));
             results.add(new Item(7, "蓝牙", R.mipmap.icon_grid));
             results.add(new Item(8, "图片处理", R.mipmap.icon_grid));
-            results.add(new Item(9, "粘性标签", R.mipmap.icon_grid));
+            results.add(new Item(9, "此处无效果", R.mipmap.icon_grid));
             results.add(new Item(10, "Material Design", R.mipmap.icon_grid));
             results.add(new Item(11, "app换肤", R.mipmap.icon_grid));
-            results.add(new Item(12, "二维码扫描", R.mipmap.icon_grid));
         }
 //        results.remove(results.size() - 1);
 //        results.add(new Item(results.size(), "更多", R.drawable.takeout_ic_more));
@@ -159,12 +158,9 @@ public class ThirdFragment extends BaseFragment {
                         break;
                     case 7:
                         final DialogPopup dialogPopup = new DialogPopup(activity);
-                        dialogPopup.setSingleBtn("知道了", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                startActivity(new Intent(activity, BleMainActivity.class));
-                                dialogPopup.dismiss();
-                            }
+                        dialogPopup.setSingleBtn("知道了", view -> {
+                            startActivity(new Intent(activity, BleMainActivity.class));
+                            dialogPopup.dismiss();
                         });
                         dialogPopup.setTitleAndContent("友情提醒", "  一部手机先要开启服务端，待服务端开启完毕后，另一部手机" +
                                 "点击客户端，客户端点击连接，待两端连接成功之后，可以进行通信。");
@@ -174,7 +170,7 @@ public class ThirdFragment extends BaseFragment {
                         startActivity(new Intent(activity, PhotoDealMainActivity.class));
                         break;
                     case 9:
-                        startActivity(new Intent(activity, StickyMainActivity.class));
+//                        startActivity(new Intent(activity, StickyMainActivity.class));
                         break;
                     case 10:
                         startActivity(new Intent(activity, MDMainActivity.class));
@@ -183,7 +179,6 @@ public class ThirdFragment extends BaseFragment {
                         WebViewActivity.startActivityToWebView(activity, "https://github.com/burgessjp/ThemeSkinning", "app换肤");
                         break;
                     case 12:
-                        startActivity(new Intent(activity, CaptureActivity.class));
                         break;
                 }
             }

@@ -5,9 +5,11 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hjg.baseapp.adapter.listViewAdapter.mBaseAdapter;
 import com.hjg.baseapp.adapter.listViewAdapter.mViewHolder;
@@ -74,6 +76,13 @@ public class SelectCityActivity extends BaseActivity implements com.hjg.baseapp.
         adapter = new SortAdapter(this, SourceDateList);
         lvCountry.setAdapter(adapter);
         lvCountry.addHeaderView(view);
+        lvCountry.setOnItemClickListener(((adapterView, view1, positon, l) -> {
+            Toast.makeText(activity, SourceDateList.get(positon - 1).getName(), Toast.LENGTH_SHORT).show();
+        }));
+        mGridView.setOnItemClickListener((adapterView, view1, i, l) ->
+                Toast.makeText(activity, remenCity.get(i) + "", Toast.LENGTH_SHORT).show()
+        );
+
     }
 
     @Override

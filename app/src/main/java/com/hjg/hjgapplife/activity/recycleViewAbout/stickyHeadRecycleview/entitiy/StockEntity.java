@@ -1,4 +1,4 @@
-package com.hjg.hjgapplife.activity.stickyHeadRecycleview.entitiy;
+package com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.entitiy;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 

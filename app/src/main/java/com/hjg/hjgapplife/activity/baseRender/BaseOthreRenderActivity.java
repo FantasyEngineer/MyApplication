@@ -18,6 +18,9 @@ import com.hjg.baseapp.R;
 import com.hjg.baseapp.manage.TopBarManage;
 import com.hjg.baseapp.util.ACache;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.ButterKnife;
 
 
@@ -156,5 +159,10 @@ public abstract class BaseOthreRenderActivity extends AppCompatActivity {
             result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+
+    //eventbus
+    @Subscribe(threadMode = ThreadMode.MAIN)//在ui线程执行
+    public void onEventMainThread(Object object) {
     }
 }

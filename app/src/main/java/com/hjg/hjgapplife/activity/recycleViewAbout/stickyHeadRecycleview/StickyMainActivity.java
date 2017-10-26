@@ -1,4 +1,4 @@
-package com.hjg.hjgapplife.activity.stickyHeadRecycleview;
+package com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,8 +15,8 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipActivity;
-import com.hjg.hjgapplife.activity.stickyHeadRecycleview.adapter.BaseHeaderAdapter;
-import com.hjg.hjgapplife.activity.stickyHeadRecycleview.entitiy.PinnedHeaderEntity;
+import com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.adapter.BaseHeaderAdapter;
+import com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.entitiy.PinnedHeaderEntity;
 import com.oushangfeng.pinnedsectionitemdecoration.PinnedHeaderItemDecoration;
 import com.oushangfeng.pinnedsectionitemdecoration.callback.OnHeaderClickListener;
 

@@ -1,13 +1,13 @@
-package com.hjg.hjgapplife.activity.stickyHeadRecycleview.adapter;
+package com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hjg.hjgapplife.activity.stickyHeadRecycleview.callback.OnItemClickListener;
-import com.hjg.hjgapplife.activity.stickyHeadRecycleview.entitiy.PinnedHeaderEntity;
-import com.hjg.hjgapplife.activity.stickyHeadRecycleview.holder.RecyclerViewHolder;
+import com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.callback.OnItemClickListener;
+import com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.entitiy.PinnedHeaderEntity;
+import com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.holder.RecyclerViewHolder;
 import com.oushangfeng.pinnedsectionitemdecoration.utils.FullSpanUtil;
 
 import java.util.List;
