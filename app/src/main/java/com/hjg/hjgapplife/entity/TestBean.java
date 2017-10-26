@@ -13,16 +13,18 @@ public class TestBean implements Serializable {
     private String createTime;
     private String messageContent;
     private int price;
+    private int age;
 
     public TestBean(String createTime, String messageContent) {
         this.createTime = createTime;
         this.messageContent = messageContent;
     }
 
-    public TestBean(String createTime, String messageContent, int price) {
+    public TestBean(String createTime, String messageContent, int price, int age) {
         this.createTime = createTime;
         this.messageContent = messageContent;
         this.price = price;
+        this.age = age;
     }
 
     public String getCreateTime() {
@@ -48,5 +50,13 @@ public class TestBean implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

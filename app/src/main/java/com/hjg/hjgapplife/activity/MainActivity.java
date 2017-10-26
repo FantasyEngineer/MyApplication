@@ -12,6 +12,9 @@ import com.blog.www.guideview.GuideBuilder;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.flyco.tablayout.utils.UnreadMsgUtils;
+import com.flyco.tablayout.widget.MsgView;
+import com.hjg.baseapp.util.ScreenUtils;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderActivity;
 import com.hjg.hjgapplife.activity.guide.SimpleComponent;
@@ -95,6 +98,23 @@ public class MainActivity extends BaseOthreRenderActivity {
         }
         //给tab设置数据和关联的fragment
         mTabLayout.setTabData(mTabEntities, MainActivity.this, R.id.fl_change, mFragments);
+
+
+        //两位数
+        mTabLayout.showMsg(0, 55);
+        mTabLayout.setMsgMargin(0, -5, 5);
+
+        //三位数
+        mTabLayout.showMsg(1, 100);
+        mTabLayout.setMsgMargin(1, -5, 5);
+
+        //设置未读消息红点
+        mTabLayout.showDot(2);
+        MsgView rtv_2_2 = mTabLayout.getMsgView(2);
+        if (rtv_2_2 != null) {
+            UnreadMsgUtils.setSize(rtv_2_2, ScreenUtils.dp2px(activity,7.5f));
+
+        }
     }
 
     public void initAction() {

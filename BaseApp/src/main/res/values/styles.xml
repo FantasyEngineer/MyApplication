@@ -52,4 +52,10 @@
     </declare-styleable>
 
     <style name="Widget_GifView"></style>
+
+
+    <style name="bottom_show_dialog_anim_style">
+    <item name="android:windowEnterAnimation">@anim/dialog_bottom_in</item>
+    <item name="android:windowExitAnimation">@anim/dialog_bottom_out</item>
+    </style>
 </resources>

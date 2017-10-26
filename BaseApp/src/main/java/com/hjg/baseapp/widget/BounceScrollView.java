@@ -1,13 +1,19 @@
 package com.hjg.baseapp.widget;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.ScrollView;
+
+import com.hjg.baseapp.R;
 
 /**
  * 弹性scrollview
@@ -38,10 +44,13 @@ public class BounceScrollView extends ScrollView {
     private float distanceX = 0;
     private float distanceY = 0;
     private boolean upDownSlide = false; //判断上下滑动的flag
+    private boolean isHalfHeight;//高度是否是屏幕的一半
 
     public BounceScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
+        TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attrs, R.styleable.BounceScrollView);
+        isHalfHeight = obtainStyledAttributes.getBoolean(R.styleable.BounceScrollView_isHalfHeight, false);
     }
 
     /***
@@ -191,26 +200,29 @@ public class BounceScrollView extends ScrollView {
         upDownSlide = false;
     }
 
-//    /**
-//     * 当高度设置为wrap的时候，scrollview的高度最大为屏幕高度的一半，不需要请删除此复写的方法
-//     *
-//     * @param widthMeasureSpec
-//     * @param heightMeasureSpec
-//     */
-//    @Override
-//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        try {
-//            //最大高度显示为屏幕内容高度的一半
-//            Display display = ((Activity) mContext).getWindowManager().getDefaultDisplay();
-//            DisplayMetrics d = new DisplayMetrics();
-//            display.getMetrics(d);
-//            //此处是关键，设置控件高度不能超过屏幕高度一半（d.heightPixels / 2）（在此替换成自己需要的高度）
-//            heightMeasureSpec = MeasureSpec.makeMeasureSpec(d.heightPixels / 2, MeasureSpec.AT_MOST);
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        //重新计算控件高、宽
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-//    }
+    /**
+     * 当高度设置为wrap的时候，scrollview的高度最大为屏幕高度的一半，不需要请删除此复写的方法
+     *
+     * @param widthMeasureSpec
+     * @param heightMeasureSpec
+     */
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        if (isHalfHeight) {
+            try {
+                //最大高度显示为屏幕内容高度的一半
+                Display display = ((Activity) mContext).getWindowManager().getDefaultDisplay();
+                DisplayMetrics d = new DisplayMetrics();
+                display.getMetrics(d);
+                //此处是关键，设置控件高度不能超过屏幕高度一半（d.heightPixels / 2）（在此替换成自己需要的高度）
+                heightMeasureSpec = MeasureSpec.makeMeasureSpec(d.heightPixels / 2 + d.heightPixels / 3, MeasureSpec.AT_MOST);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        //重新计算控件高、宽
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
 }

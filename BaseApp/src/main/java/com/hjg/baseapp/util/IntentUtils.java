@@ -1,15 +1,28 @@
 package com.hjg.baseapp.util;
 
+import android.app.PendingIntent;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.provider.MediaStore;
+import android.telephony.SmsManager;
+import android.util.Log;
+import android.util.Xml;
 import android.webkit.MimeTypeMap;
 
+import org.xmlpull.v1.XmlSerializer;
+
 import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /*
  * @创建者     master
@@ -190,76 +203,245 @@ public class IntentUtils {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, outUri);
         return intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_NEW_TASK);
     }
-/*
-    *//**
+
+    /**
      * 获取选择照片的Intent
-     *
-     * @return
-     *//*
+     */
     public static Intent getPickIntentWithGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         return intent.setType("image*//*");
     }
 
-    *//**
-     * 获取从文件中选择照片的Intent
+    /**
+     * 获取url跳转到浏览器查看
+     */
+    public void startExplore(Context context, String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        context.startActivity(intent);
+    }
+
+
+    /**
+     * 跳至拨号界面
      *
-     * @return
-     *//*
-    public static Intent getPickIntentWithDocuments() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        return intent.setType("image*//*");
+     * @param context     上下文
+     * @param phoneNumber 电话号码
+     */
+    public static void dial(Context context, String phoneNumber) {
+        context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNumber)));
     }
 
-
-    public static Intent buildImageGetIntent(Uri saveTo, int outputX, int outputY, boolean returnData) {
-        return buildImageGetIntent(saveTo, 1, 1, outputX, outputY, returnData);
+    /**
+     * 拨打电话
+     * <p>需添加权限 {@code <uses-permission android:name="android.permission.CALL_PHONE"/>}</p>
+     *
+     * @param context     上下文
+     * @param phoneNumber 电话号码
+     */
+    public static void call(Context context, String phoneNumber) {
+        context.startActivity(new Intent("android.intent.action.CALL", Uri.parse("tel:" + phoneNumber)));
     }
 
-    public static Intent buildImageGetIntent(Uri saveTo, int aspectX, int aspectY,
-                                             int outputX, int outputY, boolean returnData) {
-        Intent intent = new Intent();
-        if (Build.VERSION.SDK_INT < 19) {
-            intent.setAction(Intent.ACTION_GET_CONTENT);
+    /**
+     * 跳至发送短信界面
+     *
+     * @param context     上下文
+     * @param phoneNumber 接收号码
+     * @param content     短信内容
+     */
+    public static void sendSms(Context context, String phoneNumber, String content) {
+        Uri uri = Uri.parse("smsto:" + (StringUtils.isEmpty(phoneNumber) ? "" : phoneNumber));
+        Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+        intent.putExtra("sms_body", StringUtils.isEmpty(content) ? "" : content);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 发送短信
+     * <p>需添加权限 {@code <uses-permission android:name="android.permission.SEND_SMS"/>}</p>
+     *
+     * @param context     上下文
+     * @param phoneNumber 接收号码
+     * @param content     短信内容
+     */
+    public static void sendSmsSilent(Context context, String phoneNumber, String content) {
+        if (StringUtils.isEmpty(content)) return;
+        PendingIntent sentIntent = PendingIntent.getBroadcast(context, 0, new Intent(), 0);
+        SmsManager smsManager = SmsManager.getDefault();
+        if (content.length() >= 70) {
+            List<String> ms = smsManager.divideMessage(content);
+            for (String str : ms) {
+                smsManager.sendTextMessage(phoneNumber, null, str, sentIntent, null);
+            }
         } else {
-            intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            smsManager.sendTextMessage(phoneNumber, null, content, sentIntent, null);
         }
-        intent.setType("image*//*");
-        intent.putExtra("output", saveTo);
-        intent.putExtra("aspectX", aspectX);
-        intent.putExtra("aspectY", aspectY);
-        intent.putExtra("outputX", outputX);
-        intent.putExtra("outputY", outputY);
-        intent.putExtra("scale", true);
-        intent.putExtra("return-data", returnData);
-        intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
-        return intent;
     }
 
-    public static Intent buildImageCropIntent(Uri uriFrom, Uri uriTo, int outputX, int outputY, boolean returnData) {
-        return buildImageCropIntent(uriFrom, uriTo, 1, 1, outputX, outputY, returnData);
+    /**
+     * 获取手机联系人
+     * <p>需添加权限 {@code <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>}</p>
+     * <p>需添加权限 {@code <uses-permission android:name="android.permission.READ_CONTACTS"/>}</p>
+     *
+     * @param context 上下文;
+     * @return 联系人链表
+     */
+    public static List<HashMap<String, String>> getAllContactInfo(Context context) {
+        SystemClock.sleep(3000);
+        ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+        // 1.获取内容解析者
+        ContentResolver resolver = context.getContentResolver();
+        // 2.获取内容提供者的地址:com.android.contacts
+        // raw_contacts表的地址 :raw_contacts
+        // view_data表的地址 : data
+        // 3.生成查询地址
+        Uri raw_uri = Uri.parse("content://com.android.contacts/raw_contacts");
+        Uri date_uri = Uri.parse("content://com.android.contacts/data");
+        // 4.查询操作,先查询raw_contacts,查询contact_id
+        // projection : 查询的字段
+        Cursor cursor = resolver.query(raw_uri, new String[]{"contact_id"},
+                null, null, null);
+        // 5.解析cursor
+        while (cursor.moveToNext()) {
+            // 6.获取查询的数据
+            String contact_id = cursor.getString(0);
+            // cursor.getString(cursor.getColumnIndex("contact_id"));//getColumnIndex
+            // : 查询字段在cursor中索引值,一般都是用在查询字段比较多的时候
+            // 判断contact_id是否为空
+            if (!StringUtils.isEmpty(contact_id)) {//null   ""
+                // 7.根据contact_id查询view_data表中的数据
+                // selection : 查询条件
+                // selectionArgs :查询条件的参数
+                // sortOrder : 排序
+                // 空指针: 1.null.方法 2.参数为null
+                Cursor c = resolver.query(date_uri, new String[]{"data1",
+                                "mimetype"}, "raw_contact_id=?",
+                        new String[]{contact_id}, null);
+                HashMap<String, String> map = new HashMap<String, String>();
+                // 8.解析c
+                while (c.moveToNext()) {
+                    // 9.获取数据
+                    String data1 = c.getString(0);
+                    String mimetype = c.getString(1);
+                    // 10.根据类型去判断获取的data1数据并保存
+                    if (mimetype.equals("vnd.android.cursor.item/phone_v2")) {
+                        // 电话
+                        map.put("phone", data1);
+                    } else if (mimetype.equals("vnd.android.cursor.item/name")) {
+                        // 姓名
+                        map.put("name", data1);
+                    }
+                }
+                // 11.添加到集合中数据
+                list.add(map);
+                // 12.关闭cursor
+                c.close();
+            }
+        }
+        // 12.关闭cursor
+        cursor.close();
+        return list;
     }
 
-    public static Intent buildImageCropIntent(Uri uriFrom, Uri uriTo, int aspectX, int aspectY,
-                                              int outputX, int outputY, boolean returnData) {
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uriFrom, "image*//*");
-        intent.putExtra("crop", "true");
-        intent.putExtra("output", uriTo);
-        intent.putExtra("aspectX", aspectX);
-        intent.putExtra("aspectY", aspectY);
-        intent.putExtra("outputX", outputX);
-        intent.putExtra("outputY", outputY);
-        intent.putExtra("scale", true);
-        intent.putExtra("return-data", returnData);
-        intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
-        return intent;
+    /**
+     * 打开手机联系人界面点击联系人后便获取该号码
+     * <p>参照以下注释代码</p>
+     */
+    public static void getContactNum() {
+        Log.d("tips", "U should copy the following code.");
+        /*
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.PICK");
+        intent.setType("vnd.android.cursor.dir/phone_v2");
+        startActivityForResult(intent, 0);
+
+        @Override
+        protected void onActivityResult ( int requestCode, int resultCode, Intent data){
+            super.onActivityResult(requestCode, resultCode, data);
+            if (data != null) {
+                Uri uri = data.getData();
+                String num = null;
+                // 创建内容解析者
+                ContentResolver contentResolver = getContentResolver();
+                Cursor cursor = contentResolver.query(uri,
+                        null, null, null, null);
+                while (cursor.moveToNext()) {
+                    num = cursor.getString(cursor.getColumnIndex("data1"));
+                }
+                cursor.close();
+                num = num.replaceAll("-", "");//替换的操作,555-6 -> 5556
+            }
+        }
+        */
     }
 
-    public static Intent buildImageCaptureIntent(Uri uri) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        return intent;
-    }*/
+    /**
+     * 获取手机短信并保存到xml中
+     * <p>需添加权限 {@code <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>}</p>
+     * <p>需添加权限 {@code <uses-permission android:name="android.permission.READ_SMS"/>}</p>
+     *
+     * @param context 上下文
+     */
+    public static void getAllSMS(Context context) {
+        // 1.获取短信
+        // 1.1获取内容解析者
+        ContentResolver resolver = context.getContentResolver();
+        // 1.2获取内容提供者地址   sms,sms表的地址:null  不写
+        // 1.3获取查询路径
+        Uri uri = Uri.parse("content://sms");
+        // 1.4.查询操作
+        // projection : 查询的字段
+        // selection : 查询的条件
+        // selectionArgs : 查询条件的参数
+        // sortOrder : 排序
+        Cursor cursor = resolver.query(uri, new String[]{"address", "date", "type", "body"}, null, null, null);
+        // 设置最大进度
+        int count = cursor.getCount();//获取短信的个数
+        // 2.备份短信
+        // 2.1获取xml序列器
+        XmlSerializer xmlSerializer = Xml.newSerializer();
+        try {
+            // 2.2设置xml文件保存的路径
+            // os : 保存的位置
+            // encoding : 编码格式
+            xmlSerializer.setOutput(new FileOutputStream(new File("/mnt/sdcard/backupsms.xml")), "utf-8");
+            // 2.3设置头信息
+            // standalone : 是否独立保存
+            xmlSerializer.startDocument("utf-8", true);
+            // 2.4设置根标签
+            xmlSerializer.startTag(null, "smss");
+            // 1.5.解析cursor
+            while (cursor.moveToNext()) {
+                SystemClock.sleep(1000);
+                // 2.5设置短信的标签
+                xmlSerializer.startTag(null, "sms");
+                // 2.6设置文本内容的标签
+                xmlSerializer.startTag(null, "address");
+                String address = cursor.getString(0);
+                // 2.7设置文本内容
+                xmlSerializer.text(address);
+                xmlSerializer.endTag(null, "address");
+                xmlSerializer.startTag(null, "date");
+                String date = cursor.getString(1);
+                xmlSerializer.text(date);
+                xmlSerializer.endTag(null, "date");
+                xmlSerializer.startTag(null, "type");
+                String type = cursor.getString(2);
+                xmlSerializer.text(type);
+                xmlSerializer.endTag(null, "type");
+                xmlSerializer.startTag(null, "body");
+                String body = cursor.getString(3);
+                xmlSerializer.text(body);
+                xmlSerializer.endTag(null, "body");
+                xmlSerializer.endTag(null, "sms");
+                System.out.println("address:" + address + "   date:" + date + "  type:" + type + "  body:" + body);
+            }
+            xmlSerializer.endTag(null, "smss");
+            xmlSerializer.endDocument();
+            // 2.8将数据刷新到文件中
+            xmlSerializer.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -69,5 +69,10 @@
         <attr name="lineSpacing" format="dimension" />
     </declare-styleable>
 
+    <!--BoundScrollView-->
+    <declare-styleable name="BounceScrollView">
+        <attr name="isHalfHeight" format="boolean" />
+    </declare-styleable>
+
 
 </resources>
