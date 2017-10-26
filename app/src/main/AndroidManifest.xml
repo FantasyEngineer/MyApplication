@@ -37,9 +37,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_luncher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_luncher"
         android:screenOrientation="portrait"
-        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.SplashActivity">
@@ -126,7 +126,9 @@
         <activity android:name=".activity.md.Behavior2likeUCActivity" />
         <activity android:name=".activity.takephoto.glide.GlideUseActivity" />
         <activity android:name=".activity.TestActivity" />
-        <activity android:name=".activity.takephoto.PhotoViewActivity" />
+        <activity
+            android:name=".activity.takephoto.PhotoViewActivity"
+            android:theme="@style/translucent" />
         <activity android:name=".activity.animation.LikeQQShakeActivity" />
         <activity android:name=".activity.Lambda.LamdaActivity" />
         <activity android:name=".activity.TestUPviewActivity"></activity>

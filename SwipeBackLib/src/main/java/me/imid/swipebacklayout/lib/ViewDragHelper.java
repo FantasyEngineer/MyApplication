@@ -1223,13 +1223,15 @@ public class ViewDragHelper {
             case MotionEvent.ACTION_MOVE: {
                 if (mDragState == STATE_DRAGGING) {
                     final int index = MotionEventCompat.findPointerIndex(ev, mActivePointerId);
-                    final float x = MotionEventCompat.getX(ev, index);
-                    final float y = MotionEventCompat.getY(ev, index);
-                    final int idx = (int) (x - mLastMotionX[mActivePointerId]);
-                    final int idy = (int) (y - mLastMotionY[mActivePointerId]);
+                    try {//这里可能会有越界异常       java.lang.IllegalArgumentException: pointerIndex out of range
+                        final float x = MotionEventCompat.getX(ev, index);
+                        final float y = MotionEventCompat.getY(ev, index);
+                        final int idx = (int) (x - mLastMotionX[mActivePointerId]);
+                        final int idy = (int) (y - mLastMotionY[mActivePointerId]);
+                        dragTo(mCapturedView.getLeft() + idx, mCapturedView.getTop() + idy, idx, idy);
+                    } catch (Exception e) {
 
-                    dragTo(mCapturedView.getLeft() + idx, mCapturedView.getTop() + idy, idx, idy);
-
+                    }
                     saveLastMotion(ev);
                 } else {
                     // Check to see if any pointer is now over a draggable view.
