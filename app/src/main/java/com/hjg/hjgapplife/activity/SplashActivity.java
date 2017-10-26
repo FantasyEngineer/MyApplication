@@ -59,7 +59,8 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
                 , Manifest.permission.ACCESS_FINE_LOCATION
                 , Manifest.permission.BLUETOOTH
                 , Manifest.permission.BLUETOOTH_ADMIN
-                , Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                , Manifest.permission.WRITE_EXTERNAL_STORAGE
+                , Manifest.permission.READ_PHONE_STATE};
         //检查有没有权限
         if (EasyPermissions.hasPermissions(this, perms)) {
             jumpActivty();

@@ -27,6 +27,7 @@ import com.hjg.hjgapplife.fragment.FourFragment;
 import com.hjg.hjgapplife.fragment.SecondFragment;
 import com.hjg.hjgapplife.fragment.ThirdFragment;
 import com.hjg.hjgapplife.zxing.CaptureActivity;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 
@@ -65,9 +66,13 @@ public class MainActivity extends BaseOthreRenderActivity {
         topBarManage.iniTop(true, R.mipmap.icon_home);
         topBarManage.setLeftButtonImgAndTxt(true, getResources().getDrawable(R.mipmap.icon_location), "定位", view -> {
             startActivity(new Intent(activity, SelectCityActivity.class));
+            MobclickAgent.onEvent(activity, "test1");
         });
         topBarManage.setRightButtonImgAndTxt(true,
-                getResources().getDrawable(R.mipmap.saoyisao), "", view -> startActivity(new Intent(activity, CaptureActivity.class)));
+                getResources().getDrawable(R.mipmap.saoyisao), "", view -> {
+                    startActivity(new Intent(activity, CaptureActivity.class));
+                    MobclickAgent.onEvent(activity, "test2");
+                });
     }
 
 
@@ -108,7 +113,6 @@ public class MainActivity extends BaseOthreRenderActivity {
         MsgView rtv_2_2 = mTabLayout.getMsgView(2);
         if (rtv_2_2 != null) {
             UnreadMsgUtils.setSize(rtv_2_2, ScreenUtils.dp2px(activity, 7.5f));
-
         }
     }
 
@@ -149,6 +153,7 @@ public class MainActivity extends BaseOthreRenderActivity {
                 firstTime = secondTime;//更新firstTime
                 return true;
             } else {    //两次按键小于2秒时，退出应用
+                MobclickAgent.onKillProcess(activity);
                 System.exit(0);
             }
         }

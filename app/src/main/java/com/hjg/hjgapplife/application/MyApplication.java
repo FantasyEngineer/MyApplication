@@ -2,6 +2,7 @@ package com.hjg.hjgapplife.application;
 
 import com.hjg.baseapp.application.BaseApplication;
 import com.hjg.hjgapplife.R;
+import com.umeng.analytics.MobclickAgent;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import xiaofei.library.hermeseventbus.HermesEventBus;
@@ -25,6 +26,9 @@ public class MyApplication extends BaseApplication {
                 .build());
         //EventBus
         HermesEventBus.getDefault().init(this);//初始化HermesEventBus
+        //友盟普通统计场景类型
+        MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
+        MobclickAgent.setDebugMode( true );
 
     }
 

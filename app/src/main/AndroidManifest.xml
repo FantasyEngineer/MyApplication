@@ -49,7 +49,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".activity.transitionhelper.PhotoShowActivity" />
         <activity android:name=".activity.transitionhelper.btnTransActivity" />
         <activity android:name=".activity.greenDao.GreenDaoActivity" />
@@ -132,6 +134,14 @@
         <activity android:name=".activity.animation.LikeQQShakeActivity" />
         <activity android:name=".activity.Lambda.LamdaActivity" />
         <activity android:name=".activity.TestUPviewActivity"></activity>
+
+        <!--友盟key-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="59f186f4734be4119c000078" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="test" />
     </application>
 
 </manifest>

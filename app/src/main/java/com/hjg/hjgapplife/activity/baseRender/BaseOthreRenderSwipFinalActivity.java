@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 import com.hjg.baseapp.R;
 import com.hjg.baseapp.manage.TopBarManage;
 import com.hjg.baseapp.util.ACache;
+import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -236,6 +237,18 @@ public abstract class BaseOthreRenderSwipFinalActivity extends me.imid.swipeback
 
     @Subscribe(threadMode = ThreadMode.MAIN)//在ui线程执行
     public void onEventMainThread(Object object) {
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
 }

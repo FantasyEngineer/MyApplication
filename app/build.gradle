@@ -119,4 +119,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.zxing:core:3.3.0'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'com.umeng.analytics:analytics:latest.integration'
+
 }

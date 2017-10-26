@@ -18,6 +18,7 @@ import com.hjg.baseapp.R;
 import com.hjg.baseapp.manage.TopBarManage;
 import com.hjg.baseapp.util.ACache;
 import com.hjg.hjgapplife.entity.EventBusBean;
+import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -28,7 +29,7 @@ import xiaofei.library.hermeseventbus.HermesEventBus;
 
 /**
  * BaseOthreRenderActivity 与BaseActivity同级别
- * 不同在于状态栏的渲染方式不同
+ * 不同在于状态栏的渲染方式不同，不允许侧滑删除页面
  * 其他OK
  */
 
@@ -60,6 +61,7 @@ public abstract class BaseOthreRenderActivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
         HermesEventBus.getDefault().register(activity);
+        MobclickAgent.setDebugMode( true );
         setContentView(R.layout.baselayout);
         fl_content = (FrameLayout) findViewById(R.id.fl_content);
         View view = LayoutInflater.from(this).inflate(getContentLayout(), null);
@@ -167,5 +169,17 @@ public abstract class BaseOthreRenderActivity extends AppCompatActivity {
     //eventbus
     @Subscribe(threadMode = ThreadMode.MAIN)//在ui线程执行
     public void onEventMainThread(Object bean) {
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }
