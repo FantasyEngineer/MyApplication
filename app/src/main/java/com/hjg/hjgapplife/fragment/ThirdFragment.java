@@ -16,6 +16,7 @@ import com.hjg.hjgapplife.activity.BLE.BleMainActivity;
 import com.hjg.hjgapplife.activity.GifActivity;
 import com.hjg.hjgapplife.activity.animation.AnimationListActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
+import com.hjg.hjgapplife.activity.dialog.DialogMainActivity;
 import com.hjg.hjgapplife.activity.dragRecycleView.DragRecycleListActivity;
 import com.hjg.hjgapplife.activity.dragRecycleView.Item;
 import com.hjg.hjgapplife.activity.dragRecycleView.MyItemTouchCallback;
@@ -95,7 +96,7 @@ public class ThirdFragment extends BaseFragment {
             results.add(new Item(6, "仿微信多选图片", R.mipmap.icon_grid));
             results.add(new Item(7, "蓝牙", R.mipmap.icon_grid));
             results.add(new Item(8, "图片处理", R.mipmap.icon_grid));
-            results.add(new Item(9, "此处无效果", R.mipmap.icon_grid));
+            results.add(new Item(9, "Dialog", R.mipmap.icon_grid));
             results.add(new Item(10, "Material Design", R.mipmap.icon_grid));
             results.add(new Item(11, "app换肤", R.mipmap.icon_grid));
         }
@@ -170,7 +171,7 @@ public class ThirdFragment extends BaseFragment {
                         startActivity(new Intent(activity, PhotoDealMainActivity.class));
                         break;
                     case 9:
-//                        startActivity(new Intent(activity, StickyMainActivity.class));
+                        startActivity(new Intent(activity, DialogMainActivity.class));
                         break;
                     case 10:
                         startActivity(new Intent(activity, MDMainActivity.class));

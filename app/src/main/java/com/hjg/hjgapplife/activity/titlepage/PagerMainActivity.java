@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.hjg.hjgapplife.activity.base.BaseListActivity;
+import com.hjg.hjgapplife.activity.md.AppLayoutAndTableLayoutActivity;
 
 public class PagerMainActivity extends BaseListActivity {
 
@@ -30,6 +31,7 @@ public class PagerMainActivity extends BaseListActivity {
         dataList.add("SlidingTabLayout");
         dataList.add("CommonTabLayout");
         dataList.add("SegmentTabLayout");
+        dataList.add("安卓原生TabLayout");
     }
 
     @Override
@@ -48,6 +50,10 @@ public class PagerMainActivity extends BaseListActivity {
                 break;
             case 3:
                 startActivity(new Intent(activity, SegmentTabActivity.class));
+
+                break;
+            case 4:
+                startActivity(new Intent(activity, AppLayoutAndTableLayoutActivity.class));
 
                 break;
         }

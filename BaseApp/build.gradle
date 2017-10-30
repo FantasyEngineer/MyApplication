@@ -49,5 +49,8 @@ dependencies {
     compile 'com.oushangfeng:PinnedSectionItemDecoration:1.2.4'
     //图片手势
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
+    //dialog
+    compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.6@aar'
+
 
 }

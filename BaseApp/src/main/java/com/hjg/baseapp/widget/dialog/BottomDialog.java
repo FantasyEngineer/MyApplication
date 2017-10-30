@@ -46,7 +46,7 @@ public  class BottomDialog {
                         break;
                     case MotionEvent.ACTION_UP:
 //                        if (offsetY > ScreenUtils.dp2px(activity, 200)) {
-                        if (offsetY > ScreenUtils.getScreenHeight(activity) / 3) {
+                        if (offsetY > ScreenUtils.getScreenHeight(activity) / 5) {
                             dialog.dismiss();
                         }
                         break;

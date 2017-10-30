@@ -133,15 +133,21 @@
             android:theme="@style/translucent" />
         <activity android:name=".activity.animation.LikeQQShakeActivity" />
         <activity android:name=".activity.Lambda.LamdaActivity" />
-        <activity android:name=".activity.TestUPviewActivity"></activity>
+        <activity android:name=".activity.TestUPviewActivity" />
 
-        <!--友盟key-->
+        <!-- 友盟key -->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="59f186f4734be4119c000078" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="test" />
+
+        <activity android:name=".activity.dialog.DialogMainActivity" />
+        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewAnimationActivity" />
+        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewHeaderActivity" />
+        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewflushActivity" />
+        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.SingleSelectActivity"></activity>
     </application>
 
 </manifest>
