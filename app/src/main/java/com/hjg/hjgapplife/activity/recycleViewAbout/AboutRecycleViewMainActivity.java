@@ -7,6 +7,7 @@ import com.hjg.hjgapplife.activity.recycleViewAbout.BaseRecycleAdapter.RecycleVi
 import com.hjg.hjgapplife.activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewHeaderActivity;
 import com.hjg.hjgapplife.activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewflushActivity;
 import com.hjg.hjgapplife.activity.recycleViewAbout.BaseRecycleAdapter.SingleSelectActivity;
+import com.hjg.hjgapplife.activity.recycleViewAbout.link.LinkRecycleViewActivity;
 import com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.StickyMainActivity;
 import com.hjg.hjgapplife.activity.webview.WebViewActivity;
 
@@ -36,6 +37,7 @@ public class AboutRecycleViewMainActivity extends BaseOtherRenderListActivity {
                 startActivity(new Intent(activity, StickyMainActivity.class));
                 break;
             case 1:
+                startActivity(new Intent(activity, LinkRecycleViewActivity.class));
 
                 break;
             case 2:

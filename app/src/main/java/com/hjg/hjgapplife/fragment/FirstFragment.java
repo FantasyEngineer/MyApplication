@@ -42,8 +42,6 @@ import immortalz.me.library.TransitionsHeleper;
 public class FirstFragment extends BaseFragment implements View.OnClickListener {
 
     private static FirstFragment firstFragment;
-    @BindView(R.id.btn_test)//测试按钮
-            TextView btnTest;
     //    滚动广告的集合
     private ArrayList<String> titleList = new ArrayList<String>();
     //banner切换动画特效集合
@@ -220,13 +218,6 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
         super.onDestroyView();
     }
 
-    /**
-     * 跳转到测试界面
-     */
-    @OnClick(R.id.btn_test)
-    public void onViewClicked() {
-        startActivity(new Intent(activity, TestUPviewActivity.class));
-    }
 
     public class PageChangeListener implements ViewPagerEx.OnPageChangeListener {
 

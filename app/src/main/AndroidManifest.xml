@@ -147,7 +147,8 @@
         <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewAnimationActivity" />
         <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewHeaderActivity" />
         <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewflushActivity" />
-        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.SingleSelectActivity"></activity>
+        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.SingleSelectActivity" />
+        <activity android:name=".activity.recycleViewAbout.link.LinkRecycleViewActivity"></activity>
     </application>
 
 </manifest>
