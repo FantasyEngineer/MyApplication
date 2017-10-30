@@ -239,7 +239,8 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
                 normalDialog.btnText("知道了");
                 normalDialog.title("温馨提示");
                 normalDialog.setCanceledOnTouchOutside(false);
-                normalDialog.show();
+                //展示动画
+                normalDialog.show(R.style.show_dialog_scale_anim_style);
                 break;
         }
     }

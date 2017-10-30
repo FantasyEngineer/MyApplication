@@ -44,18 +44,19 @@
 
     <!-- ***************************************GifView*************************************** -->
     <declare-styleable name="CustomTheme">
-        <attr name="gifViewStyle" format="reference"/>
+        <attr name="gifViewStyle" format="reference" />
     </declare-styleable>
     <declare-styleable name="GifView">
-        <attr name="gif" format="reference"/>
-        <attr name="paused" format="boolean"/>
+        <attr name="gif" format="reference" />
+        <attr name="paused" format="boolean" />
     </declare-styleable>
 
     <style name="Widget_GifView"></style>
 
 
     <style name="bottom_show_dialog_anim_style">
-    <item name="android:windowEnterAnimation">@anim/dialog_bottom_in</item>
-    <item name="android:windowExitAnimation">@anim/dialog_bottom_out</item>
+        <item name="android:windowEnterAnimation">@anim/dialog_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_bottom_out</item>
     </style>
+
 </resources>

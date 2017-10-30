@@ -74,4 +74,9 @@
         <item name="android:layout_height">48dp</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="show_dialog_scale_anim_style">
+        <item name="android:windowEnterAnimation">@anim/alex_dialog_anim_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/alex_dialog_anim_scale_out</item>
+    </style>
 </resources>
