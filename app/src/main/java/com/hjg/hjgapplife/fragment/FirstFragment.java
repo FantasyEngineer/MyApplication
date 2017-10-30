@@ -1,14 +1,15 @@
 package com.hjg.hjgapplife.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -16,14 +17,17 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.flyco.dialog.listener.OnBtnClickL;
+import com.flyco.dialog.widget.NormalDialog;
 import com.hjg.baseapp.adapter.RvCommonAdapter;
 import com.hjg.baseapp.adapter.ViewHolder;
 import com.hjg.baseapp.widget.VerticalTextview;
+import com.hjg.baseapp.widget.dialog.BottomDialog;
 import com.hjg.hjgapplife.R;
-import com.hjg.hjgapplife.activity.TestUPviewActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.takephoto.PhotoViewActivity;
 import com.hjg.hjgapplife.activity.transitionhelper.PhotoShowActivity;
+import com.hjg.hjgapplife.activity.webview.WebViewActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +36,9 @@ import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import immortalz.me.library.TransitionsHeleper;
 
 /**
@@ -42,6 +48,11 @@ import immortalz.me.library.TransitionsHeleper;
 public class FirstFragment extends BaseFragment implements View.OnClickListener {
 
     private static FirstFragment firstFragment;
+    @BindView(R.id.cv_rxjava)
+    CardView cvRxjava;
+    @BindView(R.id.cv_screen_fit)
+    CardView cvScreenFit;
+    Unbinder unbinder;
     //    滚动广告的集合
     private ArrayList<String> titleList = new ArrayList<String>();
     //banner切换动画特效集合
@@ -95,7 +106,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
         titleList.add("人最怕就是动了情");
         vtvShowNotes.setTextList(titleList);
         vtvShowNotes.setTextStillTime(3000);//设置停留时长间隔
-        vtvShowNotes.setAnimTime(300);//设置进入和退出的时间间隔
+        vtvShowNotes.setAnimTime(200);//设置进入和退出的时间间隔
     }
 
 
@@ -118,19 +129,13 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
         file_maps.put("默认3", R.mipmap.default_banner);
         file_maps.put("默认4", R.mipmap.default_banner);
 
-        for (final String name : url_maps.keySet()) {
+        for (final String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(activity);
             textSliderView
                     .description(name)
-                    .image(url_maps.get(name))
+                    .image(file_maps.get(name))
                     .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
-                        @Override
-                        public void onSliderClick(BaseSliderView slider) {
-                            Toast.makeText(activity, name, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
+                    .setOnSliderClickListener(slider -> Toast.makeText(activity, name, Toast.LENGTH_SHORT).show());
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
                     .putString("extra", name);
@@ -213,9 +218,30 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
         }
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    @OnClick({R.id.cv_rxjava, R.id.cv_screen_fit})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.cv_rxjava:
+
+                break;
+            case R.id.cv_screen_fit://屏幕适配
+                NormalDialog normalDialog = new NormalDialog(activity);
+                normalDialog.dividerColor(activity.getResources().getColor(R.color.orange));
+                normalDialog.titleLineColor(activity.getResources().getColor(R.color.orange));
+                normalDialog.titleTextColor(activity.getResources().getColor(R.color.orange));
+                normalDialog.btnTextColor(activity.getResources().getColor(R.color.black));
+                normalDialog.content("工程中有一个GenerateValueFiles文件，可以直接运行其中的main方法，得到主流机型分辨率下对应的dp对应px值，可以减少屏幕适配的工作量。");
+                normalDialog.btnNum(1);
+                normalDialog.setOnBtnClickL(() -> {
+                    WebViewActivity.startActivityToWebView(activity, "http://blog.csdn.net/zhangjin12312/article/details/78329811", "屏幕适配方案");
+                    normalDialog.dismiss();
+                });
+                normalDialog.btnText("知道了");
+                normalDialog.title("温馨提示");
+                normalDialog.setCanceledOnTouchOutside(false);
+                normalDialog.show();
+                break;
+        }
     }
 
 

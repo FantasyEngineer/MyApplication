@@ -46,7 +46,7 @@ public class SecondFragment extends BaseFragment implements AdapterView.OnItemCl
             "RecycleView相关",
             "左、右、上滑退出页面",
             "卡片式布局",
-            "此处无效果",
+            "跨进程通信",
             "Lambda范例使用"));
 
     public static SecondFragment getInstance() {

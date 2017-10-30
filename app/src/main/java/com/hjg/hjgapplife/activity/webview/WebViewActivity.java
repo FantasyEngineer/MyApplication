@@ -124,8 +124,9 @@ public class WebViewActivity extends BaseOthreRenderActivity implements TitleCha
     @Override
     public void titleChanged(String title) {
         //处理头部title，防止过长
-        if (!StringUtils.isBlank(title) && title.length() > 25) {
-            topBarManage.iniTop(true, title.substring(0, 25));
+        if (!StringUtils.isBlank(title) && title.length() > 15) {
+            title = title.substring(0, 15);
+            topBarManage.iniTop(true, title);
         } else {
             topBarManage.iniTop(true, title);
         }

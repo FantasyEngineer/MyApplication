@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.hjg.baseapp.widget.BounceScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:custom="http://schemas.android.com/tools"
+    android:overScrollMode="never"
+    android:scrollbars="none"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -97,7 +99,7 @@
             android:scrollbars="none" />
 
         <android.support.v7.widget.CardView
-            android:id="@+id/btn_test"
+            android:id="@+id/cv_rxjava"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -108,7 +110,6 @@
             app:cardElevation="0dp">
 
             <TextView
-                android:id="@+id/id_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -119,7 +120,49 @@
                 android:textSize="20sp" />
         </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_screen_fit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/dp_10"
+            app:cardBackgroundColor="@color/tan"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="0dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="屏幕适配方案"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/dp_10"
+            app:cardBackgroundColor="@color/tan"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="0dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="屏幕适配方案"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
-</ScrollView>
+</com.hjg.baseapp.widget.BounceScrollView>
