@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
@@ -13,10 +14,11 @@ import com.hjg.baseapp.util.StringUtils;
 import com.hjg.baseapp.widget.dialog.LoadingProgressDialog;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderActivity;
+import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipActivity;
 import com.hjg.hjgapplife.activity.webview.plugin.NativePlugin;
 
 //可看视频的webview
-public class WebViewActivity extends BaseOthreRenderActivity implements TitleChangeListener, DialogInterface.OnDismissListener {
+public class WebViewActivity extends BaseOthreRenderSwipActivity implements TitleChangeListener, DialogInterface.OnDismissListener {
     private static final String TAG = "WebViewActivity";
     private WebView mWebView;
     private String url;
@@ -32,13 +34,9 @@ public class WebViewActivity extends BaseOthreRenderActivity implements TitleCha
     @Override
     protected void initTitle() {
         String title = getIntent().getStringExtra("title");
-        url = getIntent().getStringExtra("url");
 
         if (StringUtils.isBlank(title)) {
             title = "未知";
-        }
-        if (StringUtils.isBlank(url)) {
-            url = "https://www.baidu.com";
         }
 
         topBarManage.iniTop(true, title);
@@ -60,7 +58,8 @@ public class WebViewActivity extends BaseOthreRenderActivity implements TitleCha
     }
 
     @Override
-    protected void initDataWithBundle(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         //等待层
         dialog = new LoadingProgressDialog(activity, R.style.CustomProgressDialog, "加载中...");
 
@@ -72,6 +71,11 @@ public class WebViewActivity extends BaseOthreRenderActivity implements TitleCha
         webViewManage.addJavascriptInterface(nativePlugin, NativePlugin.NAME);
         webViewManage.setTitleChangeListener(this);
         dialog.setOnDismissListener(this);
+
+        url = getIntent().getStringExtra("url");
+        if (StringUtils.isBlank(url)) {
+            url = "https://www.baidu.com";
+        }
         if (savedInstanceState != null) {
             mWebView.restoreState(savedInstanceState);
         } else {
@@ -79,6 +83,7 @@ public class WebViewActivity extends BaseOthreRenderActivity implements TitleCha
             //mWebView.loadUrl("file:///data/bbench/index.html");
         }
     }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

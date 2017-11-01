@@ -1,4 +1,5 @@
 <resources>
+    <string name="value">value</string>
     <string name="app_name">编程生活app</string>
 
     <string name="title_activity_splash">SplashActivity</string>

@@ -5,6 +5,7 @@ import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -300,5 +301,59 @@ public class ScreenUtils {
             e.printStackTrace();
         }
         return statusHeight;
+    }
+
+
+    /**
+     * 获取密度
+     *
+     * @param context
+     * @return
+     */
+    public static float getDesity(Context context) {
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();// 创建了一张白纸
+        windowManager.getDefaultDisplay().getMetrics(outMetrics);// 给白纸设置宽高
+        return outMetrics.density;
+    }
+
+    /**
+     * 获取屏幕像素密度
+     *
+     * @param context
+     * @return
+     */
+    public static float getDesityDPI(Context context) {
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();// 创建了一张白纸
+        windowManager.getDefaultDisplay().getMetrics(outMetrics);// 给白纸设置宽高
+        return outMetrics.densityDpi;
+    }
+
+    /**
+     * 获取屏幕尺寸
+     *
+     * @param context
+     * @return
+     */
+    public static double getScreenSize(Context context) {
+        Point point = new Point();
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getRealSize(point);
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        double x = Math.pow(point.x / dm.xdpi, 2);
+        double y = Math.pow(point.y / dm.ydpi, 2);
+        double screenInches = Math.sqrt(x + y);
+        return screenInches;
+    }
+
+    /**
+     * 获取Pixels Per Inch所表示的是每英寸所拥有的像素（Pixel）数目
+     * @param context
+     * @return
+     */
+    public static double getScreenPPI(Context context) {
+        Double d = (Math.sqrt(Math.pow(getScreenHeight(context), 2) + Math.pow(getScreenWidth(context), 2))) / getScreenSize(context);
+        return d;
     }
 }

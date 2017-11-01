@@ -1,5 +1,6 @@
 package com.hjg.hjgapplife.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +25,8 @@ import com.hjg.baseapp.adapter.ViewHolder;
 import com.hjg.baseapp.widget.VerticalTextview;
 import com.hjg.baseapp.widget.dialog.BottomDialog;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.Rx.RxJavaMainActivity;
+import com.hjg.hjgapplife.activity.ScreenFit.ScreenFitMainActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.takephoto.PhotoViewActivity;
 import com.hjg.hjgapplife.activity.transitionhelper.PhotoShowActivity;
@@ -222,25 +225,10 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cv_rxjava:
-
+                startActivity(new Intent(activity, RxJavaMainActivity.class));
                 break;
             case R.id.cv_screen_fit://屏幕适配
-                NormalDialog normalDialog = new NormalDialog(activity);
-                normalDialog.dividerColor(activity.getResources().getColor(R.color.orange));
-                normalDialog.titleLineColor(activity.getResources().getColor(R.color.orange));
-                normalDialog.titleTextColor(activity.getResources().getColor(R.color.orange));
-                normalDialog.btnTextColor(activity.getResources().getColor(R.color.black));
-                normalDialog.content("工程中有一个GenerateValueFiles文件，可以直接运行其中的main方法，得到主流机型分辨率下对应的dp对应px值，可以减少屏幕适配的工作量。");
-                normalDialog.btnNum(1);
-                normalDialog.setOnBtnClickL(() -> {
-                    WebViewActivity.startActivityToWebView(activity, "http://blog.csdn.net/zhangjin12312/article/details/78329811", "屏幕适配方案");
-                    normalDialog.dismiss();
-                });
-                normalDialog.btnText("知道了");
-                normalDialog.title("温馨提示");
-                normalDialog.setCanceledOnTouchOutside(false);
-                //展示动画
-                normalDialog.show(R.style.show_dialog_scale_anim_style);
+                startActivity(new Intent(activity, ScreenFitMainActivity.class));
                 break;
         }
     }

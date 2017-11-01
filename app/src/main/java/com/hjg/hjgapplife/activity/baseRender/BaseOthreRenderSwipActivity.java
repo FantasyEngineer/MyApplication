@@ -182,12 +182,12 @@ public abstract class BaseOthreRenderSwipActivity extends me.imid.swipebacklayou
 
             @Override
             public void onEdgeTouch(int edgeFlag) {
-                vibrate(20);
+                vibrate(10);
             }
 
             @Override
             public void onScrollOverThreshold() {
-                vibrate(20);
+                vibrate(10);
             }
         });
     }

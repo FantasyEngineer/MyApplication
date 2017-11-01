@@ -52,5 +52,4 @@ dependencies {
     //dialog
     compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.6@aar'
 
-
 }

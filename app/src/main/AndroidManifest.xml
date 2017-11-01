@@ -148,7 +148,10 @@
         <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewHeaderActivity" />
         <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewflushActivity" />
         <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.SingleSelectActivity" />
-        <activity android:name=".activity.recycleViewAbout.link.LinkRecycleViewActivity"></activity>
+        <activity android:name=".activity.recycleViewAbout.link.LinkRecycleViewActivity" />
+        <activity android:name=".activity.Rx.RxJavaMainActivity" />
+        <activity android:name=".activity.ScreenFit.ScreenFitMainActivity" />
+        <activity android:name=".activity.ScreenFit.ScreenFitDemoActivity"></activity>
     </application>
 
 </manifest>
