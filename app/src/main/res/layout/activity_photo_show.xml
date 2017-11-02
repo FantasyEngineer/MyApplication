@@ -9,25 +9,30 @@
         android:id="@+id/iv_bigshow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp" />
 
     <Button
         android:id="@+id/btn_trans"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/iv_bigshow"
-        android:layout_marginEnd="13dp"
         android:background="@drawable/bg"
-        android:text="扩散" />
+        android:text="扩散"
+        android:layout_marginStart="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/btn_trans_no_spread"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_alignBottom="@+id/iv_bigshow"
-        android:layout_alignStart="@+id/btn_trans"
         android:background="@drawable/bg"
-        android:text="不扩散" />
+        android:text="不扩散"
+        android:layout_marginStart="38dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/btn_trans" />
 </RelativeLayout>
 

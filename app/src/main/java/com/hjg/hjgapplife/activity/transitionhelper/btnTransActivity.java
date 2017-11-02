@@ -48,7 +48,7 @@ public class btnTransActivity extends BaseActivity {
                         public void loadCopyView(InfoBean bean, ImageView copyView) {
                             AnimatorSet set = new AnimatorSet();
                             set.playTogether(
-                                    ObjectAnimator.ofFloat(copyView, "rotation", 0, 360),
+                                    ObjectAnimator.ofFloat(copyView, "rotation", 0, 180),
                                     ObjectAnimator.ofFloat(copyView, "scaleX", 1, 0),
                                     ObjectAnimator.ofFloat(copyView, "scaleY", 1, 0)
                             );
@@ -61,7 +61,7 @@ public class btnTransActivity extends BaseActivity {
                         public void loadTargetView(InfoBean bean, ImageView targetView) {
                             AnimatorSet set = new AnimatorSet();
                             set.playTogether(
-                                    ObjectAnimator.ofFloat(targetView, "rotation", 0, 360)
+                                    ObjectAnimator.ofFloat(targetView, "rotation", 0, 180)
                             );
                             set.setInterpolator(new AccelerateInterpolator());
                             set.setDuration(duration / 4 * 5).start();

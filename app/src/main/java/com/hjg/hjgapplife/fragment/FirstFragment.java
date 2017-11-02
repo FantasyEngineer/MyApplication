@@ -132,11 +132,11 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
         file_maps.put("默认3", R.mipmap.default_banner);
         file_maps.put("默认4", R.mipmap.default_banner);
 
-        for (final String name : file_maps.keySet()) {
+        for (final String name : url_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(activity);
             textSliderView
                     .description(name)
-                    .image(file_maps.get(name))
+                    .image(url_maps.get(name))
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(slider -> Toast.makeText(activity, name, Toast.LENGTH_SHORT).show());
             textSliderView.bundle(new Bundle());
