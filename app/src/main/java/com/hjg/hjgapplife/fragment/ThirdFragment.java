@@ -99,6 +99,7 @@ public class ThirdFragment extends BaseFragment {
             results.add(new Item(9, "Dialog", R.mipmap.icon_grid));
             results.add(new Item(10, "Material Design", R.mipmap.icon_grid));
             results.add(new Item(11, "app换肤", R.mipmap.icon_grid));
+            results.add(new Item(11, "XML和Json解析", R.mipmap.icon_grid));
         }
 //        results.remove(results.size() - 1);
 //        results.add(new Item(results.size(), "更多", R.drawable.takeout_ic_more));

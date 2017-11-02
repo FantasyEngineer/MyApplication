@@ -151,7 +151,20 @@
         <activity android:name=".activity.recycleViewAbout.link.LinkRecycleViewActivity" />
         <activity android:name=".activity.Rx.RxJavaMainActivity" />
         <activity android:name=".activity.ScreenFit.ScreenFitMainActivity" />
-        <activity android:name=".activity.ScreenFit.ScreenFitDemoActivity"></activity>
+        <activity android:name=".activity.ScreenFit.ScreenFitDemoActivity" />
+        <activity android:name=".activity.IPC.IPCMainActivity"></activity>
+
+        <!--AIDL进程通信需要的服务-->
+        <service android:name=".activity.IPC.AIDLService">
+            <intent-filter>
+                <action android:name="com.hjg.aidlserver"></action>
+            </intent-filter>
+        </service>
+        <!--Eventbus进程通信需要的服务-->
+        <service
+            android:name="xiaofei.library.hermes.HermesService$HermesService0"
+            android:exported="true" />
+
     </application>
 
 </manifest>

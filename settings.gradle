@@ -1,2 +1,2 @@
-include ':app', ':BaseApp', ':bannerlib', ':transitionhelper', ':FlycoTabLayout_Lib',
+include ':app', ':BaseApp', ':bannerlib', ':transitionhelper', ':FlycoTabLayout_Lib', ':aidlclient',
         ':SwipeBackLib', ':Shimmer', ':PupWindowlib', ':GuideView', ':material-spinner-1.0.5'

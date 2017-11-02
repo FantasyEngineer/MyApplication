@@ -227,4 +227,5 @@ public abstract class BaseOthreRenderSwipActivity extends me.imid.swipebacklayou
         super.onPause();
         MobclickAgent.onPause(this);
     }
+
 }

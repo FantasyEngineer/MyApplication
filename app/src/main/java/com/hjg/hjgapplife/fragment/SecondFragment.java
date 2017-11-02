@@ -8,6 +8,8 @@ import com.hjg.baseapp.widget.MyListView;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.Butterknife.ButterknifeActivity;
 import com.hjg.hjgapplife.activity.ButtonStyleActivity;
+import com.hjg.hjgapplife.activity.IPC.AIDLService;
+import com.hjg.hjgapplife.activity.IPC.IPCMainActivity;
 import com.hjg.hjgapplife.activity.Lambda.LamdaActivity;
 import com.hjg.hjgapplife.activity.StringDealActivity;
 import com.hjg.hjgapplife.activity.SwipeBackActivity;
@@ -119,6 +121,7 @@ public class SecondFragment extends BaseFragment implements AdapterView.OnItemCl
                 startActivity(new Intent(activity, CardStackViewActivity.class));
                 break;
             case 12:
+                startActivity(new Intent(activity, IPCMainActivity.class));
                 break;
             case 13:
                 startActivity(new Intent(activity, LamdaActivity.class));

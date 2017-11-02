@@ -71,13 +71,14 @@ public class RxJavaMainActivity extends BaseOthreRenderSwipFinalActivity {
                 Toast.makeText(activity, "onComplete", Toast.LENGTH_SHORT).show();
             }
         };
+        //发送者与接受者绑定
+        sender.subscribe(receiver);
 
     }
 
 
     @OnClick(R.id.tv_test)
     public void onViewClicked() {
-        //发送者与接受者绑定
-        sender.subscribe(receiver);
+
     }
 }

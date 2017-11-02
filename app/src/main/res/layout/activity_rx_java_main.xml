@@ -17,6 +17,29 @@
         android:paddingBottom="15dp"
         android:textColor="@color/tv_color_selector"
         android:paddingTop="15dp"
-        android:text="测试RXJAVA" />
-
+        android:text="RXJAVA结构" />
+    <TextView
+        android:id="@+id/tv_emitter"
+        style="@style/TextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_bottom_line_selector"
+        android:gravity="center"
+        android:paddingBottom="15dp"
+        android:textColor="@color/tv_color_selector"
+        android:paddingTop="15dp"
+        android:text="emitter发射器的用法" />
+    <TextView
+        android:id="@+id/tv_disposable"
+        style="@style/TextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_bottom_line_selector"
+        android:gravity="center"
+        android:paddingBottom="15dp"
+        android:textColor="@color/tv_color_selector"
+        android:paddingTop="15dp"
+        android:text="emitter发射器的用法" />
 </LinearLayout>
