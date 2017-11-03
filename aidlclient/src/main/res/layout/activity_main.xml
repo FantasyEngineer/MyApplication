@@ -22,7 +22,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="点击启动服务，传入数值，通过另一个进程计算，得到结果" />
+        android:text="@string/app_service" />
 
 
     <TextView
@@ -33,6 +33,6 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="25dp"
         android:gravity="center"
-        android:text="以下用来显示父APP发送的消息：\n"
+        android:text="@string/app_n"
         android:textSize="18sp" />
 </LinearLayout>

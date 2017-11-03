@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">AIDLClient</string>
+    <string name="app_name">编程生活plugin</string>
+    <string name="app_service">点击启动服务，传入数值，通过父app的service中接口计算，得到结果</string>
+    <string name="app_n">以下用来显示父APP发送的消息：</string>
 </resources>

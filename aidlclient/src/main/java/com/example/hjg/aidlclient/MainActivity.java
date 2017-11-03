@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hjg.hjgapplife.IMyAidlInterface;
 import com.hjg.hjgapplife.entity.EventBusBean;
@@ -70,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         HermesEventBus.getDefault().register(this);
+
+        //从父应用跳转过来的标志
+        Toast.makeText(this, getIntent().getStringExtra("from"), Toast.LENGTH_SHORT).show();
 
         textView = (TextView) findViewById(R.id.textView);
         event_msg = (TextView) findViewById(R.id.event_msg);
