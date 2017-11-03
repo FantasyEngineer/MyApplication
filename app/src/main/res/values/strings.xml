@@ -110,4 +110,35 @@
         （Interface Definition Language，IDL）来公开服务的接口。我们知道4个Android应用程序组件中的3个（Activity、BroadcastReceiver和ContentProvider）都可以进行跨
         进程访问，另外一个Android应用程序组件Service同样可以。因此，可以将这种可以跨进程访问的服务称为AIDL（Android Interface Definition Language）服务。</string>
 
+    <string name="rx_framework">  //发送源，也就是被监听方，也就是被观察者 \n
+       Observable sender = Observable.create(emitter -> { \n
+            emitter.onNext("这是onNext"); \n
+            emitter.onNext("这是onNext1"); \n
+            emitter.onComplete(); \n
+        }); \n
+        //观察者，数据接收方\n
+        Observer receiver = new Observer()《String》 { \n
+            @Override \n
+            public void onSubscribe(Disposable d) { \n
+ \n
+            } \n
+ \n
+            @Override \n
+            public void onNext(String value) { \n
+                Toast.makeText(activity, value, Toast.LENGTH_SHORT).show(); \n
+            } \n
+ \n
+            @Override \n
+            public void onError(Throwable e) { \n
+ \n
+            } \n
+ \n
+            @Override \n
+            public void onComplete() { \n
+                Toast.makeText(activity, "onComplete", Toast.LENGTH_SHORT).show(); \n
+            } \n
+        }; \n
+        //发送者与接受者绑定 \n
+        sender.subscribe(receiver); \n</string>
+
 </resources>
