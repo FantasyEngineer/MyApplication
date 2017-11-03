@@ -35,4 +35,14 @@
         android:gravity="center"
         android:text="@string/app_n"
         android:textSize="18sp" />
+    <TextView
+        android:id="@+id/receive_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="@string/app_b"
+        android:textSize="18sp" />
 </LinearLayout>

@@ -5,5 +5,5 @@
     android:background="@drawable/selector_menu_popup"
     android:gravity="center"
     android:text="Item 1"
-    android:textColor="@color/comment_popup_tx_bg"
+    android:textColor="#FF8C00"
     android:textSize="14sp"></TextView>

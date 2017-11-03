@@ -27,6 +27,13 @@
             android:name="xiaofei.library.hermes.HermesService$HermesService0"
             android:exported="true" />
 
+        <!--跨进程接收广播-->
+        <receiver android:name=".MyReceiver">
+            <intent-filter>
+                <action android:name="com.hjg.MYBROADCAST" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

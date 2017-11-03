@@ -42,8 +42,8 @@ public class IPCMainActivity extends BaseOtherRenderListActivity {
     public void initDataList() {
         dataList.add("AIDL—Android接口定义语言");
         dataList.add("HermesEventBus想子app发送消息");
-        dataList.add("AIDL");
-        dataList.add("AIDL");
+        dataList.add("广播跨进程通信");
+        dataList.add("File进行跨进程通信");
     }
 
     @Override
@@ -58,6 +58,13 @@ public class IPCMainActivity extends BaseOtherRenderListActivity {
                 HermesEventBus.getDefault().post(new EventBusBean(9999, "这是一条来自父APP的消息\n"));
                 break;
             case 2:
+                ToastUtil.show(activity, "广播发送成功，请先打开AIDLClient，再查看");
+                //  通过Intent类的构造方法指定广播的ID
+                Intent intent = new Intent("com.hjg.MYBROADCAST");
+                //  将要广播的数据添加到Intent对象中
+                intent.putExtra("text", "来自与父app的广播\n");
+                //  发送广播
+                sendBroadcast(intent);
                 break;
             case 3:
                 break;

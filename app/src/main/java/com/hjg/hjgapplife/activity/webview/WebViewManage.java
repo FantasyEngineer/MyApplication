@@ -40,21 +40,31 @@ public class WebViewManage {
     private void initWebSettings() {
         mWebChromeClient = new MyWebChromeClient();
         mWebView.setWebChromeClient(mWebChromeClient);
+        mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);// 去掉底部和右边的滚动条
         mWebView.setWebViewClient(new MyWebViewClient());
         // 设置webview
         settings = mWebView.getSettings();
-        settings.setBuiltInZoomControls(true);
+        //是否显示网页缩放按钮
+        settings.setBuiltInZoomControls(false);
+        //可能的话使所有列的宽度不超过屏幕宽度，NORMAL  、  SINGLE_COLUMN
         settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        settings.setUseWideViewPort(true);
+        //设置加载进来的页面自适应手机屏幕
+        settings.setUseWideViewPort(false);
+        //// 缩放至屏幕的大小
         settings.setLoadWithOverviewMode(true);
         settings.setSavePassword(true);
         settings.setSaveFormData(true);
+        //打开javasc
         settings.setJavaScriptEnabled(true);
+        //允许网页获取地理位置
         settings.setGeolocationEnabled(true);
         settings.setGeolocationDatabasePath("/data/data/org.itri.html5webview/databases/");
         settings.setDomStorageEnabled(true);
-        //网页加载速度慢，将图片阻塞，等到页面加载结束之后再加载图片
-        settings.setBlockNetworkImage(true);
+        //网页加载速度慢，将图片阻塞，等到页面加载结束之后再加载图片 加载图片放在最后加载渲染
+//        settings.setBlockNetworkImage(true);
+        settings.setNeedInitialFocus(false);// 设置是否可以访问文件
+
+
     }
 
 

@@ -8,6 +8,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:divider="@color/line_bg"
+        android:background="@color/popup_bg"
         android:dividerHeight="0.5dp"
         android:scrollbars="none" />
 </RelativeLayout>

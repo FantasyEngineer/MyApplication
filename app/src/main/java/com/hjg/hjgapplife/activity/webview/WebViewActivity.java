@@ -6,8 +6,13 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.hjg.baseapp.util.StringUtils;
@@ -17,14 +22,24 @@ import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderActivity;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipActivity;
 import com.hjg.hjgapplife.activity.webview.plugin.NativePlugin;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import razerdp.listener.OnItemListener;
+import razerdp.popup.AsDropDownPopup;
+
 //可看视频的webview
-public class WebViewActivity extends BaseOthreRenderSwipActivity implements TitleChangeListener, DialogInterface.OnDismissListener {
+public class WebViewActivity extends BaseOthreRenderSwipActivity implements TitleChangeListener, DialogInterface.OnDismissListener, View.OnClickListener {
     private static final String TAG = "WebViewActivity";
     private WebView mWebView;
     private String url;
     private NativePlugin nativePlugin;
     private LoadingProgressDialog dialog;
     private ProgressBar progressBar;
+    ArrayList list = new ArrayList<String>(Arrays.asList("不带参数调用", "带参数调用"));
+    private ImageView iv_flush;
+    private String title;
+
 
     @Override
     protected int getContentLayout() {
@@ -33,23 +48,40 @@ public class WebViewActivity extends BaseOthreRenderSwipActivity implements Titl
 
     @Override
     protected void initTitle() {
-        String title = getIntent().getStringExtra("title");
+        title = getIntent().getStringExtra("title");
 
         if (StringUtils.isBlank(title)) {
             title = "未知";
         }
 
         topBarManage.iniTop(true, title);
-        topBarManage.setLeftBtnBack(true, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mWebView.canGoBack()) {
-                    mWebView.goBack();
-                } else {
-                    activity.finish();
-                }
+        topBarManage.setLeftBtnBack(true, v -> {
+            if (mWebView.canGoBack()) {
+                mWebView.goBack();
+            } else {
+                activity.finish();
             }
         });
+        if (title.equals("原生与js交互")) {
+            topBarManage.setRightButtonImgAndTxt(true, null, "选择调用方式", v -> {
+                final AsDropDownPopup menuPopup = new AsDropDownPopup(activity, list);
+                menuPopup.showPopupWindow(topBarManage.getRightBtn());
+                menuPopup.setOnItemListener((adapterView, view, i, l) -> {
+                    menuPopup.dismiss();
+                    switch (i) {
+                        case 0://不带参数调用
+                            activity.runOnUiThread(()->   mWebView.loadUrl("javascript:javacalljs()"));
+                            break;
+                        case 1://带参数调用
+                            activity.runOnUiThread(()->   mWebView.loadUrl("javascript:javacalljsparam(" + "'从java代码传递参数到了JS代码'" + ")"));
+                            break;
+
+                    }
+                });
+            });
+        }
+
+
     }
 
     @Override
@@ -65,6 +97,8 @@ public class WebViewActivity extends BaseOthreRenderSwipActivity implements Titl
 
         mWebView = (WebView) findViewById(R.id.webView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        iv_flush = (ImageView) findViewById(R.id.flush);
+        iv_flush.setOnClickListener(this);
         //创建插件，添加插件
         nativePlugin = new NativePlugin(activity, mWebView, dialog);
         WebViewManage webViewManage = new WebViewManage(this, mWebView, nativePlugin);
@@ -152,5 +186,18 @@ public class WebViewActivity extends BaseOthreRenderSwipActivity implements Titl
     @Override
     public void onDismiss(DialogInterface dialogInterface) {
         mWebView.stopLoading();
+    }
+
+    /**
+     * 刷新
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+       if (title.equals("原生与js交互")){
+           activity.runOnUiThread(() -> mWebView.loadUrl("javascript:reloadPage()"));
+       }else{
+           mWebView.reload();
+       }
     }
 }

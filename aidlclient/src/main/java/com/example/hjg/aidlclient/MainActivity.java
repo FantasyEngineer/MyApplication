@@ -10,6 +10,7 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textView;
     private Button button;
     private TextView event_msg;
+    private TextView receive_msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HermesEventBus.getDefault().register(this);
 
         //从父应用跳转过来的标志
-        Toast.makeText(this, getIntent().getStringExtra("from"), Toast.LENGTH_SHORT).show();
-
+        if (!TextUtils.isEmpty(getIntent().getStringExtra("from"))) {
+            Toast.makeText(this, getIntent().getStringExtra("from"), Toast.LENGTH_SHORT).show();
+        }
         textView = (TextView) findViewById(R.id.textView);
         event_msg = (TextView) findViewById(R.id.event_msg);
+        receive_msg = (TextView) findViewById(R.id.receive_msg);
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
 
@@ -107,6 +111,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d("MainActivity", "onEventMainThread");
         if (object instanceof EventBusBean) {
             event_msg.setText(event_msg.getText() + ((EventBusBean) object).getContent());
+        }
+        if (object instanceof String) {
+            receive_msg.setText(receive_msg.getText() + (String) object);
         }
     }
 }
