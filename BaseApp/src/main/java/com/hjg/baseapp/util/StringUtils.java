@@ -203,7 +203,7 @@ public abstract class StringUtils {
         return null == value || "".equals(value.trim());
     }
 
-    public static boolean isBlank(String str) {
+    public static boolean isBlank(final CharSequence str) {
         int strLen;
         if (str == null || (strLen = str.length()) == 0)
             return true;
@@ -545,6 +545,23 @@ public abstract class StringUtils {
         String sb1 = sb.toString();
         sb1 = sb1.substring(1);
         return sb1;
+    }
+
+    public static boolean hasLength(CharSequence str) {
+        return (str != null && str.length() > 0);
+    }
+
+    public static boolean hasText(CharSequence str) {
+        if (!hasLength(str)) {
+            return false;
+        }
+        int strLen = str.length();
+        for (int i = 0; i < strLen; i++) {
+            if (!Character.isWhitespace(str.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

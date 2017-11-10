@@ -51,5 +51,7 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
     //dialog
     compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.6@aar'
+    //pdfview
+    compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
 
 }

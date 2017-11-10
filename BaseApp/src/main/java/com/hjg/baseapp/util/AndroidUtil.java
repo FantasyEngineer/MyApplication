@@ -9,10 +9,17 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.hjg.baseapp.util.lock.CryptoUtils;
+
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.List;
 import java.util.UUID;
 
@@ -326,5 +333,68 @@ public class AndroidUtil {
         return str;
     }
 
+    public static String getSignatureInfo(Context context) {
+        final Signature signature = getPackageSignature(context);
+        if (signature == null) {
+            return "";
+        }
+        final StringBuilder builder = new StringBuilder();
+        try {
+            final byte[] signatureBytes = signature.toByteArray();
+            CertificateFactory certFactory = CertificateFactory.getInstance("X.509");
+            final InputStream is = new ByteArrayInputStream(signatureBytes);
+            X509Certificate cert = (X509Certificate) certFactory.generateCertificate(is);
+            final String chars = signature.toCharsString();
+            final String hex = CryptoUtils.HEX.encodeHex(signatureBytes, false);
+            final String md5 = CryptoUtils.HASH.md5(signatureBytes);
+            final String sha1 = CryptoUtils.HASH.sha1(signatureBytes);
+            builder.append("SignName:").append(cert.getSigAlgName()).append("\n");
+            builder.append("Chars:").append(chars).append("\n");
+            builder.append("Hex:").append(hex).append("\n");
+            builder.append("MD5:").append(md5).append("\n");
+            builder.append("SHA1:").append(sha1).append("\n");
+            builder.append("SignNumber:").append(cert.getSerialNumber()).append("\n");
+            builder.append("SubjectDN:").append(cert.getSubjectDN().getName()).append("\n");
+            builder.append("IssuerDN:").append(cert.getIssuerDN().getName()).append("\n");
+        } catch (Exception e) {
+            Log.e(TAG, "parseSignature() ex=" + e);
+        }
+
+        final String text = builder.toString();
+
+
+        return text;
+    }
+
+    @SuppressLint("PackageManagerGetSignatures")
+    private static Signature getPackageSignature(Context context) {
+        final PackageManager pm = context.getPackageManager();
+        PackageInfo info = null;
+        try {
+            info = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
+        } catch (Exception ignored) {
+        }
+
+        Signature signature = null;
+        if (info != null) {
+            Signature[] signatures = info.signatures;
+            if (signatures != null && signatures.length > 0) {
+                signature = signatures[0];
+            }
+        }
+
+        return signature;
+    }
+
+    public static String getSignature(Context context) {
+        final Signature signature = getPackageSignature(context);
+        if (signature != null) {
+            try {
+                return CryptoUtils.HASH.sha1(signature.toByteArray());
+            } catch (Exception e) {
+            }
+        }
+        return "";
+    }
 
 }

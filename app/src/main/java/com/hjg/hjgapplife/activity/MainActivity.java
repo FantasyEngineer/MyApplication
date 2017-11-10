@@ -16,6 +16,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
 import com.hjg.baseapp.util.ScreenUtils;
+import com.hjg.baseapp.widget.TasksWindow;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderActivity;
 import com.hjg.hjgapplife.activity.guide.SimpleComponent;
@@ -26,6 +27,7 @@ import com.hjg.hjgapplife.fragment.FirstFragment;
 import com.hjg.hjgapplife.fragment.FourFragment;
 import com.hjg.hjgapplife.fragment.SecondFragment;
 import com.hjg.hjgapplife.fragment.ThirdFragment;
+import com.hjg.hjgapplife.notification.NotificationActionReceiver;
 import com.hjg.hjgapplife.zxing.CaptureActivity;
 import com.umeng.analytics.MobclickAgent;
 
@@ -216,6 +218,13 @@ public class MainActivity extends BaseOthreRenderActivity {
                 topBarManage.getLeftBtn().setText(bean.getContent());
             }
         }
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (TasksWindow.canShowWindow(this)) {
+            NotificationActionReceiver.showNotification(this, false);
+        }
     }
 }

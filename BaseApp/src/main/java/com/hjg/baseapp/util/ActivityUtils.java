@@ -3,6 +3,7 @@
  */
 package com.hjg.baseapp.util;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -72,5 +73,41 @@ public class ActivityUtils {
         }
         return name.equals(cls.getName());
 
+    }
+
+
+    /**
+     * 重启一个Activity
+     *
+     * @param activity Activity
+     */
+    public static void restartActivity(final Activity activity) {
+        Intent intent = activity.getIntent();
+        activity.overridePendingTransition(0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        activity.finish();
+        activity.overridePendingTransition(0, 0);
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 判断一个服务是否正在运行
+     *
+     * @param context
+     * @param serviceName
+     * @return
+     */
+    public static boolean isServiceRunning(Context context, String serviceName) {
+
+        boolean isRunning = false;
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo> lists = am.getRunningServices(200);
+
+        for (ActivityManager.RunningServiceInfo info : lists) {//判断服务
+            if (info.service.getClassName().equals(serviceName)) {
+                isRunning = true;
+            }
+        }
+        return isRunning;
     }
 }

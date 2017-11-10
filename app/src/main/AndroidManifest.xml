@@ -31,6 +31,9 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--辅助功能（自动点击）-->
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"></uses-permission>
+
 
     <application
         android:name=".application.MyApplication"
@@ -152,18 +155,57 @@
         <activity android:name=".activity.Rx.RxJavaMainActivity" />
         <activity android:name=".activity.ScreenFit.ScreenFitMainActivity" />
         <activity android:name=".activity.ScreenFit.ScreenFitDemoActivity" />
-        <activity android:name=".activity.IPC.IPCMainActivity"></activity>
+        <activity android:name=".activity.IPC.IPCMainActivity" />
 
-        <!--AIDL进程通信需要的服务-->
+        <!-- AIDL进程通信需要的服务 -->
         <service android:name=".activity.IPC.AIDLService">
             <intent-filter>
-                <action android:name="com.hjg.aidlserver"></action>
+                <action android:name="com.hjg.aidlserver" />
             </intent-filter>
         </service>
-        <!--Eventbus进程通信需要的服务-->
+        <!-- Eventbus进程通信需要的服务 -->
         <service
             android:name="xiaofei.library.hermes.HermesService$HermesService0"
             android:exported="true" />
+
+        <activity android:name=".activity.PDFshowActivity"></activity>
+
+
+        <service
+            android:name=".service.MyAccessibilityService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/accessibility_des"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibilityservice" />
+        </service>
+
+        <service android:name=".service.WatchingService"></service>
+
+        <receiver android:name=".notification.NotificationActionReceiver">
+            <intent-filter>
+                <action android:name="com.hjg.hjglife.ACTION_NOTIFICATION_RECEIVER" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".service.WatchingAccessibilityService"
+            android:description="@string/accessibility_activity_class"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/watch_accessibility" />
+
+        </service>
 
     </application>
 

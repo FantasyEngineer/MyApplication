@@ -60,6 +60,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    //重复文件排除
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
 }
 
 //ButterKnife的使用
@@ -92,6 +96,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':BaseApp')
@@ -99,8 +104,9 @@ dependencies {
     compile project(':transitionhelper')
     // This is only needed if you want to use encrypted databases
     //butterknife
-    compile project(':FlycoTabLayout_Lib')
+    compile project(':TabLayout_Lib')
     compile project(':SwipeBackLib')
+    compile project(':RxJavaAPI')
     compile project(path: ':Shimmer')
     compile project(path: ':PupWindowlib')
     compile project(path: ':GuideView')
@@ -122,4 +128,7 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    compile 'com.github.hackware1993:MagicIndicator:1.5.0'
+
 }

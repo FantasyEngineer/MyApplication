@@ -1,8 +1,6 @@
 package com.hjg.hjgapplife.activity.recycleViewAbout.BaseRecycleAdapter;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
@@ -12,7 +10,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipActivity;
-import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipFinalActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +36,7 @@ public class SingleSelectActivity extends BaseOthreRenderSwipActivity {
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mRecyclerView.setAdapter(mAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.rv_item, getDatas()) {
+        mRecyclerView.setAdapter(mAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.rxjava_rv_item, getDatas()) {
             @Override
             protected void convert(final BaseViewHolder helper, String item) {
 

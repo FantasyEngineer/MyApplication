@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.icegeneral.rxjavaapi.test" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="26" />
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:functionalTest="false"
+        android:handleProfiling="false"
+        android:label="Tests for org.icegeneral.rxjavaapi.test"
+        android:targetPackage="org.icegeneral.rxjavaapi.test" />
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner" />
+
+        <activity android:name="org.icegeneral.rxjavaapi.MainActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.GenerateActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.generate.CreateActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.generate.JustActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.generate.FromActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.generate.DeferActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.generate.IntervalActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.generate.TimerActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.generate.RangeActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.generate.RepeatActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.generate.EmptyNeverThrowActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.TransformActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.transform.MapActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.transform.FlatMapActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.transform.BufferActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.transform.WindowActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.transform.ScanActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.transform.GroupByActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.FilterActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.DebounceActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.DistinctActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.ElementAtActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.FilterActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.FirstActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.LastActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.TakeActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.TakeLastActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.SkipActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.SkipLastActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.IgnoreElementsActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.filter.ThrottleActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.CombineActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.combine.ZipActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.combine.MergeActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.combine.CombineLatestActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.combine.JoinActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.combine.StartWithActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.combine.SwitchActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.ErrorActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.error.CatchActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.error.RetryActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.AssistActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.assist.DelayActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.assist.DoActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.assist.TimeIntervalActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.assist.TimeOutActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.assist.TimestampActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.ConvertActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.convert.ToListActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.convert.ToMapActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.convert.ToSortedActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.convert.ToMultiMapActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.convert.ToIterableActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.convert.GetIteratorActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.convert.ToFutureActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.convert.NestActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.ConditionActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.AllActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.AmbActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.ContainsActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.IsEmptyActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.ExistActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.DefaultIfEmptyActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.SequenceEqualActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.SkipUntilActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.SkipWhileActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.TakeUntilActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.condition.TakeWhileActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.ConnectActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.connect.ConnectActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.connect.ReplayActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.BlockActivity" />
+        <activity android:name="org.icegeneral.rxjavaapi.block.ForEachActivity" />
+    </application>
+
+</manifest>

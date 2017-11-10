@@ -1,47 +1,54 @@
 package com.hjg.hjgapplife.fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
-import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.flyco.dialog.listener.OnBtnClickL;
-import com.flyco.dialog.widget.NormalDialog;
+import com.bumptech.glide.Glide;
+import com.daimajia.slider.library.Transformers.AccordionTransformer;
+import com.daimajia.slider.library.Transformers.BackgroundToForegroundTransformer;
+import com.daimajia.slider.library.Transformers.BaseTransformer;
+import com.daimajia.slider.library.Transformers.CubeInTransformer;
+import com.daimajia.slider.library.Transformers.DefaultTransformer;
+import com.daimajia.slider.library.Transformers.DepthPageTransformer;
+import com.daimajia.slider.library.Transformers.FadeTransformer;
+import com.daimajia.slider.library.Transformers.FlipHorizontalTransformer;
+import com.daimajia.slider.library.Transformers.FlipPageViewTransformer;
+import com.daimajia.slider.library.Transformers.ForegroundToBackgroundTransformer;
+import com.daimajia.slider.library.Transformers.RotateDownTransformer;
+import com.daimajia.slider.library.Transformers.RotateUpTransformer;
+import com.daimajia.slider.library.Transformers.StackTransformer;
+import com.daimajia.slider.library.Transformers.TabletTransformer;
+import com.daimajia.slider.library.Transformers.ZoomInTransformer;
+import com.daimajia.slider.library.Transformers.ZoomOutSlideTransformer;
+import com.daimajia.slider.library.Transformers.ZoomOutTransformer;
 import com.hjg.baseapp.adapter.RvCommonAdapter;
 import com.hjg.baseapp.adapter.ViewHolder;
 import com.hjg.baseapp.widget.VerticalTextview;
-import com.hjg.baseapp.widget.dialog.BottomDialog;
+import com.hjg.hjgapplife.DataProvider;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.Rx.RxJavaMainActivity;
 import com.hjg.hjgapplife.activity.ScreenFit.ScreenFitMainActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.takephoto.PhotoViewActivity;
 import com.hjg.hjgapplife.activity.transitionhelper.PhotoShowActivity;
-import com.hjg.hjgapplife.activity.webview.WebViewActivity;
+import com.hjg.hjgapplife.adpter.viewPagerAdapter.VPCirclationAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import immortalz.me.library.TransitionsHeleper;
 
 /**
@@ -55,13 +62,8 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     CardView cvRxjava;
     @BindView(R.id.cv_screen_fit)
     CardView cvScreenFit;
-    Unbinder unbinder;
-    //    滚动广告的集合
-    private ArrayList<String> titleList = new ArrayList<String>();
-    //banner切换动画特效集合
-    ArrayList<SliderLayout.Transformer> transList = new ArrayList();
     private VerticalTextview vtvShowNotes;
-    private SliderLayout banner;
+    private ViewPager banner;
     private Button btn_switch;
     //设置展示图片的列表
     private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(
@@ -85,7 +87,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     @Override
     protected void initView() {
         vtvShowNotes = (VerticalTextview) findViewById(R.id.vtv_show_notes);
-        banner = (SliderLayout) findViewById(R.id.slider);
+        banner = (ViewPager) findViewById(R.id.slider);
         btn_switch = (Button) findViewById(R.id.btn_switch);
 
         recycleViewHorizatal = (RecyclerView) findViewById(R.id.recycleViewHorizatal);
@@ -97,17 +99,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     public void initListenAndSetAndAdes() {
         btn_switch.setOnClickListener(this);
 //        循环滚动的条目
-        titleList.add("我和你男和女都逃不过爱情");
-        titleList.add("谁愿意有勇气 不顾一切付出真心");
-        titleList.add("你说的不只你 还包括我自己");
-        titleList.add("该不该再继续 该不该有回应");
-        titleList.add("让爱一步一步靠近");
-        titleList.add("我对你有一点动心");
-        titleList.add("却如此害怕看你的眼睛");
-        titleList.add("有那么一点点动心 一点点迟疑");
-        titleList.add("害怕爱过以后还要失去");
-        titleList.add("人最怕就是动了情");
-        vtvShowNotes.setTextList(titleList);
+        vtvShowNotes.setTextList(DataProvider.getTitleList());
         vtvShowNotes.setTextStillTime(3000);//设置停留时长间隔
         vtvShowNotes.setAnimTime(200);//设置进入和退出的时间间隔
     }
@@ -115,51 +107,25 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
 
     @Override
     public void initData() {
-        for (SliderLayout.Transformer e : SliderLayout.Transformer.values()) {
-            transList.add(e);
+//        for (SliderLayout.Transformer e : SliderLayout.Transformer.values()) {
+//            transList.add(e);
+//        }
+        ArrayList<View> bannerViewList = new ArrayList();
+        for (String o : DataProvider.getBannerList()) {
+            ImageView imageView = new ImageView(activity);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            imageView.setLayoutParams(params);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            Glide.with(activity).load(o).into(imageView);
+            bannerViewList.add(imageView);
         }
-
-//通过网络
-        HashMap<String, String> url_maps = new HashMap<String, String>();
-        url_maps.put("网络1", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502871861358&di=efef08f0e9f2f7457b002d5d060a426e&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0173765821b703a84a0e282b8a197c.jpg%40900w_1l_2o_100sh.jpg");
-        url_maps.put("网络2", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502871861359&di=c243a73a01770d7c9f92efbb9b70f734&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2Fqk%2Fback_origin_pic%2F00%2F03%2F11%2F3e0210f7a00859a4ae0a9991fcbbe8b2.jpg");
-        url_maps.put("网络3", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502876203382&di=63654525f49723acdf61ff2e68f2ad07&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01cc9c57bc1c7d0000012e7e53d8b8.jpg%40900w_1l_2o_100sh.jpg");
-        url_maps.put("网络4", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502871861364&di=9d46cece0494f0490407356698c642b3&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01859757e372de0000012e7e38b66b.jpg%40900w_1l_2o_100sh.jpg");
-//通过res
-        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("默认1", R.mipmap.default_banner);
-        file_maps.put("默认2", R.mipmap.default_banner);
-        file_maps.put("默认3", R.mipmap.default_banner);
-        file_maps.put("默认4", R.mipmap.default_banner);
-
-        for (final String name : url_maps.keySet()) {
-            TextSliderView textSliderView = new TextSliderView(activity);
-            textSliderView
-                    .description(name)
-                    .image(url_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .setOnSliderClickListener(slider -> Toast.makeText(activity, name, Toast.LENGTH_SHORT).show());
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra", name);
-
-            banner.addSlider(textSliderView);
-        }
-        //设置切换动画
-        banner.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        //设置指示器位置
-        banner.setPresetIndicator(SliderLayout.PresetIndicators.Right_Top);
-        //设置自定义指示器
-//        banner.setCustomIndicator((PagerIndicator) findViewById(R.id.custom_indicator2));
-        //隐藏指示器
-//        banner.setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Invisible);
-        banner.setCustomAnimation(new DescriptionAnimation());//设置图片名称出现的动画
-        //设置持续时间
-        banner.setDuration(2000);
-        //设置页面切换监听
-        banner.addOnPageChangeListener(new PageChangeListener());
-
-
+        VPCirclationAdapter bannerAdapter = new VPCirclationAdapter(bannerViewList);
+        banner.setAdapter(bannerAdapter);
+        banner.setOnTouchListener((view, motionEvent) -> {
+            handler.removeMessages(msgWhat);
+            return false;
+        });
+        banner.setPageTransformer(true, new AccordionTransformer());
         initHorizatalScrollView();
     }
 
@@ -200,12 +166,14 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onResume() {
         super.onResume();
+        handler.sendEmptyMessageDelayed(msgWhat, 2000);
         vtvShowNotes.startAutoScroll();
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        handler.removeMessages(msgWhat);
         vtvShowNotes.stopAutoScroll();
     }
 
@@ -214,7 +182,8 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_switch://banner切换动画
-                banner.setPresetTransformer(transList.get(new Random().nextInt(transList.size())));
+                setPresetTransforme(new Random().nextInt(15));
+//                banner.setPresetTransformer(transList.get(new Random().nextInt(transList.size())));
                 break;
             default:
                 break;
@@ -234,22 +203,75 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     }
 
 
-    public class PageChangeListener implements ViewPagerEx.OnPageChangeListener {
+    //    无限循环
+    int msgWhat = 0;
 
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+    private Handler handler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == msgWhat) {
+                banner.setCurrentItem(banner.getCurrentItem() + 1);//收到消息，指向下一个页面
+                handler.sendEmptyMessageDelayed(msgWhat, 2000);//2S后在发送一条消息，由于在handleMessage()方法中，造成死循环。
+            }
         }
+    };
 
-        @Override
-        public void onPageSelected(int position) {
 
+    public void setPresetTransforme(int ts) {
+        //
+        // special thanks to https://github.com/ToxicBakery/ViewPagerTransforms
+        //
+        BaseTransformer t = null;
+        switch (ts) {
+            case 0:
+                t = new DefaultTransformer();
+                break;
+            case 1:
+                t = new AccordionTransformer();
+                break;
+            case 2:
+                t = new BackgroundToForegroundTransformer();
+                break;
+            case 3:
+                t = new CubeInTransformer();
+                break;
+            case 4:
+                t = new DepthPageTransformer();
+                break;
+            case 5:
+                t = new FadeTransformer();
+                break;
+            case 6:
+                t = new FlipHorizontalTransformer();
+                break;
+            case 7:
+                t = new FlipPageViewTransformer();
+                break;
+            case 8:
+                t = new ForegroundToBackgroundTransformer();
+                break;
+            case 9:
+                t = new RotateDownTransformer();
+                break;
+            case 10:
+                t = new RotateUpTransformer();
+                break;
+            case 11:
+                t = new StackTransformer();
+                break;
+            case 12:
+                t = new TabletTransformer();
+                break;
+            case 13:
+                t = new ZoomInTransformer();
+                break;
+            case 14:
+                t = new ZoomOutSlideTransformer();
+                break;
+            case 15:
+                t = new ZoomOutTransformer();
+                break;
         }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
+        banner.setPageTransformer(true, t);
     }
 
 

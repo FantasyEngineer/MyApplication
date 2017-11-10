@@ -2,6 +2,7 @@ package com.hjg.hjgapplife.fragment;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.provider.Settings;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -14,6 +15,7 @@ import com.hjg.baseapp.util.VibratorUtil;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.BLE.BleMainActivity;
 import com.hjg.hjgapplife.activity.GifActivity;
+import com.hjg.hjgapplife.activity.PDFshowActivity;
 import com.hjg.hjgapplife.activity.animation.AnimationListActivity;
 import com.hjg.hjgapplife.activity.base.BaseFragment;
 import com.hjg.hjgapplife.activity.dialog.DialogMainActivity;
@@ -29,6 +31,7 @@ import com.hjg.hjgapplife.activity.takephoto.LikeWeChatSelectPhotoActivity;
 import com.hjg.hjgapplife.activity.takephoto.PhotoDealMainActivity;
 import com.hjg.hjgapplife.activity.webview.WebViewActivity;
 import com.hjg.hjgapplife.activity.zoomview.PullToZoomMainActivity;
+import com.hjg.hjgapplife.service.MyAccessibilityService;
 import com.hjg.hjgapplife.zxing.CaptureActivity;
 
 import java.util.ArrayList;
@@ -101,6 +104,8 @@ public class ThirdFragment extends BaseFragment {
             results.add(new Item(11, "app换肤", R.mipmap.icon_grid));
             results.add(new Item(12, "XML和Json解析", R.mipmap.icon_grid));
             results.add(new Item(13, "webview与js方法调用", R.mipmap.icon_grid));
+            results.add(new Item(14, "打开PDF文档", R.mipmap.icon_grid));
+            results.add(new Item(15, "AccessibilityService", R.mipmap.icon_grid));
         }
 //        results.remove(results.size() - 1);
 //        results.add(new Item(results.size(), "更多", R.drawable.takeout_ic_more));
@@ -186,6 +191,13 @@ public class ThirdFragment extends BaseFragment {
                         break;
                     case 13:
                         WebViewActivity.startActivityToWebView(activity, "file:///android_asset/web.html", "原生与js交互");
+                        break;
+                    case 14:
+                        startActivity(new Intent(activity, PDFshowActivity.class));
+                        break;
+                    case 15:
+                        Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                        startActivity(intent);
                         break;
                 }
             }

@@ -19,11 +19,12 @@ import com.hjg.baseapp.widget.BounceScrollView;
  * 从底部弹出的dialog，支持下滑退出dialog
  */
 
-public  class BottomDialog {
+public class BottomDialog {
     private Activity activity;
     private Dialog dialog;
     private int lastY, y;
     private int offsetY;
+    private TextView tvContent;
 
     public BottomDialog(Activity activity) {
         this.activity = activity;
@@ -31,7 +32,7 @@ public  class BottomDialog {
 
     public void showDialog(final String content) {
         View view = activity.getLayoutInflater().inflate(R.layout.bottom_dialog, null);
-        final TextView tvContent = (TextView) view.findViewById(R.id.tv_content);
+        tvContent = (TextView) view.findViewById(R.id.tv_content);
         BounceScrollView bounceScrollView = (BounceScrollView) view.findViewById(R.id.bounceScrollView);
         bounceScrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -69,6 +70,14 @@ public  class BottomDialog {
         dialog.onWindowAttributesChanged(wl);
         dialog.setCanceledOnTouchOutside(true);
         dialog.show();
+    }
+
+    public void setText(String txt) {
+        tvContent.setText(txt);
+    }
+
+    public String getText() {
+        return tvContent.getText().toString();
     }
 
 }

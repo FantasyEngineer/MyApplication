@@ -1,18 +1,14 @@
 package com.hjg.hjgapplife.activity.recycleViewAbout.BaseRecycleAdapter;
 
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.hjg.baseapp.manage.TopBarManage;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipFinalActivity;
 import com.hjg.hjgapplife.activity.baseRender.LayoutConstans;
@@ -45,7 +41,7 @@ public class RecycleViewHeaderActivity extends BaseOthreRenderSwipFinalActivity 
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mRecyclerView.setAdapter(mAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.rv_item, getItemDatas()) {
+        mRecyclerView.setAdapter(mAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.rxjava_rv_item, getItemDatas()) {
             @Override
             protected void convert(BaseViewHolder helper, String item) {
                 helper.setText(R.id.tv_item_text, item);

@@ -15,6 +15,8 @@ import com.hjg.baseapp.widget.FlowLayout;
 import com.hjg.baseapp.widget.goodsview.GoodView;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.base.BaseActivity;
+import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderSwipFinalActivity;
+import com.hjg.hjgapplife.activity.baseRender.LayoutConstans;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import butterknife.BindView;
@@ -22,7 +24,7 @@ import butterknife.OnClick;
 
 import static com.hjg.hjgapplife.activity.animation.AutoUPChangeActivity.dip2px;
 
-public class ButtonStyleActivity extends BaseActivity {
+public class ButtonStyleActivity extends BaseOthreRenderSwipFinalActivity {
 
     @BindView(R.id.amountView)
     AmountView amountView;
@@ -60,19 +62,10 @@ public class ButtonStyleActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
-        // 购物车商品数量加减
-        amountView.setFocus(false);
-        amountView.setDefaultNum(5);
-        amountView.setGoods_storage(100);
-        amountView.setMinNum(2);
-        //Spinner
-        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinner);
-        spinner.setItems("AlphaIn", "ScaleIn", "SlideInBottom", "SlideInLeft", "SlideInRight", "Custom");
-
-        //流式布局
-        initFlowLayout();
+    protected int getIncludeLayoutType() {
+        return LayoutConstans.BAR_OUT_SV;
     }
+
 
     private void initFlowLayout() {
         for (int i = 0; i < 10; i++) {
@@ -99,6 +92,18 @@ public class ButtonStyleActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        // 购物车商品数量加减
+        amountView.setFocus(false);
+        amountView.setDefaultNum(5);
+        amountView.setGoods_storage(100);
+        amountView.setMinNum(2);
+        //Spinner
+        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinner);
+        spinner.setItems("AlphaIn", "ScaleIn", "SlideInBottom", "SlideInLeft", "SlideInRight", "Custom");
+
+        //流式布局
+        initFlowLayout();
+
         mGoodView = new GoodView(this);
         timeCount = new TimeCount(60 * 1000, 1000);
     }

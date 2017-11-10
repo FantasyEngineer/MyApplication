@@ -1,6 +1,8 @@
 <resources>
     <string name="value">value</string>
     <string name="app_name">编程生活app</string>
+    <string name="accessibility_des">模拟钉钉打卡</string>
+    <string name="accessibility_activity_class">显示栈顶activity</string>
 
     <string name="title_activity_splash">SplashActivity</string>
     <string name="dummy_button">Dummy Button</string>
@@ -140,5 +142,48 @@
         }; \n
         //发送者与接受者绑定 \n
         sender.subscribe(receiver); \n</string>
+
+
+    <string name="thread_scheduler">
+在RxJava 中，Scheduler，相当于线程控制器，RxJava 通过它来指定每一段代码应该运行在什么样的线程。RxJava 已经内置了几个 Scheduler ，它们已经适合大多数的使用场景。\n
+● Schedulers.immediate(): 直接在当前线程运行，相当于不指定线程。这是默认的 Scheduler。\n
+●Schedulers.newThread(): 总是启用新线程，并在新线程执行操作。\n
+●Schedulers.io(): I/O 操作（读写文件、读写数据库、网络信息交互等）所使用的 Scheduler。行为模式和 newThread() 差不多，区别在于 io() 的内部实现是用一个无数量上限的线程池，可以重用空闲的线程，因此多数情况下 io() 比 newThread() 更有效率。不要把计算工作放在 io() 中，可以避免创建不必要的线程。\n
+●Schedulers.computation(): 计算所使用的 Scheduler。这个计算指的是 CPU 密集型计算，即不会被 I/O 等操作限制性能的操作，例如图形的计算。这个 Scheduler 使用的固定的线程池，大小为 CPU 核数。不要把 I/O 操作放在 computation() 中，否则 I/O 操作的等待时间会浪费 CPU。\n
+● Android 还有一个专用的 AndroidSchedulers.mainThread()，它指定的操作将在 Android 主线程运行。\n
+有了这几个 Scheduler ，就可以使用 subscribeOn() 和 observeOn() 两个方法来对线程进行控制了。subscribeOn(): 指定Observable(被观察者)所在的线程，或者叫做事件产生的线程。 * observeOn(): 指定 Observer(观察者)所运行在的线程，或者叫做事件消费的线程。
+
+    </string>
+
+    <string name="rx_single">
+        Single类似于Observable，不同的是，它总是只发射一个值，或者一个错误通知，而不是发射一系列的值。\n
+因此，不同于Observable需要三个方法onNext, onError, onCompleted，订阅Single只需要两
+个方法：\n
+onSuccess - Single发射单个的值到这个方法\n
+onError - 如果无法发射需要的值，Single发射一个Throwable对象到这个方法\n
+Single只会调用这两个方法中的一个，而且只会调用一次，调用了任何一个方法之后，订阅关
+系终止。
+    </string>
+    <string name="rx_subject">
+        Subject可以看成是一个桥梁或者代理，在某些ReactiveX实现中（如RxJava），它同时充当了Observer和Observable的角色。因为它是一个Observer，它可以订阅一个或多个Observable；又因为它是一个Observable，它可以转发它收到(Observe)的数据，也可以发射新的数据。\n
+由于一个Subject订阅一个Observable，它可以触发这个Observable开始发射数据（如果那个Observable是"冷"的--就是说，它等待有订阅才开始发射数据）。因此有这样的效果，Subject
+可以把原来那个"冷"的Observable变成"热"的。\n
+Subject的种类针对不同的场景一共有四种类型的Subject。他们并不是在所有的实现中全部都存在，而且一些实现使用其它的命名约定（例如，在RxScala中Subject被称作PublishSubject）。
+    </string>
+    <string name="rx_asynSuject">一个AsyncSubject只在原始Observable完成后，发射来自原始Observable的最后一个值。（如果原始Observable没有发射任何值，AsyncObject也不发射任何值）它会把这最后一个值发射给任何后续的观察者。
+\n然而，如果原始的Observable因为发生了错误而终止，AsyncSubject将不会发射任何数据，只是简单的向前传递这个错误通知。
+    </string>
+    <string name="rx_behaivarSuject">当观察者订阅BehaviorSubject时，它开始发射原始Observable最近发射的数据（如果此时还
+没有收到任何数据，它会发射一个默认值），然后继续发射其它任何来自原始Observable的
+数据。\n\n
+        然而，如果原始的Observable因为发生了一个错误而终止，BehaviorSubject将不会发射任何
+数据，只是简单的向前传递这个错误通知。
+    </string>
+    <string name="rx_serialized">如果你把  Subject  当作一个  Subscriber  使用，注意不要从多个线程中调用它的onNext方法
+（包括其它的on系列方法），这可能导致同时（非顺序）调用，这会违反Observable协议，给Subject的结果增加了不确定性。
+要避免此类问题，你可以将Subject转换为一个SerializedSubject  ，类似于这样：
+mySafeSubject = new SerializedSubject( myUnsafeSubject );
+    </string>
+
 
 </resources>

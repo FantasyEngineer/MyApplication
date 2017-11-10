@@ -187,5 +187,16 @@
         android:padding="10dp"
         app:lineSpacing="10dp"></com.hjg.baseapp.widget.FlowLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.hjg.baseapp.widget.SquaredImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sqbg" />
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -74,11 +74,18 @@
         <attr name="isHalfHeight" format="boolean" />
     </declare-styleable>
 
+    <!--recycleview item 滑动-->
     <declare-styleable name="SwipeMenuLayout">
         <attr name="swipeEnable" format="boolean" />
         <attr name="ios" format="boolean" />
         <attr name="leftSwipe" format="boolean" />
     </declare-styleable>
 
-
+    <declare-styleable name="AspectRatioImageView">
+        <attr name="ari_stretch">
+            <!-- 以高还是宽为基准. -->
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
 </resources>

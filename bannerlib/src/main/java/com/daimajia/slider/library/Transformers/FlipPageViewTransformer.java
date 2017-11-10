@@ -1,9 +1,9 @@
 package com.daimajia.slider.library.Transformers;
 
 import android.os.Build;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.nineoldandroids.view.ViewHelper;
 
 public class FlipPageViewTransformer extends BaseTransformer {
@@ -29,7 +29,7 @@ public class FlipPageViewTransformer extends BaseTransformer {
     }
 
     private void setTranslation(View view) {
-        ViewPagerEx viewPager = (ViewPagerEx) view.getParent();
+        ViewPager viewPager = (ViewPager) view.getParent();
         int scroll = viewPager.getScrollX() - view.getLeft();
         ViewHelper.setTranslationX(view,scroll);
     }

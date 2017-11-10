@@ -13,7 +13,6 @@ import android.widget.Button;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.chad.library.adapter.base.loadmore.*;
 import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView;
 import com.flyco.dialog.listener.OnOperItemClickL;
 import com.flyco.dialog.widget.ActionSheetDialog;
@@ -68,7 +67,7 @@ public class RecycleViewflushActivity extends BaseOthreRenderSwipFinalActivity i
         mRefreshLayout.setOnRefreshListener(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mRecyclerView.setAdapter(mAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.rv_item, getItemDatas()) {
+        mRecyclerView.setAdapter(mAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.rxjava_rv_item, getItemDatas()) {
             @Override
             protected void convert(BaseViewHolder helper, String item) {
                 helper.setText(R.id.tv_item_text, item);

@@ -16,6 +16,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.media.ExifInterface;
 import android.media.ThumbnailUtils;
 import android.os.Build;
 import android.renderscript.Allocation;
@@ -449,6 +450,105 @@ public class BitmapUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    /**
+     * 压缩图片
+     *
+     * @param path
+     * @param maxWidth
+     * @return
+     */
+    private static Bitmap getCompressedBitmap(String path, int maxWidth) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(path, options);
+        int inSampleSize = 1;
+        for (int w = options.outWidth; w > maxWidth * 2 - 10; w /= 2) {
+            inSampleSize++;
+        }
+//        if (DEBUG) {
+//            LogUtils.v(TAG, "getCompressedBitmap() original bitmap=(" + options.outWidth + ","
+//                    + options.outHeight + ")");
+//            LogUtils.v(TAG, "getCompressedBitmap() inSampleSize=" + inSampleSize);
+//        }
+        options.inSampleSize = inSampleSize;
+        options.inJustDecodeBounds = false;
+        Bitmap bitmap = BitmapFactory.decodeFile(path, options);
+        if (bitmap != null) {
+            int bw = bitmap.getWidth();
+            int bh = bitmap.getHeight();
+//            if (DEBUG) {
+//                int length = bitmap.getRowBytes() * bitmap.getHeight();
+//                LogUtils.v(TAG, "getCompressedBitmap() decode bitmap size=(" + bw + "," + bh + ")");
+//                LogUtils.v(TAG, "getCompressedBitmap() decode bitmap length=(" + length / 1000 + "k)");
+//            }
+            Matrix m = new Matrix();
+            if (bw > maxWidth) {
+                float scale = (float) maxWidth / (float) bw;
+                m.postScale(scale, scale);
+//                if (DEBUG) {
+//                    LogUtils.v(TAG, "getCompressedBitmap() matrix scale=" + scale);
+//                }
+            }
+            int rotation = getExifOrientation(path);
+            if (getExifOrientation(path) != 0) {
+                m.postRotate(rotation);
+            }
+//            if (DEBUG) {
+//
+//                LogUtils.v(TAG, "getCompressedBitmap() matrix rotation=" + rotation);
+//            }
+            Bitmap resultBitmap = Bitmap.createBitmap(bitmap, 0, 0, bw, bh, m, true);
+            if (resultBitmap != bitmap) {
+                bitmap.recycle();
+            }
+//            if (DEBUG) {
+//                int sw = resultBitmap.getWidth();
+//                int sh = resultBitmap.getHeight();
+//                int length = resultBitmap.getRowBytes() * resultBitmap.getHeight();
+//                LogUtils.v(TAG, "getCompressedBitmap() final bitmap size=(" + sw + "," + sh + ")");
+//                LogUtils.v(TAG, "getCompressedBitmap() final bitmap length=(" + length / 1000 + "k)");
+//            }
+            return resultBitmap;
+        }
+        return null;
+    }
+
+
+    //获取图片的方向
+    public static int getExifOrientation(String fileName) {
+        if (StringUtils.isEmpty(fileName)) {
+            return 0;
+        }
+        int degree = 0;
+        ExifInterface exif = null;
+        try {
+            exif = new ExifInterface(fileName);
+        } catch (IOException ex) {
+            Log.e(TAG, "cannot read exif", ex);
+        }
+        if (exif != null) {
+            int orientation = exif.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION, -1);
+            if (orientation != -1) {
+                // We only recognize a subset of orientation tag values.
+                switch (orientation) {
+                    case ExifInterface.ORIENTATION_ROTATE_90:
+                        degree = 90;
+                        break;
+                    case ExifInterface.ORIENTATION_ROTATE_180:
+                        degree = 180;
+                        break;
+                    case ExifInterface.ORIENTATION_ROTATE_270:
+                        degree = 270;
+                        break;
+                }
+
+            }
+        }
+        return degree;
     }
 }
 
