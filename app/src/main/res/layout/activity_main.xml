@@ -12,9 +12,22 @@
         android:id="@+id/fl_change"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="54dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp" />
 
-    </FrameLayout>
+    <TextView
+        android:id="@+id/tv_show_top_activity"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/tl"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/x25"
+        android:layout_marginRight="@dimen/x25"
+        android:background="@drawable/bg_circle_orange_selector"
+        android:gravity="center"
+        android:text="监听类变化"
+        android:textColor="@color/gray"
+        android:textSize="11dp" />
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tl"

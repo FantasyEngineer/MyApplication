@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blog.www.guideview.Guide;
@@ -18,6 +19,7 @@ import com.flyco.tablayout.widget.MsgView;
 import com.hjg.baseapp.util.ScreenUtils;
 import com.hjg.baseapp.widget.TasksWindow;
 import com.hjg.hjgapplife.R;
+import com.hjg.hjgapplife.activity.WindowManager.WindowAlertActivity;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderActivity;
 import com.hjg.hjgapplife.activity.guide.SimpleComponent;
 import com.hjg.hjgapplife.activity.seclectCity.SelectCityActivity;
@@ -27,7 +29,6 @@ import com.hjg.hjgapplife.fragment.FirstFragment;
 import com.hjg.hjgapplife.fragment.FourFragment;
 import com.hjg.hjgapplife.fragment.SecondFragment;
 import com.hjg.hjgapplife.fragment.ThirdFragment;
-import com.hjg.hjgapplife.notification.NotificationActionReceiver;
 import com.hjg.hjgapplife.zxing.CaptureActivity;
 import com.umeng.analytics.MobclickAgent;
 
@@ -45,6 +46,7 @@ public class MainActivity extends BaseOthreRenderActivity {
             R.mipmap.icon_third_select, R.mipmap.icon_four_select};
     //tab的标题、选中图标、未选中图标
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private TextView tv_show_top_activity;
 
     @Override
     protected int getContentLayout() {
@@ -53,12 +55,13 @@ public class MainActivity extends BaseOthreRenderActivity {
 
     protected void initView() {
         mTabLayout = (CommonTabLayout) findViewById(R.id.tl);
-        mTabLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                if (mCache.getAsString("isShowed") == null) {
-                    showGuideView();
-                }
+        tv_show_top_activity = (TextView) findViewById(R.id.tv_show_top_activity);
+        tv_show_top_activity.setOnClickListener(view -> {
+            startActivity(new Intent(activity, WindowAlertActivity.class));
+        });
+        mTabLayout.post(() -> {
+            if (mCache.getAsString("isShowed") == null) {
+                showGuideView();
             }
         });
     }
@@ -223,8 +226,5 @@ public class MainActivity extends BaseOthreRenderActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (TasksWindow.canShowWindow(this)) {
-            NotificationActionReceiver.showNotification(this, false);
-        }
     }
 }

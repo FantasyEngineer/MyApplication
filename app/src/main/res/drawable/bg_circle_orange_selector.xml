@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/bg_circle_darkorange" android:state_pressed="true"></item>
+    <item android:drawable="@drawable/bg_circle_orange" android:state_pressed="false"></item>
+    <item android:drawable="@drawable/bg_circle_orange"></item>
+
+
+</selector>

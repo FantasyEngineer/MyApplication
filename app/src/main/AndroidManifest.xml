@@ -34,6 +34,7 @@
     <!--辅助功能（自动点击）-->
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"></uses-permission>
 
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
     <application
         android:name=".application.MyApplication"
@@ -170,7 +171,7 @@
 
         <activity android:name=".activity.PDFshowActivity"></activity>
 
-
+        <!--模拟钉钉打卡，只需要进入到打卡界面即可（因为手机所在地为公司7楼，打开蓝牙，打开相应界面，即可自动打卡）-->
         <service
             android:name=".service.MyAccessibilityService"
             android:enabled="true"
@@ -186,17 +187,19 @@
                 android:resource="@xml/accessibilityservice" />
         </service>
 
+        <!--监听本应用内的最顶层的activity和类名-->
         <service android:name=".service.WatchingService"></service>
 
-        <receiver android:name=".notification.NotificationActionReceiver">
-            <intent-filter>
-                <action android:name="com.hjg.hjglife.ACTION_NOTIFICATION_RECEIVER" />
-            </intent-filter>
-        </receiver>
+        <!--<receiver android:name=".notification.NotificationActionReceiver">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="com.hjg.hjglife.ACTION_NOTIFICATION_RECEIVER" />-->
+        <!--</intent-filter>-->
+        <!--</receiver>-->
 
+        <!--监听其他应用的顶层activity的service-->
         <service
             android:name=".service.WatchingAccessibilityService"
-            android:description="@string/accessibility_activity_class"
+            android:label="@string/accessibility_activity_class"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
@@ -204,7 +207,6 @@
             <meta-data
                 android:name="android.accessibilityservice"
                 android:resource="@xml/watch_accessibility" />
-
         </service>
 
     </application>

@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/*轮询监听应用内最顶层的activity和包名*/
 public class WatchingService extends Service {
 
     private Handler mHandler = new Handler();
@@ -56,12 +57,13 @@ public class WatchingService extends Service {
             List<RunningTaskInfo> rtis = mActivityManager.getRunningTasks(1);
             String act = rtis.get(0).topActivity.getPackageName() + "\n"
                     + rtis.get(0).topActivity.getClassName();
-//            if (!act.equals(text)) {
-//            text = act;
-//            if (TasksWindow.canShowWindow(WatchingService.this)) {
-            mHandler.post(() -> TasksWindow.show(getApplication(), act));
-//            }
-//            }
+            if (!act.equals(text)) {
+                Log.d("RefreshTask", "执行了吗？equals");
+                text = act;
+                if (TasksWindow.canShowWindow(WatchingService.this)) {
+                    mHandler.post(() -> TasksWindow.show(WatchingService.this, act));
+                }
+            }
         }
     }
 

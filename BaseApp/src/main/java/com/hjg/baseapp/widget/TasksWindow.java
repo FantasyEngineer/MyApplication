@@ -18,6 +18,7 @@ public class TasksWindow {
     private static WindowManager.LayoutParams sWindowParams;
     private static WindowManager sWindowManager;
     private static View infoView;
+    private static TextView tv_name;
 
     private static View init(Context context) {
         if (infoView == null) {
@@ -25,10 +26,11 @@ public class TasksWindow {
             sWindowManager = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
 
             sWindowParams = new WindowManager.LayoutParams(
+                    WindowManager.LayoutParams.MATCH_PARENT,
                     WindowManager.LayoutParams.WRAP_CONTENT,
-                    WindowManager.LayoutParams.WRAP_CONTENT,
-                    Build.VERSION.SDK_INT <= Build.VERSION_CODES.N ? WindowManager.LayoutParams.TYPE_TOAST : WindowManager.LayoutParams.TYPE_PHONE, 0x18,
+                    Build.VERSION.SDK_INT <= Build.VERSION_CODES.N ? WindowManager.LayoutParams.TYPE_SYSTEM_ALERT : WindowManager.LayoutParams.TYPE_PHONE, 0x18,
                     PixelFormat.TRANSLUCENT);
+            //部分机器可以使用TYPE_TOAST
             sWindowParams.gravity = Gravity.START | Gravity.TOP;
             infoView = LayoutInflater.from(context).inflate(R.layout.window_activity_info, null);
         }
@@ -36,15 +38,20 @@ public class TasksWindow {
     }
 
     public static void show(Context context, String text) {
-        View infoView = init(context);
-        TextView tv_name = (TextView) infoView.findViewById(R.id.tv_name);
-        tv_name.setText(text);
-        try {
-            sWindowManager.addView(infoView, sWindowParams);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (sWindowManager == null) {
+            init(context);
+            tv_name = (TextView) infoView.findViewById(R.id.tv_name);
+            tv_name.setText(text);
+            try {
+                sWindowManager.addView(infoView, sWindowParams);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            tv_name.setText(text);
         }
     }
+
 
     public static void dismiss() {
         View infoView = init(null);

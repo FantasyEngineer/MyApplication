@@ -3,20 +3,16 @@ package com.hjg.hjgapplife.service;
 import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Handler;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 
 import com.hjg.baseapp.widget.TasksWindow;
-import com.hjg.hjgapplife.activity.MainActivity;
-import com.hjg.hjgapplife.notification.NotificationActionReceiver;
 
 /**
- * Created by Wen on 1/14/15.
+ * 监听窗口发生变化的service（辅助功能的开启）
  */
 public class WatchingAccessibilityService extends AccessibilityService {
     private static WatchingAccessibilityService sInstance;
-    Handler handler = new Handler();
 
     @SuppressLint("NewApi")
     @Override
@@ -35,7 +31,6 @@ public class WatchingAccessibilityService extends AccessibilityService {
     protected void onServiceConnected() {
         sInstance = this;
         Log.d("WatchingAccessibilitySe", "onServiceConnected");
-//        NotificationActionReceiver.showNotification(this, false);
         super.onServiceConnected();
     }
 
@@ -43,7 +38,6 @@ public class WatchingAccessibilityService extends AccessibilityService {
     public boolean onUnbind(Intent intent) {
         sInstance = null;
         TasksWindow.dismiss();
-        NotificationActionReceiver.cancelNotification(this);
         return super.onUnbind(intent);
     }
 

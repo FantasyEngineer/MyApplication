@@ -2,7 +2,7 @@
     <string name="value">value</string>
     <string name="app_name">编程生活app</string>
     <string name="accessibility_des">模拟钉钉打卡</string>
-    <string name="accessibility_activity_class">显示栈顶activity</string>
+    <string name="accessibility_activity_class">显示其他应用的栈顶activity</string>
 
     <string name="title_activity_splash">SplashActivity</string>
     <string name="dummy_button">Dummy Button</string>
