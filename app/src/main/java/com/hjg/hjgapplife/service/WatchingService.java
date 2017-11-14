@@ -29,6 +29,7 @@ public class WatchingService extends Service {
     private ActivityManager mActivityManager;
     private String text = null;
     private Timer timer;
+    private RefreshTask refreshtask;
 
     @Override
     public void onCreate() {
@@ -45,7 +46,8 @@ public class WatchingService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (timer == null) {
             timer = new Timer();
-            timer.scheduleAtFixedRate(new RefreshTask(), 0, 500);
+            refreshtask = new RefreshTask();
+            timer.scheduleAtFixedRate(refreshtask, 0, 500);
         }
         return super.onStartCommand(intent, flags, startId);
     }
@@ -60,9 +62,7 @@ public class WatchingService extends Service {
             if (!act.equals(text)) {
                 Log.d("RefreshTask", "执行了吗？equals");
                 text = act;
-                if (TasksWindow.canShowWindow(WatchingService.this)) {
-                    mHandler.post(() -> TasksWindow.show(WatchingService.this, act));
-                }
+                mHandler.post(() -> TasksWindow.show(WatchingService.this, act));
             }
         }
     }
@@ -87,4 +87,19 @@ public class WatchingService extends Service {
         super.onTaskRemoved(rootIntent);
     }
 
+    @Override
+    public boolean onUnbind(Intent intent) {
+        return super.onUnbind(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        if (refreshtask != null) {
+            refreshtask.cancel();
+        }
+        if (timer != null) {
+            timer.cancel();
+        }
+        super.onDestroy();
+    }
 }

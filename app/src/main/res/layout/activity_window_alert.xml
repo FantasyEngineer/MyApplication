@@ -14,7 +14,7 @@
         android:layout_margin="20dp"
         android:background="@drawable/bg"
         android:gravity="center"
-        android:text="点击" />
+        android:text="开启" />
 
     <TextView
         android:id="@+id/tv_show_other_class"
@@ -25,5 +25,16 @@
         android:gravity="center"
         android:padding="@dimen/x20"
         android:text="如果需要监听其他软件的栈顶的activity，请在辅助功能上打开（点此跳转）" />
+
+    <TextView
+        android:id="@+id/tv_stop"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg"
+        android:gravity="center"
+        android:text="关闭"
+        android:visibility="gone" />
+
 
 </LinearLayout>

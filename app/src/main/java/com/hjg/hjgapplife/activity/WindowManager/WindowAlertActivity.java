@@ -24,7 +24,6 @@ import com.hjg.hjgapplife.service.WatchingService;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static com.hjg.baseapp.widget.TasksWindow.canShowWindow;
 import static com.hjg.baseapp.widget.TasksWindow.setShowWindow;
 
 public class WindowAlertActivity extends BaseOthreRenderSwipActivity {
@@ -53,8 +52,7 @@ public class WindowAlertActivity extends BaseOthreRenderSwipActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv:
-                Log.d("WindowAlertActivity", "TasksWindow.canShowWindow(activity):" + TasksWindow.canShowWindow(activity));
-                if (TasksWindow.canShowWindow(activity)) {
+                if (TasksWindow.isShowWindow(activity)) {
                     if (ActivityUtils.isServiceRunning(activity, WatchingService.class.getName())) {
                         Toast.makeText(activity, "服务正在运行...", Toast.LENGTH_SHORT).show();
                     } else {
@@ -79,6 +77,8 @@ public class WindowAlertActivity extends BaseOthreRenderSwipActivity {
     protected void onResume() {
         if (Settings.canDrawOverlays(this)) {
             TasksWindow.setShowWindow(activity, true);
+        } else {
+            TasksWindow.setShowWindow(activity, false);
         }
         requestFloatWindowPermissionIfNeeded();
         super.onResume();

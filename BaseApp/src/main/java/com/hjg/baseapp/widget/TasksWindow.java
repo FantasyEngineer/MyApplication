@@ -62,11 +62,13 @@ public class TasksWindow {
         }
     }
 
-    public static boolean canShowWindow(Context context) {
+    //悬浮窗是否正在展示
+    public static boolean isShowWindow(Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        return sp.getBoolean("show_window", true);
+        return sp.getBoolean("show_window", false);
     }
 
+    //设置悬浮窗展示状态
     public static void setShowWindow(Context context, boolean isShow) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         sp.edit().putBoolean("show_window", isShow).apply();

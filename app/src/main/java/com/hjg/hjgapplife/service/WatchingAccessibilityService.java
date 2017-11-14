@@ -18,9 +18,7 @@ public class WatchingAccessibilityService extends AccessibilityService {
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         Log.d("WatchingAccessibilitySe", event.getPackageName() + "\n" + event.getClassName());
-        if (TasksWindow.canShowWindow(this)) {
-            TasksWindow.show(getApplicationContext(), event.getPackageName() + "\n" + event.getClassName());
-        }
+        TasksWindow.show(getApplicationContext(), event.getPackageName() + "\n" + event.getClassName());
     }
 
     @Override
@@ -30,7 +28,6 @@ public class WatchingAccessibilityService extends AccessibilityService {
     @Override
     protected void onServiceConnected() {
         sInstance = this;
-        Log.d("WatchingAccessibilitySe", "onServiceConnected");
         super.onServiceConnected();
     }
 
