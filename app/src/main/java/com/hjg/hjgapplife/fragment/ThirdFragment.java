@@ -6,7 +6,6 @@ import android.provider.Settings;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.View;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.hjg.baseapp.ItemDecoration.DividerGridItemDecoration;
@@ -24,15 +23,14 @@ import com.hjg.hjgapplife.activity.dragRecycleView.Item;
 import com.hjg.hjgapplife.activity.dragRecycleView.MyItemTouchCallback;
 import com.hjg.hjgapplife.activity.dragRecycleView.OnRecyclerItemClickListener;
 import com.hjg.hjgapplife.activity.dragRecycleView.adapter.DragGridRecyclerAdapter;
+import com.hjg.hjgapplife.activity.ir.IrActivity;
 import com.hjg.hjgapplife.activity.md.MDMainActivity;
+import com.hjg.hjgapplife.activity.okhttp.OkhttpMainActivity;
 import com.hjg.hjgapplife.activity.pupwindow.PupWindowActivity;
-import com.hjg.hjgapplife.activity.recycleViewAbout.stickyHeadRecycleview.StickyMainActivity;
 import com.hjg.hjgapplife.activity.takephoto.LikeWeChatSelectPhotoActivity;
 import com.hjg.hjgapplife.activity.takephoto.PhotoDealMainActivity;
 import com.hjg.hjgapplife.activity.webview.WebViewActivity;
 import com.hjg.hjgapplife.activity.zoomview.PullToZoomMainActivity;
-import com.hjg.hjgapplife.service.MyAccessibilityService;
-import com.hjg.hjgapplife.zxing.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +104,8 @@ public class ThirdFragment extends BaseFragment {
             results.add(new Item(13, "webview与js方法调用", R.mipmap.icon_grid));
             results.add(new Item(14, "打开PDF文档", R.mipmap.icon_grid));
             results.add(new Item(15, "AccessibilityService", R.mipmap.icon_grid));
+            results.add(new Item(16, "红外线", R.mipmap.icon_grid));
+            results.add(new Item(17, "OKhttp", R.mipmap.icon_grid));
         }
 //        results.remove(results.size() - 1);
 //        results.add(new Item(results.size(), "更多", R.drawable.takeout_ic_more));
@@ -198,6 +198,13 @@ public class ThirdFragment extends BaseFragment {
                     case 15:
                         Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
                         startActivity(intent);
+                        break;
+                    case 16://红外线开发
+                        Intent intentir = new Intent(activity, IrActivity.class);
+                        startActivity(intentir);
+                        break;
+                    case 17://红外线开发
+                        startActivity(new Intent(activity, OkhttpMainActivity.class));
                         break;
                 }
             }

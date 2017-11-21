@@ -29,12 +29,7 @@ public class SlidingTabActivity extends BaseActivity implements OnTabSelectListe
     @Override
     protected void initTitle() {
         topBarManage.iniTop(true, "SlidingTab");
-        topBarManage.setLeftBtnBack(true, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        topBarManage.setLeftBtnBack(true, view -> finish());
     }
 
     @Override

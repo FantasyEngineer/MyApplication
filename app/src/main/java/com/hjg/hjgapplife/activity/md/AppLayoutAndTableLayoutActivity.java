@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Toast;
 
 import com.hjg.hjgapplife.R;
@@ -75,43 +74,39 @@ public class AppLayoutAndTableLayoutActivity extends AppCompatActivity {
         }
         adapter = new MyPagerAdapter(this.getSupportFragmentManager(), titles, fragments);
         viewpager.setAdapter(adapter);
-        viewpager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                float x = 0;
-                float y = 0;
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        x = motionEvent.getX();
-                        y = motionEvent.getY();
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        break;
+        viewpager.setOnTouchListener((view, motionEvent) -> {
+            float x = 0;
+            float y = 0;
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    x = motionEvent.getX();
+                    y = motionEvent.getY();
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    break;
 
-                    case MotionEvent.ACTION_UP:
-                        if (motionEvent.getY() - y > 0) {//是往下滑动
-                            Log.d("AppLayoutAndTableLayout", "是往下滑动");
-                            if (Math.abs(motionEvent.getX() - x) < 50) {
-                                Toast.makeText(AppLayoutAndTableLayoutActivity.this, "是往下滑动的", Toast.LENGTH_SHORT).show();
-                                return true;//消耗掉这个事件
-                            }
-                        } else {//是往上滑动
-                            Log.d("AppLayoutAndTableLayout", "是往上滑动");
-                            if (Math.abs(motionEvent.getX() - x) < 50) {
-                                Toast.makeText(AppLayoutAndTableLayoutActivity.this, "是往上滑动", Toast.LENGTH_SHORT).show();
-                                return true;//消耗掉这个事件
-                            }
+                case MotionEvent.ACTION_UP:
+                    if (motionEvent.getY() - y > 0) {//是往下滑动
+                        Log.d("AppLayoutAndTableLayout", "是往下滑动");
+                        if (Math.abs(motionEvent.getX() - x) < 50) {
+                            Toast.makeText(AppLayoutAndTableLayoutActivity.this, "是往下滑动的", Toast.LENGTH_SHORT).show();
+                            return true;//消耗掉这个事件
                         }
-                        break;
-                }
-                return false;
+                    } else {//是往上滑动
+                        Log.d("AppLayoutAndTableLayout", "是往上滑动");
+                        if (Math.abs(motionEvent.getX() - x) < 50) {
+                            Toast.makeText(AppLayoutAndTableLayoutActivity.this, "是往上滑动", Toast.LENGTH_SHORT).show();
+                            return true;//消耗掉这个事件
+                        }
+                    }
+                    break;
             }
+            return false;
         });
     }
 
     private void tableBindVp() {
         //        将tablelayout和ViewPager关联起来
         tabLayout.setupWithViewPager(viewpager);
-        tabLayout.setTabsFromPagerAdapter(adapter);
     }
 }

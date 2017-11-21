@@ -5,7 +5,6 @@ import com.hjg.hjgapplife.R;
 import com.umeng.analytics.MobclickAgent;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import xiaofei.library.hermeseventbus.HermesEventBus;
 
 /**
  * Created by Administrator on 2017/8/14 0014.
@@ -24,11 +23,11 @@ public class MyApplication extends BaseApplication {
                 .setDefaultFontPath("fonts/tengxiang.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build());
-        //EventBus
-        HermesEventBus.getDefault().init(this);//初始化HermesEventBus
+        //EventBus  打开注释报错： java.lang.NoClassDefFoundError: Failed resolution of: Landroid/support/v7/app/ActionBarActivity;
+//        HermesEventBus.getDefault().init(this);//初始化HermesEventBus
         //友盟普通统计场景类型
         MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
-        MobclickAgent.setDebugMode( true );
+        MobclickAgent.setDebugMode(true);
 
     }
 

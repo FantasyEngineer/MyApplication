@@ -3,9 +3,7 @@ package com.hjg.hjgapplife.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +15,6 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
 import com.hjg.baseapp.util.ScreenUtils;
-import com.hjg.baseapp.widget.TasksWindow;
 import com.hjg.hjgapplife.R;
 import com.hjg.hjgapplife.activity.WindowManager.WindowAlertActivity;
 import com.hjg.hjgapplife.activity.baseRender.BaseOthreRenderActivity;

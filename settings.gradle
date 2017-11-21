@@ -1,2 +1,2 @@
-include ':app', ':BaseApp', ':bannerlib', ':transitionhelper', ':TabLayout_Lib', ':aidlclient',
+include ':app', ':BaseApp', ':bannerlib', ':transitionhelper', ':TabLayout_Lib', ':aidlclient', ':okhttp',
         ':SwipeBackLib', ':Shimmer', ':PupWindowlib', ':GuideView', ':material-spinner-1.0.5', 'RxJavaAPI'

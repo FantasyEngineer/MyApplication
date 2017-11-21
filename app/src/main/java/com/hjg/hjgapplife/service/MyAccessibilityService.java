@@ -1,20 +1,15 @@
 package com.hjg.hjgapplife.service;
 
 import android.accessibilityservice.AccessibilityService;
+import android.app.KeyguardManager;
 import android.app.Notification;
 import android.app.PendingIntent;
-import android.graphics.Rect;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.widget.RecyclerView;
+import android.content.Context;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.Toast;
 
-import com.hjg.baseapp.util.ToastUtil;
-
-import java.security.PublicKey;
 import java.util.List;
 
 
@@ -43,6 +38,8 @@ public class MyAccessibilityService extends AccessibilityService {
         switch (eventType) {
             case AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED://有通知
                 Log.d("MyAccessibilityService", "有通知");
+                //判断是否解锁屏幕
+                unlockScreen();
                 List<CharSequence> texts = event.getText();
                 if (!texts.isEmpty()) {
                     for (CharSequence text : texts) {
@@ -71,10 +68,9 @@ public class MyAccessibilityService extends AccessibilityService {
             case AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED:
                 Log.d("MyAccessibilityService", "窗口的状态");
                 state++;
-
-                if (state == 2) {//点击返回
+                if (state == 2) {//点击聊天界面的返回
                     clickID(event, "com.alibaba.android.rimet:id/img_back", "android.widget.ImageView");
-                } else if (state == 3) {
+                } else if (state == 3) {//点击主界面的工作
                     clickID(event, "com.alibaba.android.rimet:id/home_bottom_tab_button_work", "android.widget.FrameLayout");
                 }
                 break;
@@ -83,38 +79,69 @@ public class MyAccessibilityService extends AccessibilityService {
                 Log.d("MyAccessibilityService", "当窗口的内容发生变化的时候");
                 AccessibilityNodeInfo accessibilityNodeInfo = event.getSource().getParent();
 
-                if (state == 3) {
-                    // 根据Text搜索所有符合条件的节点, 模糊搜索方式; 还可以通过ID来精确搜索findAccessibilityNodeInfosByViewId
-                    List<AccessibilityNodeInfo> stop_nodes = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.alibaba.android.rimet:id/oa_fragment_gridview");
-                    Log.d("MyAccessibilityService", "是否找到：" + stop_nodes.size());
-                    if (stop_nodes != null && !stop_nodes.isEmpty()) {
-                        AccessibilityNodeInfo node = stop_nodes.get(0);//获取到了recycleview（页面中有且只有一个）
-//                        node.performAction(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD);
-                        AccessibilityNodeInfo child1 = node.getChild(5);
-//                        if (child1 != null && isHavaDK(child1)) {
-//                            Log.d("MyAccessibilityService", "打卡1");
-                        child1.performAction(AccessibilityNodeInfo.ACTION_CLICK); // click
-//                        } else {
-//                            Log.d("MyAccessibilityService", "打卡2");
-//                            AccessibilityNodeInfo child2 = node.getChild(4);
-//                            child2.performAction(AccessibilityNodeInfo.ACTION_CLICK); // click
-//                        }
-                    } else {
-                        Log.d("MyAccessibilityService", "重新尝试");
-                    }
+                if (state == 3) {//在工作的fragment下，去找考勤打卡
+                    findAttendanceCard(accessibilityNodeInfo, event);
                 }
-
-//                List<AccessibilityNodeInfo> nodeHelp = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.alibaba.android.rimet:id/more_text");
-//                if (nodeHelp != null && nodeHelp.isEmpty()) {//说明进入到了考勤打卡页面
-//                    Log.d("MyAccessibilityService", "帮助");
-//                    AccessibilityNodeInfo nod = nodeHelp.get(0);
-//                    nod.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-//                }
-
                 break;
         }
     }
 
+    /**
+     * 在工作界面查找考勤打卡
+     *
+     * @param accessibilityNodeInfo
+     * @param event
+     */
+    private void findAttendanceCard(AccessibilityNodeInfo accessibilityNodeInfo, AccessibilityEvent event) {
+        // 根据Text搜索所有符合条件的节点, 模糊搜索方式; 还可以通过ID来精确搜索findAccessibilityNodeInfosByViewId
+        List<AccessibilityNodeInfo> stop_nodes = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.alibaba.android.rimet:id/oa_fragment_gridview");
+        Log.d("MyAccessibilityService", "是否找到：" + stop_nodes.size());
+        if (stop_nodes != null && !stop_nodes.isEmpty() && stop_nodes.size() != 0) {
+            AccessibilityNodeInfo node = stop_nodes.get(0);//获取到了recycleview（页面中有且只有一个）
+//                        node.performAction(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD);
+            AccessibilityNodeInfo child1 = node.getChild(5);
+//                        if (child1 != null && isHavaDK(child1)) {
+//                            Log.d("MyAccessibilityService", "打卡1");
+            if (child1 != null) {
+                child1.performAction(AccessibilityNodeInfo.ACTION_CLICK); // click
+            } else {
+                Log.d("MyAccessibilityService", "child1为空重新尝试");
+            }
+        } else {
+            Log.d("MyAccessibilityService", "重新尝试");
+        }
+    }
+
+
+    /**
+     * 判断屏幕是否锁屏
+     */
+    private void unlockScreen() {
+        KeyguardManager keyguardManager = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
+        String islocktxt = keyguardManager.inKeyguardRestrictedInputMode() ? "锁屏了" : "屏幕已经解锁";
+        if (keyguardManager.inKeyguardRestrictedInputMode()) {
+            wakeAndUnlock();
+        }
+    }
+
+    /**
+     * 唤醒和解锁
+     */
+    private void wakeAndUnlock() {
+        PowerManager.WakeLock wl = null;
+        KeyguardManager.KeyguardLock kl = null;
+        //获取电源管理器对象
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        //获取PowerManager.WakeLock对象，后面的参数|表示同时传入两个值，最后的是调试用的Tag
+        wl = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "bright");
+        //点亮屏幕
+        wl.acquire();
+        //得到键盘锁管理器对象
+        KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+        kl = km.newKeyguardLock("unLock");
+        //解锁
+        kl.disableKeyguard();
+    }
 
     /**
      * 是否有考勤打卡字样
@@ -186,7 +213,6 @@ public class MyAccessibilityService extends AccessibilityService {
                     if (node.getClassName().equals(widgetType)) {
                         // 可用则模拟点击
                         if (node.isEnabled()) {
-//                            node.performAction(AccessibilityNodeInfo.ACTION_LONG_CLICK);
                             node.performAction(AccessibilityNodeInfo.ACTION_CLICK);
                         }
                     }

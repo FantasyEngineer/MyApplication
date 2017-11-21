@@ -1,41 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hjg.hjgapplife">
+          package="com.hjg.hjgapplife">
 
     <!-- 蓝牙 -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <!-- 侧滑时震动 -->
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <!-- 悬浮窗 -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <!-- 网络 -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- 读写 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!-- 打电话 -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <!-- 使用相机 -->
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA"/>
     <!-- 使用定位 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <!-- 网络状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!-- wifi状态 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <!-- 读取电话记录 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!-- 读写设置 -->
-    <uses-permission android:name="android.permission.READ_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!--辅助功能（自动点击）-->
-    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 辅助功能（自动点击） -->
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
 
-    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <!-- 这个权限呢就是调用红外设备就不多说 -->
+    <uses-permission android:name="android.permission.TRANSMIT_IR"/>
+    <!-- 这个过滤器的作用主要是给应用市场提个醒 Android Market会根据uses-feature过滤所有你设备不支持的应用  再通俗点说就是没有ConsumerIrManager这个类的android设备 在应用市场上看不到此应用。（因为版本太低 下载下来也没用） -->
+    <uses-feature android:name="android.hardware.ConsumerIrManager"/>
 
+    <!-- 唤醒屏幕 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+     
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -48,130 +56,131 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:launchMode="singleTask" />
-        <activity android:name=".activity.transitionhelper.PhotoShowActivity" />
-        <activity android:name=".activity.transitionhelper.btnTransActivity" />
-        <activity android:name=".activity.greenDao.GreenDaoActivity" />
-        <activity android:name=".activity.Butterknife.ButterknifeActivity" />
-        <activity android:name=".activity.viewpager.ViewPagerActivity" />
-        <activity android:name=".activity.ButtonStyleActivity" />
-        <activity android:name=".activity.StringDealActivity" />
-        <activity android:name=".activity.seclectCity.SelectCityActivity" />
-        <activity android:name=".activity.titlepage.CommonTabActivity" />
-        <activity android:name=".activity.titlepage.SlidingTabActivity" />
-        <activity android:name=".activity.titlepage.SegmentTabActivity" />
-        <activity android:name=".activity.notification.NoticaficationActivity" />
-        <activity android:name=".activity.SwipeBackActivity" />
-        <activity android:name=".activity.titlepage.PagerMainActivity" />
-        <activity android:name=".activity.titlepage.PageSlidTabActivity" />
-        <activity android:name=".activity.otherBarRender.OntherBarRenderActivity" />
-        <activity android:name=".activity.otherBarRender.LeftbackActivity" />
-        <activity android:name=".activity.WindowManager.WindowAlertActivity" />
-        <activity android:name=".activity.cardlayout.CardStackViewActivity" />
-        <activity android:name=".activity.dragRecycleView.DragRecycleListActivity" />
-        <activity android:name=".activity.animation.CardFlipActivity" />
-        <activity android:name=".activity.animation.AnimationListActivity" />
-        <activity android:name=".activity.animation.ScaleActivity" />
-        <activity android:name=".activity.animation.RotationActivity" />
-        <activity android:name=".activity.animation.BezierLineActivity" />
-        <activity android:name=".activity.animation.ShimmerActivity" />
-        <activity android:name=".activity.pupwindow.PupWindowActivity" />
-        <activity android:name=".activity.GifActivity" />
-        <activity android:name=".activity.animation.LikeBDMapActivity" />
-        <activity android:name=".activity.animation.LikeBDMap2Activity" />
-        <activity android:name=".activity.animation.LikeBDMapRecyActivity" />
-        <activity android:name=".activity.zoomview.PullToZoomScrollActivity" />
-        <activity android:name=".activity.zoomview.PullToZoomListActivity" />
-        <activity android:name=".activity.zoomview.PullToZoomMainActivity" />
+            android:launchMode="singleTask"/>
+        <activity android:name=".activity.transitionhelper.PhotoShowActivity"/>
+        <activity android:name=".activity.transitionhelper.btnTransActivity"/>
+        <activity android:name=".activity.greenDao.GreenDaoActivity"/>
+        <activity android:name=".activity.Butterknife.ButterknifeActivity"/>
+        <activity android:name=".activity.viewpager.ViewPagerActivity"/>
+        <activity android:name=".activity.ButtonStyleActivity"/>
+        <activity android:name=".activity.StringDealActivity"/>
+        <activity android:name=".activity.seclectCity.SelectCityActivity"/>
+        <activity android:name=".activity.titlepage.CommonTabActivity"/>
+        <activity android:name=".activity.titlepage.SlidingTabActivity"/>
+        <activity android:name=".activity.titlepage.SegmentTabActivity"/>
+        <activity android:name=".activity.notification.NoticaficationActivity"/>
+        <activity android:name=".activity.SwipeBackActivity"/>
+        <activity android:name=".activity.titlepage.PagerMainActivity"/>
+        <activity android:name=".activity.titlepage.PageSlidTabActivity"/>
+        <activity android:name=".activity.otherBarRender.OntherBarRenderActivity"/>
+        <activity android:name=".activity.otherBarRender.LeftbackActivity"/>
+        <activity android:name=".activity.WindowManager.WindowAlertActivity"/>
+        <activity android:name=".activity.cardlayout.CardStackViewActivity"/>
+        <activity android:name=".activity.dragRecycleView.DragRecycleListActivity"/>
+        <activity android:name=".activity.animation.CardFlipActivity"/>
+        <activity android:name=".activity.animation.AnimationListActivity"/>
+        <activity android:name=".activity.animation.ScaleActivity"/>
+        <activity android:name=".activity.animation.RotationActivity"/>
+        <activity android:name=".activity.animation.BezierLineActivity"/>
+        <activity android:name=".activity.animation.ShimmerActivity"/>
+        <activity android:name=".activity.pupwindow.PupWindowActivity"/>
+        <activity android:name=".activity.GifActivity"/>
+        <activity android:name=".activity.animation.LikeBDMapActivity"/>
+        <activity android:name=".activity.animation.LikeBDMap2Activity"/>
+        <activity android:name=".activity.animation.LikeBDMapRecyActivity"/>
+        <activity android:name=".activity.zoomview.PullToZoomScrollActivity"/>
+        <activity android:name=".activity.zoomview.PullToZoomListActivity"/>
+        <activity android:name=".activity.zoomview.PullToZoomMainActivity"/>
         <activity
             android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity android:name=".activity.takephoto.LikeWeChatSelectPhotoActivity" />
-        <activity android:name=".activity.animation.AutoUPChangeActivity" />
+            android:configChanges="orientation|screenSize"/>
+        <activity android:name=".activity.takephoto.LikeWeChatSelectPhotoActivity"/>
+        <activity android:name=".activity.animation.AutoUPChangeActivity"/>
         <activity
             android:name=".activity.BLE.BleClientActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".activity.BLE.BleServerActivity" />
-        <activity android:name=".activity.BLE.BleMainActivity" />
-        <activity android:name=".activity.BLE.TestBLEActivity" />
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".activity.BLE.BleServerActivity"/>
+        <activity android:name=".activity.BLE.BleMainActivity"/>
+        <activity android:name=".activity.BLE.TestBLEActivity"/>
         <activity
             android:name=".activity.webview.WebViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="true"
-            android:launchMode="singleTask" />
-        <activity android:name=".activity.recycleViewAbout.AboutRecycleViewMainActivity" />
-        <activity android:name=".activity.GIFshowFunctionAcitivity" />
-        <activity android:name=".activity.takephoto.PhotoDealMainActivity" />
-        <activity android:name=".activity.recycleViewAbout.stickyHeadRecycleview.StickyMainActivity" />
-        <activity android:name=".activity.md.MDMainActivity" />
-        <activity android:name=".activity.md.SwipeRefreshActivity" />
+            android:launchMode="singleTask"/>
+        <activity android:name=".activity.recycleViewAbout.AboutRecycleViewMainActivity"/>
+        <activity android:name=".activity.GIFshowFunctionAcitivity"/>
+        <activity android:name=".activity.takephoto.PhotoDealMainActivity"/>
+        <activity android:name=".activity.recycleViewAbout.stickyHeadRecycleview.StickyMainActivity"/>
+        <activity android:name=".activity.md.MDMainActivity"/>
+        <activity android:name=".activity.md.SwipeRefreshActivity"/>
         <activity
             android:name=".activity.md.AppBarLayoutActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".activity.md.AppBarLayoutActivity2"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".activity.md.AppLayoutAndTableLayoutActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".zxing.CaptureActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.CreateTwoBarActivity"
-            android:theme="@style/translucent" />
-        <activity android:name=".activity.md.ImgAbsorbToolBarActivity" />
-        <activity android:name=".activity.md.Behavior1Activity" />
-        <activity android:name=".activity.md.Behavior2likeUCActivity" />
-        <activity android:name=".activity.takephoto.glide.GlideUseActivity" />
-        <activity android:name=".activity.TestActivity" />
+            android:theme="@style/translucent"/>
+        <activity android:name=".activity.md.ImgAbsorbToolBarActivity"/>
+        <activity android:name=".activity.md.Behavior1Activity"/>
+        <activity android:name=".activity.md.Behavior2likeUCActivity"/>
+        <activity android:name=".activity.takephoto.glide.GlideUseActivity"/>
+        <activity android:name=".activity.TestActivity"/>
         <activity
             android:name=".activity.takephoto.PhotoViewActivity"
-            android:theme="@style/translucent" />
-        <activity android:name=".activity.animation.LikeQQShakeActivity" />
-        <activity android:name=".activity.Lambda.LamdaActivity" />
-        <activity android:name=".activity.TestUPviewActivity" />
+            android:theme="@style/translucent"/>
+        <activity android:name=".activity.animation.LikeQQShakeActivity"/>
+        <activity android:name=".activity.Lambda.LamdaActivity"/>
+        <activity android:name=".activity.TestUPviewActivity"/>
 
         <!-- 友盟key -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="59f186f4734be4119c000078" />
+            android:value="59f186f4734be4119c000078"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="test" />
+            android:value="test"/>
 
-        <activity android:name=".activity.dialog.DialogMainActivity" />
-        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewAnimationActivity" />
-        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewHeaderActivity" />
-        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewflushActivity" />
-        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.SingleSelectActivity" />
-        <activity android:name=".activity.recycleViewAbout.link.LinkRecycleViewActivity" />
-        <activity android:name=".activity.Rx.RxJavaMainActivity" />
-        <activity android:name=".activity.ScreenFit.ScreenFitMainActivity" />
-        <activity android:name=".activity.ScreenFit.ScreenFitDemoActivity" />
-        <activity android:name=".activity.IPC.IPCMainActivity" />
+        <activity android:name=".activity.dialog.DialogMainActivity"/>
+        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewAnimationActivity"/>
+        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewHeaderActivity"/>
+        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.RecycleViewflushActivity"/>
+        <activity android:name=".activity.recycleViewAbout.BaseRecycleAdapter.SingleSelectActivity"/>
+        <activity android:name=".activity.recycleViewAbout.link.LinkRecycleViewActivity"/>
+        <activity android:name=".activity.Rx.RxJavaMainActivity"/>
+        <activity android:name=".activity.ScreenFit.ScreenFitMainActivity"/>
+        <activity android:name=".activity.ScreenFit.ScreenFitDemoActivity"/>
+        <activity android:name=".activity.IPC.IPCMainActivity"/>
+        <activity android:name=".activity.ir.IrActivity"/>
 
         <!-- AIDL进程通信需要的服务 -->
         <service android:name=".activity.IPC.AIDLService">
             <intent-filter>
-                <action android:name="com.hjg.aidlserver" />
+                <action android:name="com.hjg.aidlserver"/>
             </intent-filter>
         </service>
         <!-- Eventbus进程通信需要的服务 -->
         <service
             android:name="xiaofei.library.hermes.HermesService$HermesService0"
-            android:exported="true" />
+            android:exported="true"/>
 
-        <activity android:name=".activity.PDFshowActivity"></activity>
+        <activity android:name=".activity.PDFshowActivity"/>
 
-        <!--模拟钉钉打卡，只需要进入到打卡界面即可（因为手机所在地为公司7楼，打开蓝牙，打开相应界面，即可自动打卡）-->
+        <!-- 模拟钉钉打卡，只需要进入到打卡界面即可（因为手机所在地为公司7楼，打开蓝牙，打开相应界面，即可自动打卡） -->
         <service
             android:name=".service.MyAccessibilityService"
             android:enabled="true"
@@ -179,36 +188,42 @@
             android:label="@string/accessibility_des"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.accessibilityservice"
-                android:resource="@xml/accessibilityservice" />
+                android:resource="@xml/accessibilityservice"/>
         </service>
 
-        <!--监听本应用内的最顶层的activity和类名-->
-        <service android:name=".service.WatchingService"></service>
+        <!-- 监听本应用内的最顶层的activity和类名 -->
+        <service android:name=".service.WatchingService"/>
 
-        <!--<receiver android:name=".notification.NotificationActionReceiver">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="com.hjg.hjglife.ACTION_NOTIFICATION_RECEIVER" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
+        <!-- <receiver android:name=".notification.NotificationActionReceiver"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.hjg.hjglife.ACTION_NOTIFICATION_RECEIVER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
 
-        <!--监听其他应用的顶层activity的service-->
+
+        <!-- 监听其他应用的顶层activity的service -->
         <service
             android:name=".service.WatchingAccessibilityService"
             android:label="@string/accessibility_activity_class"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
             </intent-filter>
+
             <meta-data
                 android:name="android.accessibilityservice"
-                android:resource="@xml/watch_accessibility" />
+                android:resource="@xml/watch_accessibility"/>
         </service>
 
+        <activity android:name=".activity.okhttp.OkhttpMainActivity">
+        </activity>
+        <activity android:name=".activity.okhttp.DemoOKActivity">
+        </activity>
     </application>
 
 </manifest>
