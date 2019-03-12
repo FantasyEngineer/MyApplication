@@ -1,18 +1,4 @@
-/*
- * Copyright (C) 2008 ZXing authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 
 package com.hjg.hjgapplife.zxing.encode;
 
@@ -32,8 +18,6 @@ import java.util.Map;
 
 /**
  * 根据字符串生成二维码图片
- * 
- * @author tongxu_li Copyright (c) 2014 Shanghai P&C Information Technology Co.,
  *         Ltd.
  */
 public class QRCodeEncoder {
@@ -51,7 +35,6 @@ public class QRCodeEncoder {
 	/**
 	 * 默认二维码大小600
 	 * 
-	 * @author flueky zkf@yitong.com.cn
 	 * @date 2015-3-25 下午4:23:24
 	 */
 	public QRCodeEncoder() {
@@ -129,7 +112,6 @@ public class QRCodeEncoder {
 	/**
 	 * 根据尺寸，缩放图片
 	 * 
-	 * @author flueky zkf@yitong.com.cn
 	 * @date 2015-3-25 下午4:47:06
 	 * @param bitmap
 	 * @param w
